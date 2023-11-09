@@ -1,0 +1,1603 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=exftfund5, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=exftfund5flat, position=independent).
+{\mu,\nu,\rho,\sigma,\mu#,\nu#}::Indices(name=glcurved, position=independent).
+{\alpha,\beta,\alpha#}::Indices(name=exft, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+{\mu,\nu,\rho,\sigma,\mu#,\nu#}::Integer(1..7).
+{\alpha,\beta,\alpha#}::Integer(1..10).
+
+B_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+dB_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+DB_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{\mu \nu \rho M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+C_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+dC_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+DC_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+F_{\mu \nu \rho \sigma}^{M}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}).
+A_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+dA_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+DA_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+F_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+G_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+dG_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+DG_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+g_{\mu \nu}::Symmetric.
+T^{\mu \nu \rho \sigma}::AntiSymmetric.
+T^{\alpha}_{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+\delta{#}::KroneckerDelta.
+\epsilon{#}::EpsilonTensor(delta = \delta).
+
+{A_{\mu}^{M N}, dA_{\mu}^{M N}, \partial_{\alpha}{A_{\mu}^{M N}}, \partial_{\alpha}{dA_{\mu}^{M N}},
+ \epsilon_{M N K P Q}, \epsilon^{M N K P Q}, T^{\mu \nu \rho \sigma}, T^{\alpha}_{M N}, B_{\mu \nu M}, dB_{\mu \nu M}, 
+D_{\mu \nu \rho \sigma M N}, dD_{\mu \nu \rho \sigma M N}, DD_{\mu \nu \rho \sigma M N}, F_{\mu \nu \rho M}, F_{\mu \nu \rho \sigma}^{M},
+\partial_{\mu}{A_{\mu}^{M N}}, \partial_{\alpha}{F_{\mu \nu}^{M N}},
+\partial_{\alpha}{B_{\mu \nu M}}, \partial_{\alpha}{dB_{\mu \nu M}}, \partial_{\alpha}{F_{\mu \nu \rho M}}, 
+\partial_{\alpha}{C_{\mu \nu \rho}^{M}}, \partial_{\alpha}{dC_{\mu \nu \rho}^{M}}, \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{M}},
+\partial_{\alpha}{G_{\mu \nu \rho \sigma M N}}, \partial_{\alpha}{dG_{\mu \nu \rho \sigma M N}}, \delta^{M1}_{M}, \delta_{M1}^{M},
+a1, a2, a3 , a4, a5, a6, a7, a8, a9, a10, a11, a12, b1, b2, b3 , b4, b5, b6, b7, b8, b9, b10, b11, b12,
+c1, c2, c3 , c4, c5, c6, c7, d1, d2, d3 , d4, d5, d6, d7}::SortOrder.
+
+\partial{#}::WeightInherit(label=all, type=Additive):
+
+{A_{\mu}^{M N}, dA_{\mu}^{M N}}::Weight(label=A, value=1):
+{C_{\mu \nu \rho}^{M}, dC_{\mu \nu \rho}^{M}}::Weight(label=C, value=1):
+{B_{\mu \nu M}, dB_{\mu \nu M}}::Weight(label=B, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \rho,\; \sigma,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\alpha,\; \beta,\; \alpha\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\rho$, $\sigma$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\alpha$, $\beta$, $\alpha\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${B}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dB}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DB}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu \rho M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${C}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu \rho \sigma}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${G}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dG}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DG}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${T}^{\mu \nu \rho \sigma}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property EpsilonTensor to $\epsilon(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{{A}_{\mu}\,^{M N},\; {dA}_{\mu}\,^{M N},\; {\partial}_{\alpha}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{dA}_{\mu}\,^{M N}}\, ,\; {\epsilon}_{M N K P Q},\; {\epsilon}^{M N K P Q},\; {T}^{\mu \nu \rho \sigma},\; {T}^{\alpha}\,_{M N},\; {B}_{\mu \nu M},\; {dB}_{\mu \nu M},\; {D}_{\mu \nu \rho \sigma M N}\, ,\; {dD}_{\mu \nu \rho \sigma M N},\; {DD}_{\mu \nu \rho \sigma M N},\; {F}_{\mu \nu \rho M},\; {F}_{\mu \nu \rho \sigma}\,^{M},\; {\partial}_{\mu}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{B}_{\mu \nu M}}\, ,\; {\partial}_{\alpha}{{dB}_{\mu \nu M}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu \rho M}}\, ,\; {\partial}_{\alpha}{{C}_{\mu \nu \rho}\,^{M}}\, ,\; {\partial}_{\alpha}{{dC}_{\mu \nu \rho}\,^{M}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu \rho \sigma}\,^{M}}\, ,\; {\partial}_{\alpha}{{G}_{\mu \nu \rho \sigma M N}}\, ,\; {\partial}_{\alpha}{{dG}_{\mu \nu \rho \sigma M N}}\, ,\; {\delta}^{M1}\,_{M},\; {\delta}_{M1}\,^{M},\; a1,\; a2,\; a3,\; a4,\; a5,\; a6,\; a7,\; a8,\; a9,\; a10,\; a11,\; a12,\; b1,\; b2,\; b3,\; b4,\; b5,\; b6,\; b7,\; b8,\; b9,\; b10,\; b11,\; b12,\; c1,\; c2,\; c3,\; c4,\; c5,\; c6,\; c7,\; d1,\; d2,\; d3,\; d4,\; d5,\; d6,\; d7\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${A}_{\mu}\,^{M N}$, ${dA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${C}_{\mu \nu \rho}\,^{M}$, ${dC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${B}_{\mu \nu M}$, ${dB}_{\mu \nu M}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+deltaFC := T^{\mu \nu \rho \sigma} *  (4 * D_{\mu}{C_{\nu \rho \sigma}^{M}} - 6 * F_{\mu \nu}^{M N} B_{\rho \sigma N} - 3/16 * \epsilon^{M N K L P} T^{\alpha}_{K L} B_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}}
+- 8 * \epsilon_{N P Q R S} * ( A_{\mu}^{M N} A_{\nu}^{P Q} \partial_{\rho}{A_{\sigma}^{R S}} - 1/4 * A_{\mu}^{M N} * 
+(1/2 * T^{\alpha}_{K L} A_{\nu}^{K L} \partial_{\alpha}{A_{\rho}^{P Q}} - T^{\alpha}_{L K} A_{\rho}^{L Q} \partial_{\alpha}{A_{\nu}^{P K}}
+- T^{\alpha}_{L K} A_{\rho}^{P L} \partial_{\alpha}{A_{\nu}^{Q K}} + 1/2 * T^{\alpha}_{K L} A_{\rho}^{P Q} \partial_{\alpha}{A_{\nu}^{K L}}) A_{\sigma}^{R S} ) )
++ 1/2 * T^{\mu \nu \rho \sigma} *  T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{G_{\mu \nu \rho \sigma L P}};
+@distribute!!(%):
+@substitute!!(%)(
+D_{\mu}{C_{\nu \rho \sigma}^{M}} -> \partial_{\mu}{C_{\nu \rho \sigma}^{M}} - 1/2 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{C_{\nu \rho \sigma}^{M}}
+                                                                + T^{\alpha}_{L K} C_{\nu \rho \sigma}^{L} \partial_{\alpha}{A_{\mu}^{M K}} - 1/2 * T^{\alpha}_{K L} C_{\nu \rho \sigma}^{M} \partial_{\alpha}{A_{\mu}^{K L}},
+F_{\mu \nu}^{M N} -> \partial_{\mu}{A_{\nu}^{M N}} - \partial_{\nu}{A_{\mu}^{M N}}
+                                   - 1/4 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} + 1/2 * T^{\alpha}_{L K} A_{\nu}^{L N} \partial_{\alpha}{A_{\mu}^{M K}}
+                                   + 1/2 * T^{\alpha}_{L K} A_{\nu}^{M L} \partial_{\alpha}{A_{\mu}^{N K}} - 1/4 * T^{\alpha}_{K L} A_{\nu}^{M N} \partial_{\alpha}{A_{\mu}^{K L}}
+                                  + 1/4 * T^{\alpha}_{K L} A_{\nu}^{K L} \partial_{\alpha}{A_{\mu}^{M N}} - 1/2 * T^{\alpha}_{L K} A_{\mu}^{L N} \partial_{\alpha}{A_{\nu}^{M K}}
+                                   - 1/2 * T^{\alpha}_{L K} A_{\mu}^{M L} \partial_{\alpha}{A_{\nu}^{N K}} + 1/4 * T^{\alpha}_{K L} A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}}
+                                   - 1/16 * \epsilon^{M N K L P} T^{\alpha}_{K L} \partial_{\alpha}{B_{\mu \nu P}},
+):
+@distribute!!(%):
+@sumflatten!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@vary(%)(
+A_{\mu}^{M N} -> dA_{\mu}^{M N},
+B_{\mu \nu M} -> dB_{\mu \nu M},
+C_{\mu \nu \rho}^{M} -> dC_{\mu \nu \rho}^{M},
+G_{\mu \nu \rho \sigma N P} -> dG_{\mu \nu \rho \sigma N P},
+);
+\end{verbatim}}
+% orig
+% T^{\mu \nu \rho \sigma} (4 D_{\mu}{C_{\nu \rho \sigma}^{M}} - 6 F_{\mu \nu}^{M N} B_{\rho \sigma N} - 3/16 \epsilon^{M N K L P} T^{\alpha}_{K L} B_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}} - 8 \epsilon_{N P Q R S} (A_{\mu}^{M N} A_{\nu}^{P Q} \partial_{\rho}{A_{\sigma}^{R S}} - 1/4 A_{\mu}^{M N} (1/2 T^{\alpha}_{K L} A_{\nu}^{K L} \partial_{\alpha}{A_{\rho}^{P Q}} - T^{\alpha}_{L K} A_{\rho}^{L Q} \partial_{\alpha}{A_{\nu}^{P K}} - T^{\alpha}_{L K} A_{\rho}^{P L} \partial_{\alpha}{A_{\nu}^{Q K}} + 1/2 T^{\alpha}_{K L} A_{\rho}^{P Q} \partial_{\alpha}{A_{\nu}^{K L}}) A_{\sigma}^{R S})) + 1/2 T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{G_{\mu \nu \rho \sigma L P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFC\specialcolon{}= {T}^{\mu \nu \rho \sigma} (4\, {D}_{\mu}{{C}_{\nu \rho \sigma}\,^{M}}\,  - 6\, {F}_{\mu \nu}\,^{M N} {B}_{\rho \sigma N} - \frac{3}{16}\, {\epsilon}^{M N K L P} {T}^{\alpha}\,_{K L} {B}_{\mu \nu N} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\,  - 8\, {\epsilon}_{N P Q R S} ({A}_{\mu}\,^{M N} {A}_{\nu}\,^{P Q} {\partial}_{\rho}{{A}_{\sigma}\,^{R S}}\,  - \frac{1}{4}\, {A}_{\mu}\,^{M N} (\frac{1}{2}\, {T}^{\alpha}\,_{K L} {A}_{\nu}\,^{K L} {\partial}_{\alpha}{{A}_{\rho}\,^{P Q}}\,  - {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{L Q} {\partial}_{\alpha}{{A}_{\nu}\,^{P K}}\,  - {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{P L} {\partial}_{\alpha}{{A}_{\nu}\,^{Q K}}\,  + \frac{1}{2}\, {T}^{\alpha}\,_{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\, ) {A}_{\sigma}\,^{R S})) + \frac{1}{2}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\epsilon}^{M N K L P} {\partial}_{\alpha}{{G}_{\mu \nu \rho \sigma L P}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% orig
+% 4 T^{\mu \nu \rho \sigma} \partial_{\mu}{C_{\nu \rho \sigma}^{M}} - 2 A_{\mu}^{K N} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{C_{\nu \rho \sigma}^{M}} - 4 C_{\mu \nu \rho}^{K} \partial_{\alpha}{A_{\sigma}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} + 2 C_{\mu \nu \rho}^{M} \partial_{\alpha}{A_{\sigma}^{K N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} - 12 T^{\mu \nu \rho \sigma} B_{\mu \nu N} \partial_{\rho}{A_{\sigma}^{M N}} + 3 A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} + 6 A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} B_{\rho \sigma L} - 6 A_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 3 A_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} B_{\rho \sigma K} + 3/16 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}} - 8 A_{\mu}^{M K} A_{\nu}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} + A_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} + 4 A_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{G_{\mu \nu \rho \sigma N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFC\specialcolon{}= 4\, {T}^{\mu \nu \rho \sigma} {\partial}_{\mu}{{C}_{\nu \rho \sigma}\,^{M}}\,  - 2\, {A}_{\mu}\,^{K N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{M}}\,  - 4\, {C}_{\mu \nu \rho}\,^{K} {\partial}_{\alpha}{{A}_{\sigma}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} + 2\, {C}_{\mu \nu \rho}\,^{M} {\partial}_{\alpha}{{A}_{\sigma}\,^{K N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} - 12\, {T}^{\mu \nu \rho \sigma} {B}_{\mu \nu N} {\partial}_{\rho}{{A}_{\sigma}\,^{M N}}\,  + 3\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} + 6\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {B}_{\rho \sigma L} - 6\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 3\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L N} {B}_{\rho \sigma K} + \frac{3}{16}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\mu \nu N} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\,  - 8\, {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} + 4\, {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{G}_{\mu \nu \rho \sigma N P}}\, ;
+\end{dmath*}
+% orig
+% 4 T^{\mu \nu \rho \sigma} \partial_{\mu}{dC_{\nu \rho \sigma}^{M}} - 2 dA_{\mu}^{K N} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{C_{\nu \rho \sigma}^{M}} - 2 A_{\mu}^{K N} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{dC_{\nu \rho \sigma}^{M}} - 4 dC_{\mu \nu \rho}^{K} \partial_{\alpha}{A_{\sigma}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} - 4 C_{\mu \nu \rho}^{K} \partial_{\alpha}{dA_{\sigma}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} + 2 dC_{\mu \nu \rho}^{M} \partial_{\alpha}{A_{\sigma}^{K N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} + 2 C_{\mu \nu \rho}^{M} \partial_{\alpha}{dA_{\sigma}^{K N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} - 12 T^{\mu \nu \rho \sigma} dB_{\mu \nu N} \partial_{\rho}{A_{\sigma}^{M N}} - 12 T^{\mu \nu \rho \sigma} B_{\mu \nu N} \partial_{\rho}{dA_{\sigma}^{M N}} + 3 dA_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} + 3 A_{\mu}^{K L} \partial_{\alpha}{dA_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} + 3 A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} dB_{\rho \sigma N} + 6 dA_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} B_{\rho \sigma L} + 6 A_{\mu}^{K L} \partial_{\alpha}{dA_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} B_{\rho \sigma L} + 6 A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} dB_{\rho \sigma L} - 6 dA_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 6 A_{\mu}^{M K} \partial_{\alpha}{dA_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 6 A_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} dB_{\rho \sigma N} - 3 dA_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} B_{\rho \sigma K} - 3 A_{\mu}^{M K} \partial_{\alpha}{dA_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} B_{\rho \sigma K} - 3 A_{\mu}^{M K} \partial_{\alpha}{A_{\nu}^{L N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} dB_{\rho \sigma K} + 3/16 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} dB_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}} + 3/16 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} B_{\mu \nu N} \partial_{\alpha}{dB_{\rho \sigma P}} - 8 dA_{\mu}^{M K} A_{\nu}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} - 8 A_{\mu}^{M K} dA_{\nu}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} - 8 A_{\mu}^{M K} A_{\nu}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \partial_{\rho}{dA_{\sigma}^{P Q}} + dA_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} + A_{\mu}^{M K} dA_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} + A_{\mu}^{M K} A_{\nu}^{L N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} + A_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L N R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} + 4 dA_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} + 4 A_{\mu}^{M K} dA_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} + 4 A_{\mu}^{M K} A_{\nu}^{L N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L N P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} + 4 A_{\mu}^{M K} A_{\nu}^{L N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L N P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{dG_{\mu \nu \rho \sigma N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFC\specialcolon{}= 4\, {T}^{\mu \nu \rho \sigma} {\partial}_{\mu}{{dC}_{\nu \rho \sigma}\,^{M}}\,  - 2\, {dA}_{\mu}\,^{K N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{M}}\,  - 2\, {A}_{\mu}\,^{K N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{dC}_{\nu \rho \sigma}\,^{M}}\,  - 4\, {dC}_{\mu \nu \rho}\,^{K} {\partial}_{\alpha}{{A}_{\sigma}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} - 4\, {C}_{\mu \nu \rho}\,^{K} {\partial}_{\alpha}{{dA}_{\sigma}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} + 2\, {dC}_{\mu \nu \rho}\,^{M} {\partial}_{\alpha}{{A}_{\sigma}\,^{K N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} + 2\, {C}_{\mu \nu \rho}\,^{M} {\partial}_{\alpha}{{dA}_{\sigma}\,^{K N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} - 12\, {T}^{\mu \nu \rho \sigma} {dB}_{\mu \nu N} {\partial}_{\rho}{{A}_{\sigma}\,^{M N}}\,  - 12\, {T}^{\mu \nu \rho \sigma} {B}_{\mu \nu N} {\partial}_{\rho}{{dA}_{\sigma}\,^{M N}}\,  + 3\, {dA}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} + 3\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} + 3\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} + 6\, {dA}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {B}_{\rho \sigma L} + 6\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {B}_{\rho \sigma L} + 6\, {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {dB}_{\rho \sigma L} - 6\, {dA}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 6\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{dA}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 6\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} - 3\, {dA}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L N} {B}_{\rho \sigma K}%
+ - 3\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{dA}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L N} {B}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{M K} {\partial}_{\alpha}{{A}_{\nu}\,^{L N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L N} {dB}_{\rho \sigma K} + \frac{3}{16}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {dB}_{\mu \nu N} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\,  + \frac{3}{16}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\mu \nu N} {\partial}_{\alpha}{{dB}_{\rho \sigma P}}\,  - 8\, {dA}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - 8\, {A}_{\mu}\,^{M K} {dA}_{\nu}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - 8\, {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  + {dA}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} + {A}_{\mu}\,^{M K} {dA}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} + {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} + {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} + 4\, {dA}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} + 4\, {A}_{\mu}\,^{M K} {dA}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} + 4\, {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} + 4\, {A}_{\mu}\,^{M K} {A}_{\nu}\,^{L N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L N P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{dG}_{\mu \nu \rho \sigma N P}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+dFC := T^{\mu \nu \rho \sigma} * (4 * D_{\mu}{DC_{\nu \rho \sigma}^{M}} - 6 * F_{\mu \nu}^{M N} DB_{\rho \sigma N} + 4 * F_{\mu \nu \rho N} DA_{\sigma}^{M N})
++ 1/2 * T^{\mu \nu \rho \sigma} * T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{DG_{\mu \nu \rho \sigma L P}};
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@substitute!!(%)(
+D_{\mu}{DC_{\nu \rho \sigma}^{M}} -> \partial_{\mu}{DC_{\nu \rho \sigma}^{M}} - 1/2 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{DC_{\nu \rho \sigma}^{M}}
+                                                                + T^{\alpha}_{L K} DC_{\nu \rho \sigma}^{L} \partial_{\alpha}{A_{\mu}^{M K}} - 1/2 * T^{\alpha}_{K L} DC_{\nu \rho \sigma}^{M} \partial_{\alpha}{A_{\mu}^{K L}},
+F_{\mu \nu}^{M N} -> \partial_{\mu}{A_{\nu}^{M N}} - \partial_{\nu}{A_{\mu}^{M N}}
+                                   - 1/4 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{M N}} + 1/2 * T^{\alpha}_{L K} A_{\nu}^{L N} \partial_{\alpha}{A_{\mu}^{M K}}
+                                   + 1/2 * T^{\alpha}_{L K} A_{\nu}^{M L} \partial_{\alpha}{A_{\mu}^{N K}} - 1/4 * T^{\alpha}_{K L} A_{\nu}^{M N} \partial_{\alpha}{A_{\mu}^{K L}}
+                                  + 1/4 * T^{\alpha}_{K L} A_{\nu}^{K L} \partial_{\alpha}{A_{\mu}^{M N}} - 1/2 * T^{\alpha}_{L K} A_{\mu}^{L N} \partial_{\alpha}{A_{\nu}^{M K}}
+                                   - 1/2 * T^{\alpha}_{L K} A_{\mu}^{M L} \partial_{\alpha}{A_{\nu}^{N K}} + 1/4 * T^{\alpha}_{K L} A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}}
+                                   - 1/16 * \epsilon^{M N K L P} T^{\alpha}_{K L} \partial_{\alpha}{B_{\mu \nu P}},
+F_{\mu \nu \rho M} -> 3 * D_{\mu}{B_{\nu \rho M}} + 6 * \epsilon_{M P Q R S} * (A_{\mu}^{P Q} \partial_{\nu}{A_{\rho}^{R S}} 
+- 1/3 * (1/2 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{P Q}} - T^{\alpha}_{L K} A_{\nu}^{L Q} \partial_{\alpha}{A_{\mu}^{P K}}
+- T^{\alpha}_{L K} A_{\nu}^{P L} \partial_{\alpha}{A_{\mu}^{Q K}} + 1/2 * T^{\alpha}_{K L} A_{\nu}^{P Q} \partial_{\alpha}{A_{\mu}^{K L}}) * A_{\rho}^{R S})
+- T^{\alpha}_{M N} \partial_{\alpha}{C_{\mu \nu \rho}^{N}},
+);
+@distribute!!(%):
+@substitute!!(%)(
+DA_{\mu}^{M N} -> dA_{\mu}^{M N},
+DB_{\mu \nu M} -> dB_{\mu \nu M} - \epsilon_{M N K L P} * A_{\mu}^{N K} dA_{\nu}^{L P} + \epsilon_{M N K L P} * A_{\nu}^{N K} dA_{\mu}^{L P},
+DC_{\mu \nu \rho}^{M} -> dC_{\mu \nu \rho}^{M} - dA_{\mu}^{M N} B_{\nu \rho N} + dA_{\nu}^{M N} B_{\mu \rho N} + dA_{\rho}^{M N} B_{\nu \mu N}
+         - 1/3 * \epsilon_{N K L R S} A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{R S}
+        + 1/3 * \epsilon_{N K L R S} A_{\mu}^{M N} A_{\rho}^{K L} dA_{\nu}^{R S}
+         - 1/3 * \epsilon_{N K L R S} A_{\nu}^{M N} A_{\rho}^{K L} dA_{\mu}^{R S}
+        + 1/3 * \epsilon_{N K L R S} A_{\nu}^{M N} A_{\mu}^{K L} dA_{\rho}^{R S}
+         - 1/3 * \epsilon_{N K L R S} A_{\rho}^{M N} A_{\mu}^{K L} dA_{\nu}^{R S}
+        + 1/3 * \epsilon_{N K L R S} A_{\rho}^{M N} A_{\nu}^{K L} dA_{\mu}^{R S},
+DG_{\mu \nu \rho \sigma M N} -> dG_{\mu \nu \rho \sigma M N} - \epsilon_{M N Q P K} dA_{\mu}^{Q P} C_{\nu \rho \sigma}^{K}
++ 3/8 * B_{\mu \nu M} dB_{\rho \sigma N} - 3/2 * \epsilon_{N K L P R} B_{\mu \nu M} A_{\rho}^{K L} dA_{\sigma}^{P R}
+- 8/(16) * g * \epsilon_{M N U V R} \epsilon_{Q K L S T} A_{\mu}^{U V} A_{\nu}^{R Q} A_{\rho}^{K L} dA_{\sigma}^{S T},
+F_{\mu \nu \rho M} -> 3 * D_{\mu}{B_{\nu \rho M}} + 6 * \epsilon_{M P Q R S} * (A_{\mu}^{P Q} \partial_{\nu}{A_{\rho}^{R S}} 
+- 1/3 * (1/2 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{A_{\nu}^{P Q}} - T^{\alpha}_{L K} A_{\nu}^{L Q} \partial_{\alpha}{A_{\mu}^{P K}}
+- T^{\alpha}_{L K} A_{\nu}^{P L} \partial_{\alpha}{A_{\mu}^{Q K}} + 1/2 * T^{\alpha}_{K L} A_{\nu}^{P Q} \partial_{\alpha}{A_{\mu}^{K L}}) * A_{\rho}^{R S})
+- T^{\alpha}_{M N} \partial_{\alpha}{C_{\mu \nu \rho}^{N}},
+D_{\mu}{B_{\nu \rho M}} -> \partial_{\mu}{B_{\nu \rho M}} - 1/2 * T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{B_{\nu \rho M}} - T^{\alpha}_{M K} B_{\nu \rho L} \partial_{\alpha}{A_{\mu}^{L K}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{A??}{\epsilon^{K M N P Q}} -> 0,
+\partial_{A??}{\epsilon_{K M N P Q}} -> 0,
+\partial_{A??}{g} -> 0,
+\epsilon^{M N K L P} \epsilon_{L P R S T} -> 120 * \delta^{M}_{L}^{N}_{P}^{K}_{R}^{L}_{S}^{P}_{T},
+):
+@epsprod2gendelta!!(%);
+@distribute!!(%):
+@breakgendelta!!(%):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% T^{\mu \nu \rho \sigma} (4 D_{\mu}{DC_{\nu \rho \sigma}^{M}} - 6 F_{\mu \nu}^{M N} DB_{\rho \sigma N} + 4 F_{\mu \nu \rho N} DA_{\sigma}^{M N}) + 1/2 T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{DG_{\mu \nu \rho \sigma L P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFC\specialcolon{}= {T}^{\mu \nu \rho \sigma} (4\, {D}_{\mu}{{DC}_{\nu \rho \sigma}\,^{M}}\,  - 6\, {F}_{\mu \nu}\,^{M N} {DB}_{\rho \sigma N} + 4\, {F}_{\mu \nu \rho N} {DA}_{\sigma}\,^{M N}) + \frac{1}{2}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\epsilon}^{M N K L P} {\partial}_{\alpha}{{DG}_{\mu \nu \rho \sigma L P}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 4 D_{\mu}{DC_{\nu \rho \sigma}^{M}} T^{\mu \nu \rho \sigma} - 6 DB_{\mu \nu N} F_{\rho \sigma}^{M N} T^{\mu \nu \rho \sigma} - 4 DA_{\mu}^{M N} T^{\mu \nu \rho \sigma} F_{\nu \rho \sigma N} + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{DG_{\mu \nu \rho \sigma N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFC\specialcolon{}= 4\, {D}_{\mu}{{DC}_{\nu \rho \sigma}\,^{M}}\,  {T}^{\mu \nu \rho \sigma} - 6\, {DB}_{\mu \nu N} {F}_{\rho \sigma}\,^{M N} {T}^{\mu \nu \rho \sigma} - 4\, {DA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {F}_{\nu \rho \sigma N} + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{DG}_{\mu \nu \rho \sigma N P}}\, ;
+\end{dmath*}
+% orig
+% 4 (\partial_{\mu}{DC_{\nu \rho \sigma}^{M}} - 1/2 T^{\alpha}_{K L} A_{\mu}^{K L} \partial_{\alpha}{DC_{\nu \rho \sigma}^{M}} + T^{\alpha}_{L K} DC_{\nu \rho \sigma}^{L} \partial_{\alpha}{A_{\mu}^{M K}} - 1/2 T^{\alpha}_{K L} DC_{\nu \rho \sigma}^{M} \partial_{\alpha}{A_{\mu}^{K L}}) T^{\mu \nu \rho \sigma} - 6 DB_{\mu \nu N} (\partial_{\rho}{A_{\sigma}^{M N}} - \partial_{\sigma}{A_{\rho}^{M N}} - 1/4 T^{\alpha}_{K L} A_{\rho}^{K L} \partial_{\alpha}{A_{\sigma}^{M N}} + 1/2 T^{\alpha}_{L K} A_{\sigma}^{L N} \partial_{\alpha}{A_{\rho}^{M K}} + 1/2 T^{\alpha}_{L K} A_{\sigma}^{M L} \partial_{\alpha}{A_{\rho}^{N K}} - 1/4 T^{\alpha}_{K L} A_{\sigma}^{M N} \partial_{\alpha}{A_{\rho}^{K L}} + 1/4 T^{\alpha}_{K L} A_{\sigma}^{K L} \partial_{\alpha}{A_{\rho}^{M N}} - 1/2 T^{\alpha}_{L K} A_{\rho}^{L N} \partial_{\alpha}{A_{\sigma}^{M K}} - 1/2 T^{\alpha}_{L K} A_{\rho}^{M L} \partial_{\alpha}{A_{\sigma}^{N K}} + 1/4 T^{\alpha}_{K L} A_{\rho}^{M N} \partial_{\alpha}{A_{\sigma}^{K L}} - 1/16 \epsilon^{M N K L P} T^{\alpha}_{K L} \partial_{\alpha}{B_{\rho \sigma P}}) T^{\mu \nu \rho \sigma} - 4 DA_{\mu}^{M N} T^{\mu \nu \rho \sigma} (3 D_{\nu}{B_{\rho \sigma N}} + 6 \epsilon_{N P Q R S} (A_{\nu}^{P Q} \partial_{\rho}{A_{\sigma}^{R S}} - 1/3 (1/2 T^{\alpha}_{K L} A_{\nu}^{K L} \partial_{\alpha}{A_{\rho}^{P Q}} - T^{\alpha}_{L K} A_{\rho}^{L Q} \partial_{\alpha}{A_{\nu}^{P K}} - T^{\alpha}_{L K} A_{\rho}^{P L} \partial_{\alpha}{A_{\nu}^{Q K}} + 1/2 T^{\alpha}_{K L} A_{\rho}^{P Q} \partial_{\alpha}{A_{\nu}^{K L}}) A_{\sigma}^{R S}) - T^{\alpha}_{N T} \partial_{\alpha}{C_{\nu \rho \sigma}^{T}}) + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{DG_{\mu \nu \rho \sigma N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFC\specialcolon{}= 4\, ({\partial}_{\mu}{{DC}_{\nu \rho \sigma}\,^{M}}\,  - \frac{1}{2}\, {T}^{\alpha}\,_{K L} {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{DC}_{\nu \rho \sigma}\,^{M}}\,  + {T}^{\alpha}\,_{L K} {DC}_{\nu \rho \sigma}\,^{L} {\partial}_{\alpha}{{A}_{\mu}\,^{M K}}\,  - \frac{1}{2}\, {T}^{\alpha}\,_{K L} {DC}_{\nu \rho \sigma}\,^{M} {\partial}_{\alpha}{{A}_{\mu}\,^{K L}}\, ) {T}^{\mu \nu \rho \sigma} - 6\, {DB}_{\mu \nu N} ({\partial}_{\rho}{{A}_{\sigma}\,^{M N}}\,  - {\partial}_{\sigma}{{A}_{\rho}\,^{M N}}\,  - \frac{1}{4}\, {T}^{\alpha}\,_{K L} {A}_{\rho}\,^{K L} {\partial}_{\alpha}{{A}_{\sigma}\,^{M N}}\,  + \frac{1}{2}\, {T}^{\alpha}\,_{L K} {A}_{\sigma}\,^{L N} {\partial}_{\alpha}{{A}_{\rho}\,^{M K}}\,  + \frac{1}{2}\, {T}^{\alpha}\,_{L K} {A}_{\sigma}\,^{M L} {\partial}_{\alpha}{{A}_{\rho}\,^{N K}}\,  - \frac{1}{4}\, {T}^{\alpha}\,_{K L} {A}_{\sigma}\,^{M N} {\partial}_{\alpha}{{A}_{\rho}\,^{K L}}\,  + \frac{1}{4}\, {T}^{\alpha}\,_{K L} {A}_{\sigma}\,^{K L} {\partial}_{\alpha}{{A}_{\rho}\,^{M N}}\,  - \frac{1}{2}\, {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{L N} {\partial}_{\alpha}{{A}_{\sigma}\,^{M K}}\,  - \frac{1}{2}\, {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{M L} {\partial}_{\alpha}{{A}_{\sigma}\,^{N K}}\,  + \frac{1}{4}\, {T}^{\alpha}\,_{K L} {A}_{\rho}\,^{M N} {\partial}_{\alpha}{{A}_{\sigma}\,^{K L}}\,  - \frac{1}{16}\, {\epsilon}^{M N K L P} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\, ) {T}^{\mu \nu \rho \sigma} - 4\, {DA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} (3\, {D}_{\nu}{{B}_{\rho \sigma N}}\,  + 6\, {\epsilon}_{N P Q R S} ({A}_{\nu}\,^{P Q} {\partial}_{\rho}{{A}_{\sigma}\,^{R S}}\,  - \frac{1}{3}\, (\frac{1}{2}\, {T}^{\alpha}\,_{K L} {A}_{\nu}\,^{K L} {\partial}_{\alpha}{{A}_{\rho}\,^{P Q}}\,  - {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{L Q} {\partial}_{\alpha}{{A}_{\nu}\,^{P K}}\,  - {T}^{\alpha}\,_{L K} {A}_{\rho}\,^{P L} {\partial}_{\alpha}{{A}_{\nu}\,^{Q K}}\,  + \frac{1}{2}\, {T}^{\alpha}\,_{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\, ) {A}_{\sigma}\,^{R S}) - {T}^{\alpha}\,_{N T} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{T}}\, ) + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{DG}_{\mu \nu \rho \sigma N P}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 4 T^{\mu \nu \rho \sigma} \partial_{\mu}{dC_{\nu \rho \sigma}^{M}} - 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \nu \rho \sigma} B_{\rho \sigma N} - 4 dA_{\mu}^{M N} T^{\nu \mu \rho \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \rho \nu \sigma} B_{\rho \sigma N} + 4 dA_{\mu}^{M N} T^{\nu \rho \mu \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \rho \sigma \nu} B_{\sigma \rho N} + 4 dA_{\mu}^{M N} T^{\nu \rho \sigma \mu} \partial_{\nu}{B_{\sigma \rho N}} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \sigma \mu \nu} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \mu \sigma \nu} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \mu \nu \sigma} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \sigma \nu \mu} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \mu \nu \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \mu \sigma \nu} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \nu \sigma \mu} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \nu \mu \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \sigma \mu \nu} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \mu \sigma \nu} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \sigma \mu \nu} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \mu \nu \sigma} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \mu \nu \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \sigma \nu \mu} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \mu \sigma \nu} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \nu \mu \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \nu \sigma \mu} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \sigma \mu \nu} - 2 A_{\mu}^{N K} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{dC_{\nu \rho \sigma}^{M}} + 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} B_{\rho \sigma L} + 2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} - 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} B_{\rho \sigma L} - 2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} - 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} B_{\sigma \rho L} - 2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} \partial_{\alpha}{B_{\sigma \rho L}} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \rho \nu} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \sigma \rho \nu} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} + 4 \partial_{\alpha}{A_{\mu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} dC_{\nu \rho \sigma}^{K} - 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \mu \rho \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} + 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \rho \mu \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} + 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \rho \sigma \mu} T^{\alpha}_{N L} B_{\sigma \rho K} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{N S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \rho \nu} T^{\alpha}_{N S} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \rho \mu \nu} T^{\alpha}_{N S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{L S} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \mu \rho \nu} T^{\alpha}_{L S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \rho \mu \nu} T^{\alpha}_{L S} - 2 \partial_{\alpha}{A_{\mu}^{N K}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} dC_{\nu \rho \sigma}^{M} + 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \mu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \rho \mu \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \rho \sigma \mu} T^{\alpha}_{K L} B_{\sigma \rho N} + 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} - 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \rho \nu} T^{\alpha}_{R S} + 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \rho \mu \nu} T^{\alpha}_{R S} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \mu \rho \nu} T^{\alpha}_{R S} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \rho \mu \nu} T^{\alpha}_{R S} - 6 T^{\mu \nu \rho \sigma} dB_{\mu \nu N} \partial_{\rho}{A_{\sigma}^{M N}} + 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\mu \nu \rho \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} - 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\nu \mu \rho \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} + 6 T^{\mu \nu \rho \sigma} dB_{\mu \nu N} \partial_{\sigma}{A_{\rho}^{M N}} - 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\mu \nu \rho \sigma} \partial_{\sigma}{A_{\rho}^{M Q}} + 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\nu \mu \rho \sigma} \partial_{\sigma}{A_{\rho}^{M Q}} + 3/2 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} dB_{\rho \sigma L} - 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{L P} + 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\rho \mu \nu \sigma} T^{\alpha}_{L P} - 3 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N L} dB_{\rho \sigma K} + 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\rho \mu \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N L} dB_{\rho \sigma K} + 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\rho \mu \sigma \nu} T^{\alpha}_{L S} + 3/2 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{K L} dB_{\rho \sigma N} - 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{R S} + 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\rho \mu \sigma \nu} T^{\alpha}_{R S} - 3/2 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N K} dB_{\rho \sigma L} + 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{L P} - 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\rho \mu \sigma \nu} T^{\alpha}_{L P} + 3 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} dB_{\rho \sigma K} - 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\rho \mu \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} dB_{\rho \sigma K} - 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\rho \mu \nu \sigma} T^{\alpha}_{L S} - 3/2 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{K L} dB_{\rho \sigma N} + 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{R S} - 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\rho \mu \nu \sigma} T^{\alpha}_{R S} + 3/8 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} dB_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}} + 9 A_{\mu}^{N K} dA_{\nu}^{L P} \delta_{N}^{M}_{K}^{R}_{L}^{S}_{P}^{T} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} \partial_{\alpha}{B_{\rho \sigma T}} - 9 A_{\mu}^{N K} dA_{\nu}^{L P} \delta_{N}^{M}_{K}^{R}_{L}^{S}_{P}^{T} T^{\nu \mu \rho \sigma} T^{\alpha}_{R S} \partial_{\alpha}{B_{\rho \sigma T}} - 12 dA_{\mu}^{M N} T^{\mu \nu \rho \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 6 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\nu \mu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} + 12 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} - 24 A_{\mu}^{N K} dA_{\nu}^{M L} \epsilon_{L N K P Q} T^{\nu \mu \rho \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} + 4 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q R S L P} T^{\rho \mu \sigma \nu} T^{\alpha}_{N K} - 8 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q R K L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{N S} - 8 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q N R L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{K S} + 4 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q N K L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{R S} + 4 dA_{\mu}^{M N} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{C_{\nu \rho \sigma}^{K}} + 1/2 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{dG_{\mu \nu \rho \sigma L P}} - 60 C_{\mu \nu \rho}^{N} \partial_{\alpha}{dA_{\sigma}^{K L}} \delta^{M}_{P}^{R}_{Q}^{S}_{K}^{P}_{L}^{Q}_{N} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} - 60 dA_{\mu}^{N K} \delta^{M}_{L}^{R}_{P}^{S}_{N}^{L}_{K}^{P}_{Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} \partial_{\alpha}{C_{\nu \rho \sigma}^{Q}} + 3/16 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} dB_{\rho \sigma P} \partial_{\alpha}{B_{\mu \nu L}} + 3/16 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} B_{\mu \nu L} \partial_{\alpha}{dB_{\rho \sigma P}} - 18 A_{\mu}^{N K} dA_{\nu}^{L P} \delta_{N}^{M}_{K}^{R}_{L}^{S}_{P}^{T} T^{\rho \sigma \mu \nu} T^{\alpha}_{R S} \partial_{\alpha}{B_{\rho \sigma T}} - 18 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{L P}} \delta_{L}^{M}_{P}^{R}_{N}^{S}_{K}^{T} T^{\rho \sigma \nu \mu} T^{\alpha}_{R S} B_{\rho \sigma T} - 18 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{L P}} \delta_{N}^{M}_{K}^{R}_{L}^{S}_{P}^{T} T^{\rho \sigma \mu \nu} T^{\alpha}_{R S} B_{\rho \sigma T} - 30 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{S T}} \epsilon_{K L P Q R} \delta^{M}_{U}^{M1}_{V}^{M2}_{S}^{U}_{T}^{V}_{N} T^{\sigma \mu \nu \rho} T^{\alpha}_{M1 M2} g - 30 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{S T}} \epsilon_{T L P Q R} \delta^{M}_{U}^{M1}_{V}^{M2}_{N}^{U}_{K}^{V}_{S} T^{\mu \sigma \nu \rho} T^{\alpha}_{M1 M2} g - 30 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{S T}} \epsilon_{P S T Q R} \delta^{M}_{U}^{M1}_{V}^{M2}_{N}^{U}_{K}^{V}_{L} T^{\mu \nu \sigma \rho} T^{\alpha}_{M1 M2} g - 30 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{Q R} \partial_{\alpha}{dA_{\sigma}^{S T}} \epsilon_{P Q R S T} \delta^{M}_{U}^{M1}_{V}^{M2}_{N}^{U}_{K}^{V}_{L} T^{\mu \nu \rho \sigma} T^{\alpha}_{M1 M2} g
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFC\specialcolon{}= 4\, {T}^{\mu \nu \rho \sigma} {\partial}_{\mu}{{dC}_{\nu \rho \sigma}\,^{M}}\,  - 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {B}_{\rho \sigma N} - 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \mu \rho \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \rho \nu \sigma} {B}_{\rho \sigma N} + 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \rho \mu \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \rho \sigma \nu} {B}_{\sigma \rho N} + 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \rho \sigma \mu} {\partial}_{\nu}{{B}_{\sigma \rho N}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \sigma \mu \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \mu \sigma \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \mu \nu \sigma} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \sigma \nu \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \mu \nu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \mu \sigma \nu} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \nu \sigma \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \nu \mu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \sigma \mu \nu} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \mu \sigma \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \sigma \mu \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \nu \sigma}%
+ - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \mu \nu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \sigma \nu \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \sigma \nu} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \nu \mu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \nu \sigma \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \sigma \mu \nu} - 2\, {A}_{\mu}\,^{N K} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{dC}_{\nu \rho \sigma}\,^{M}}\,  + 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} + 2\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} - 2\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} {B}_{\sigma \rho L} - 2\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\sigma \rho L}}\,  + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \rho \nu} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K}%
+ + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \sigma \rho \nu} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} + 4\, {\partial}_{\alpha}{{A}_{\mu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {dC}_{\nu \rho \sigma}\,^{K} - 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} + 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \rho \mu \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} + 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \rho \sigma \mu} {T}^{\alpha}\,_{N L} {B}_{\sigma \rho K} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N S} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{N S} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{N S} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{L S} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{L S}%
+ + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{L S} - 2\, {\partial}_{\alpha}{{A}_{\mu}\,^{N K}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {dC}_{\nu \rho \sigma}\,^{M} + 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \rho \mu \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \rho \sigma \mu} {T}^{\alpha}\,_{K L} {B}_{\sigma \rho N} + \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{R S} + \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{R S} - 6\, {T}^{\mu \nu \rho \sigma} {dB}_{\mu \nu N} {\partial}_{\rho}{{A}_{\sigma}\,^{M N}}\,  + 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\nu \mu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + 6\, {T}^{\mu \nu \rho \sigma} {dB}_{\mu \nu N} {\partial}_{\sigma}{{A}_{\rho}\,^{M N}}\,  - 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\mu \nu \rho \sigma} {\partial}_{\sigma}{{A}_{\rho}\,^{M Q}}\,  + 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\nu \mu \rho \sigma} {\partial}_{\sigma}{{A}_{\rho}\,^{M Q}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma L} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L P} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L P}%
+ - 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L S} + \frac{3}{2}\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{R S} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{R S} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma L} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L P} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L P} + 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L S} - \frac{3}{2}\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{R S}%
+ - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{R S} + \frac{3}{8}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {dB}_{\mu \nu N} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\,  + 9\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\delta}_{N}\,^{M}\,_{K}\,^{R}\,_{L}\,^{S}\,_{P}\,^{T} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {\partial}_{\alpha}{{B}_{\rho \sigma T}}\,  - 9\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\delta}_{N}\,^{M}\,_{K}\,^{R}\,_{L}\,^{S}\,_{P}\,^{T} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{R S} {\partial}_{\alpha}{{B}_{\rho \sigma T}}\,  - 12\, {dA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + 12\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} - 24\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {\epsilon}_{L N K P Q} {T}^{\nu \mu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + 4\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q R S L P} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{N K} - 8\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q R K L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N S} - 8\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q N R L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K S} + 4\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q N K L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{R S} + 4\, {dA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{K}}\,  + \frac{1}{2}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{dG}_{\mu \nu \rho \sigma L P}}\,  - 60\, {C}_{\mu \nu \rho}\,^{N} {\partial}_{\alpha}{{dA}_{\sigma}\,^{K L}}\,  {\delta}^{M}\,_{P}\,^{R}\,_{Q}\,^{S}\,_{K}\,^{P}\,_{L}\,^{Q}\,_{N} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} - 60\, {dA}_{\mu}\,^{N K} {\delta}^{M}\,_{L}\,^{R}\,_{P}\,^{S}\,_{N}\,^{L}\,_{K}\,^{P}\,_{Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{Q}}\,  + \frac{3}{16}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma P} {\partial}_{\alpha}{{B}_{\mu \nu L}}\,  + \frac{3}{16}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {B}_{\mu \nu L} {\partial}_{\alpha}{{dB}_{\rho \sigma P}}\,  - 18\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\delta}_{N}\,^{M}\,_{K}\,^{R}\,_{L}\,^{S}\,_{P}\,^{T} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{R S} {\partial}_{\alpha}{{B}_{\rho \sigma T}}\,  - 18\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{L P}}\,  {\delta}_{L}\,^{M}\,_{P}\,^{R}\,_{N}\,^{S}\,_{K}\,^{T} {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{R S} {B}_{\rho \sigma T}%
+ - 18\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{L P}}\,  {\delta}_{N}\,^{M}\,_{K}\,^{R}\,_{L}\,^{S}\,_{P}\,^{T} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{R S} {B}_{\rho \sigma T} - 30\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{S T}}\,  {\epsilon}_{K L P Q R} {\delta}^{M}\,_{U}\,^{M1}\,_{V}\,^{M2}\,_{S}\,^{U}\,_{T}\,^{V}\,_{N} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{M1 M2} g - 30\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{S T}}\,  {\epsilon}_{T L P Q R} {\delta}^{M}\,_{U}\,^{M1}\,_{V}\,^{M2}\,_{N}\,^{U}\,_{K}\,^{V}\,_{S} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{M1 M2} g - 30\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{S T}}\,  {\epsilon}_{P S T Q R} {\delta}^{M}\,_{U}\,^{M1}\,_{V}\,^{M2}\,_{N}\,^{U}\,_{K}\,^{V}\,_{L} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{M1 M2} g - 30\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{Q R} {\partial}_{\alpha}{{dA}_{\sigma}\,^{S T}}\,  {\epsilon}_{P Q R S T} {\delta}^{M}\,_{U}\,^{M1}\,_{V}\,^{M2}\,_{N}\,^{U}\,_{K}\,^{V}\,_{L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M1 M2} g;
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 4 T^{\mu \nu \rho \sigma} \partial_{\mu}{dC_{\nu \rho \sigma}^{M}} - 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \nu \rho \sigma} B_{\rho \sigma N} - 4 dA_{\mu}^{M N} T^{\nu \mu \rho \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \rho \nu \sigma} B_{\rho \sigma N} + 4 dA_{\mu}^{M N} T^{\nu \rho \mu \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 4 \partial_{\mu}{dA_{\nu}^{M N}} T^{\mu \rho \sigma \nu} B_{\sigma \rho N} + 4 dA_{\mu}^{M N} T^{\nu \rho \sigma \mu} \partial_{\nu}{B_{\sigma \rho N}} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \sigma \mu \nu} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \mu \sigma \nu} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \mu \nu \sigma} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \sigma \nu \mu} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \mu \nu \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \mu \sigma \nu} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \nu \sigma \mu} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \nu \mu \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{M N} A_{\nu}^{K L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{N K L P Q} T^{\rho \sigma \mu \nu} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \mu \sigma \nu} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \sigma \mu \nu} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \mu \nu \sigma} - 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \mu \nu \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} - 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \sigma \nu \mu} \partial_{\rho}{A_{\sigma}^{P Q}} - 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \mu \sigma \nu} + 4/3 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\rho \nu \mu \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} + 4/3 A_{\mu}^{M N} dA_{\nu}^{K L} \epsilon_{N P Q K L} T^{\rho \nu \sigma \mu} \partial_{\rho}{A_{\sigma}^{P Q}} + 4/3 A_{\mu}^{N K} A_{\nu}^{M L} \partial_{\rho}{dA_{\sigma}^{P Q}} \epsilon_{L N K P Q} T^{\rho \sigma \mu \nu} - 2 A_{\mu}^{N K} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{dC_{\nu \rho \sigma}^{M}} + 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} B_{\rho \sigma L} + 7/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} - 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} B_{\rho \sigma L} - 2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} - 2 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} B_{\sigma \rho L} - 2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} \partial_{\alpha}{B_{\sigma \rho L}} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \rho \nu} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \sigma \rho \nu} T^{\alpha}_{N K} + 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{N K} - 2/3 A_{\mu}^{N K} A_{\nu}^{L P} A_{\rho}^{M Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{Q L P R S} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} + 4 \partial_{\alpha}{A_{\mu}^{M N}} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} dC_{\nu \rho \sigma}^{K} - 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \mu \rho \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} + 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \rho \mu \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} + 4 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\nu \rho \sigma \mu} T^{\alpha}_{N L} B_{\sigma \rho K} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{N S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \rho \nu} T^{\alpha}_{N S} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \rho \mu \nu} T^{\alpha}_{N S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{L S} - 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \mu \rho \nu} T^{\alpha}_{L S} + 4/3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\sigma \rho \mu \nu} T^{\alpha}_{L S} - 2 \partial_{\alpha}{A_{\mu}^{N K}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} dC_{\nu \rho \sigma}^{M} + 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \mu \rho \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \rho \mu \sigma} T^{\alpha}_{K L} B_{\rho \sigma N} - 2 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\nu \rho \sigma \mu} T^{\alpha}_{K L} B_{\sigma \rho N} + 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} - 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \rho \nu} T^{\alpha}_{R S} + 2/3 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \rho \mu \nu} T^{\alpha}_{R S} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} + 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \mu \rho \nu} T^{\alpha}_{R S} - 2/3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\sigma \rho \mu \nu} T^{\alpha}_{R S} - 6 T^{\mu \nu \rho \sigma} dB_{\mu \nu N} \partial_{\rho}{A_{\sigma}^{M N}} + 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\mu \nu \rho \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} - 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\nu \mu \rho \sigma} \partial_{\rho}{A_{\sigma}^{M Q}} + 6 T^{\mu \nu \rho \sigma} dB_{\mu \nu N} \partial_{\sigma}{A_{\rho}^{M N}} - 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\mu \nu \rho \sigma} \partial_{\sigma}{A_{\rho}^{M Q}} + 6 A_{\mu}^{N K} dA_{\nu}^{L P} \epsilon_{Q N K L P} T^{\nu \mu \rho \sigma} \partial_{\sigma}{A_{\rho}^{M Q}} + 3/2 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} dB_{\rho \sigma L} - 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{L P} + 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\rho \mu \nu \sigma} T^{\alpha}_{L P} - 3 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N L} dB_{\rho \sigma K} + 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\rho \mu \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N L} dB_{\rho \sigma K} + 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{L S} - 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\rho \mu \sigma \nu} T^{\alpha}_{L S} + 3/2 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{K L} dB_{\rho \sigma N} - 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\mu \rho \sigma \nu} T^{\alpha}_{R S} + 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\rho \mu \sigma \nu} T^{\alpha}_{R S} - 3/2 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N K} dB_{\rho \sigma L} + 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\mu \rho \sigma \nu} T^{\alpha}_{L P} - 3/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S N K Q R} T^{\rho \mu \sigma \nu} T^{\alpha}_{L P} + 3 A_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} dB_{\rho \sigma K} - 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\mu \rho \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{P N K Q R} T^{\rho \mu \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} dB_{\rho \sigma K} - 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{L S} + 3 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{R N K P Q} T^{\rho \mu \nu \sigma} T^{\alpha}_{L S} - 3/2 A_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{K L} dB_{\rho \sigma N} + 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\mu \rho \nu \sigma} T^{\alpha}_{R S} - 3/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L N K P Q} T^{\rho \mu \nu \sigma} T^{\alpha}_{R S} + 3/8 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} dB_{\mu \nu N} \partial_{\alpha}{B_{\rho \sigma P}} + 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} - 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{B_{\rho \sigma L}} + 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{B_{\rho \sigma N}} - 3/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \nu \rho \sigma} T^{\alpha}_{N L} \partial_{\alpha}{B_{\rho \sigma K}} + 3/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} \partial_{\alpha}{B_{\rho \sigma K}} - 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\nu \mu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} + 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\nu \mu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{B_{\rho \sigma L}} - 3/2 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\nu \mu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{B_{\rho \sigma N}} + 9/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\nu \mu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} + 3/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\nu \mu \rho \sigma} T^{\alpha}_{N L} \partial_{\alpha}{B_{\rho \sigma K}} - 3/2 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\nu \mu \rho \sigma} T^{\alpha}_{L N} \partial_{\alpha}{B_{\rho \sigma K}} - 12 dA_{\mu}^{M N} T^{\mu \nu \rho \sigma} \partial_{\nu}{B_{\rho \sigma N}} + 12 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\mu \nu \rho \sigma} T^{\alpha}_{N L} B_{\rho \sigma K} - 24 A_{\mu}^{N K} dA_{\nu}^{M L} \epsilon_{L N K P Q} T^{\nu \mu \rho \sigma} \partial_{\rho}{A_{\sigma}^{P Q}} + 4 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q R S L P} T^{\rho \mu \sigma \nu} T^{\alpha}_{N K} - 8 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q R K L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{N S} - 8 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q N R L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{K S} + 4 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{M Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{Q N K L P} T^{\rho \sigma \mu \nu} T^{\alpha}_{R S} - 3 dA_{\mu}^{M N} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{C_{\nu \rho \sigma}^{K}} + 1/2 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{dG_{\mu \nu \rho \sigma L P}} + 5 C_{\mu \nu \rho}^{N} \partial_{\alpha}{dA_{\sigma}^{K M}} T^{\sigma \mu \nu \rho} T^{\alpha}_{N K} - 5 C_{\mu \nu \rho}^{M} \partial_{\alpha}{dA_{\sigma}^{N K}} T^{\sigma \mu \nu \rho} T^{\alpha}_{K N} - 5 C_{\mu \nu \rho}^{N} \partial_{\alpha}{dA_{\sigma}^{M K}} T^{\sigma \mu \nu \rho} T^{\alpha}_{N K} - 7 C_{\mu \nu \rho}^{N} \partial_{\alpha}{dA_{\sigma}^{M K}} T^{\sigma \mu \nu \rho} T^{\alpha}_{K N} - 7 C_{\mu \nu \rho}^{M} \partial_{\alpha}{dA_{\sigma}^{N K}} T^{\sigma \mu \nu \rho} T^{\alpha}_{N K} + 7 C_{\mu \nu \rho}^{N} \partial_{\alpha}{dA_{\sigma}^{K M}} T^{\sigma \mu \nu \rho} T^{\alpha}_{K N} + 5 dA_{\mu}^{N M} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{C_{\nu \rho \sigma}^{K}} - 5 dA_{\mu}^{N K} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{C_{\nu \rho \sigma}^{M}} - 5 dA_{\mu}^{M N} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{C_{\nu \rho \sigma}^{K}} - 7 dA_{\mu}^{N K} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{C_{\nu \rho \sigma}^{M}} + 7 dA_{\mu}^{N M} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \partial_{\alpha}{C_{\nu \rho \sigma}^{K}} + 3/16 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} dB_{\rho \sigma P} \partial_{\alpha}{B_{\mu \nu L}} + 3/16 \epsilon^{M N K L P} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} B_{\mu \nu L} \partial_{\alpha}{dB_{\rho \sigma P}} - 3 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} + 3 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\rho \sigma \mu \nu} T^{\alpha}_{K N} \partial_{\alpha}{B_{\rho \sigma L}} - 3 A_{\mu}^{M N} dA_{\nu}^{K L} T^{\rho \sigma \mu \nu} T^{\alpha}_{K L} \partial_{\alpha}{B_{\rho \sigma N}} - 3 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} \partial_{\alpha}{B_{\rho \sigma L}} + 3 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} \partial_{\alpha}{B_{\rho \sigma K}} - 3 A_{\mu}^{N K} dA_{\nu}^{M L} T^{\rho \sigma \mu \nu} T^{\alpha}_{L N} \partial_{\alpha}{B_{\rho \sigma K}} - 3 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{L N} B_{\rho \sigma K} + 3 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N L} B_{\rho \sigma K} - 3 dA_{\mu}^{N K} \partial_{\alpha}{A_{\nu}^{M L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N K} B_{\rho \sigma L} - 3 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{K L} B_{\rho \sigma N} + 3 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{K N} B_{\rho \sigma L} - 3 dA_{\mu}^{M N} \partial_{\alpha}{A_{\nu}^{K L}} T^{\rho \sigma \nu \mu} T^{\alpha}_{N K} B_{\rho \sigma L} - 3 A_{\mu}^{M N} \partial_{\alpha}{dA_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} B_{\rho \sigma L} + 3 A_{\mu}^{M N} \partial_{\alpha}{dA_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{K N} B_{\rho \sigma L} - 3 A_{\mu}^{M N} \partial_{\alpha}{dA_{\nu}^{K L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{K L} B_{\rho \sigma N} - 3 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N K} B_{\rho \sigma L} + 3 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{N L} B_{\rho \sigma K} - 3 A_{\mu}^{N K} \partial_{\alpha}{dA_{\nu}^{M L}} T^{\rho \sigma \mu \nu} T^{\alpha}_{L N} B_{\rho \sigma K} + 5/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{S M}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{N S} g - 5/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{S R} g - 5/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{N S} g - 7/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{S N} g - 7/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{N K L P Q} T^{\sigma \mu \nu \rho} T^{\alpha}_{R S} g + 7/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{S M}} \epsilon_{K L P Q R} T^{\sigma \mu \nu \rho} T^{\alpha}_{S N} g + 5/2 A_{\mu}^{N M} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{S K L P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{R N} g - 5/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \nu \rho} T^{\alpha}_{K N} g - 5/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{S K L P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{R N} g - 7/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{S K L P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{N R} g - 7/2 A_{\mu}^{N K} A_{\nu}^{L P} dA_{\rho}^{Q R} \partial_{\alpha}{A_{\sigma}^{M S}} \epsilon_{S L P Q R} T^{\mu \sigma \nu \rho} T^{\alpha}_{N K} g + 7/2 A_{\mu}^{N M} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{S K L P Q} T^{\mu \sigma \nu \rho} T^{\alpha}_{N R} g + 5/2 A_{\mu}^{N M} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{K N} g - 5/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{K N} g - 5/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{K N} g - 7/2 A_{\mu}^{M N} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} g - 7/2 A_{\mu}^{N K} A_{\nu}^{M L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} g + 7/2 A_{\mu}^{N M} A_{\nu}^{K L} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{L R S P Q} T^{\mu \nu \sigma \rho} T^{\alpha}_{N K} g + 5/2 A_{\mu}^{N M} A_{\nu}^{K L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} g - 5/2 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} g - 5/2 A_{\mu}^{M N} A_{\nu}^{K L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} g - 7/2 A_{\mu}^{M N} A_{\nu}^{K L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} g - 7/2 A_{\mu}^{N K} A_{\nu}^{M L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} g + 7/2 A_{\mu}^{N M} A_{\nu}^{K L} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} g
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFC\specialcolon{}= 4\, {T}^{\mu \nu \rho \sigma} {\partial}_{\mu}{{dC}_{\nu \rho \sigma}\,^{M}}\,  - 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {B}_{\rho \sigma N} - 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \mu \rho \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \rho \nu \sigma} {B}_{\rho \sigma N} + 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \rho \mu \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 4\, {\partial}_{\mu}{{dA}_{\nu}\,^{M N}}\,  {T}^{\mu \rho \sigma \nu} {B}_{\sigma \rho N} + 4\, {dA}_{\mu}\,^{M N} {T}^{\nu \rho \sigma \mu} {\partial}_{\nu}{{B}_{\sigma \rho N}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \sigma \mu \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \mu \sigma \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \mu \nu \sigma} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \sigma \nu \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \mu \nu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \mu \sigma \nu} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \nu \sigma \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \nu \mu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{N K L P Q} {T}^{\rho \sigma \mu \nu} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \mu \sigma \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \sigma \mu \nu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \nu \sigma}%
+ - \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \mu \nu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \sigma \nu \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \sigma \nu} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\rho \nu \mu \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {\epsilon}_{N P Q K L} {T}^{\rho \nu \sigma \mu} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {\partial}_{\rho}{{dA}_{\sigma}\,^{P Q}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \sigma \mu \nu} - 2\, {A}_{\mu}\,^{N K} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{dC}_{\nu \rho \sigma}\,^{M}}\,  + 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} + \frac{7}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} - 2\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - 2\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} {B}_{\sigma \rho L} - 2\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\sigma \rho L}}\,  + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \rho \nu} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K}%
+ + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \sigma \rho \nu} {T}^{\alpha}\,_{N K} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{N K} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {A}_{\rho}\,^{M Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q L P R S} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} + 4\, {\partial}_{\alpha}{{A}_{\mu}\,^{M N}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {dC}_{\nu \rho \sigma}\,^{K} - 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} + 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \rho \mu \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} + 4\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\nu \rho \sigma \mu} {T}^{\alpha}\,_{N L} {B}_{\sigma \rho K} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N S} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{N S} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{N S} + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{L S} - \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{L S}%
+ + \frac{4}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{L S} - 2\, {\partial}_{\alpha}{{A}_{\mu}\,^{N K}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {dC}_{\nu \rho \sigma}\,^{M} + 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \rho \mu \sigma} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 2\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\nu \rho \sigma \mu} {T}^{\alpha}\,_{K L} {B}_{\sigma \rho N} + \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{R S} + \frac{2}{3}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} + \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \mu \rho \nu} {T}^{\alpha}\,_{R S} - \frac{2}{3}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\sigma \rho \mu \nu} {T}^{\alpha}\,_{R S} - 6\, {T}^{\mu \nu \rho \sigma} {dB}_{\mu \nu N} {\partial}_{\rho}{{A}_{\sigma}\,^{M N}}\,  + 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\mu \nu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  - 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\nu \mu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\,  + 6\, {T}^{\mu \nu \rho \sigma} {dB}_{\mu \nu N} {\partial}_{\sigma}{{A}_{\rho}\,^{M N}}\,  - 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\mu \nu \rho \sigma} {\partial}_{\sigma}{{A}_{\rho}\,^{M Q}}\,  + 6\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{L P} {\epsilon}_{Q N K L P} {T}^{\nu \mu \rho \sigma} {\partial}_{\sigma}{{A}_{\rho}\,^{M Q}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma L} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L P} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L P}%
+ - 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L S} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L S} + \frac{3}{2}\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{R S} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{R S} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma L} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\mu \rho \sigma \nu} {T}^{\alpha}\,_{L P} - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S N K Q R} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{L P} + 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{P N K Q R} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {dB}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{L S} + 3\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{R N K P Q} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{L S} - \frac{3}{2}\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K L} {dB}_{\rho \sigma N} + \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\mu \rho \nu \sigma} {T}^{\alpha}\,_{R S}%
+ - \frac{3}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L N K P Q} {T}^{\rho \mu \nu \sigma} {T}^{\alpha}\,_{R S} + \frac{3}{8}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {dB}_{\mu \nu N} {\partial}_{\alpha}{{B}_{\rho \sigma P}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{B}_{\rho \sigma N}}\,  - \frac{3}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N L} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L N} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\,  - \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - \frac{3}{2}\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{B}_{\rho \sigma N}}\,  + \frac{9}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + \frac{3}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{N L} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\,  - \frac{3}{2}\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\nu \mu \rho \sigma} {T}^{\alpha}\,_{L N} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\,  - 12\, {dA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {\partial}_{\nu}{{B}_{\rho \sigma N}}\,  + 12\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} - 24\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {\epsilon}_{L N K P Q} {T}^{\nu \mu \rho \sigma} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  + 4\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q R S L P} {T}^{\rho \mu \sigma \nu} {T}^{\alpha}\,_{N K} - 8\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q R K L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N S} - 8\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q N R L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K S} + 4\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{M Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{Q N K L P} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{R S}%
+ - 3\, {dA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{K}}\,  + \frac{1}{2}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{dG}_{\mu \nu \rho \sigma L P}}\,  + 5\, {C}_{\mu \nu \rho}\,^{N} {\partial}_{\alpha}{{dA}_{\sigma}\,^{K M}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N K} - 5\, {C}_{\mu \nu \rho}\,^{M} {\partial}_{\alpha}{{dA}_{\sigma}\,^{N K}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{K N} - 5\, {C}_{\mu \nu \rho}\,^{N} {\partial}_{\alpha}{{dA}_{\sigma}\,^{M K}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N K} - 7\, {C}_{\mu \nu \rho}\,^{N} {\partial}_{\alpha}{{dA}_{\sigma}\,^{M K}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{K N} - 7\, {C}_{\mu \nu \rho}\,^{M} {\partial}_{\alpha}{{dA}_{\sigma}\,^{N K}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N K} + 7\, {C}_{\mu \nu \rho}\,^{N} {\partial}_{\alpha}{{dA}_{\sigma}\,^{K M}}\,  {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{K N} + 5\, {dA}_{\mu}\,^{N M} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{K}}\,  - 5\, {dA}_{\mu}\,^{N K} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{M}}\,  - 5\, {dA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{K}}\,  - 7\, {dA}_{\mu}\,^{N K} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{M}}\,  + 7\, {dA}_{\mu}\,^{N M} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{C}_{\nu \rho \sigma}\,^{K}}\,  + \frac{3}{16}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {dB}_{\rho \sigma P} {\partial}_{\alpha}{{B}_{\mu \nu L}}\,  + \frac{3}{16}\, {\epsilon}^{M N K L P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {B}_{\mu \nu L} {\partial}_{\alpha}{{dB}_{\rho \sigma P}}\,  - 3\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + 3\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  - 3\, {A}_{\mu}\,^{M N} {dA}_{\nu}\,^{K L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{B}_{\rho \sigma N}}\,  - 3\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {\partial}_{\alpha}{{B}_{\rho \sigma L}}\,  + 3\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\, %
+ - 3\, {A}_{\mu}\,^{N K} {dA}_{\nu}\,^{M L} {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{L N} {\partial}_{\alpha}{{B}_{\rho \sigma K}}\,  - 3\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{L N} {B}_{\rho \sigma K} + 3\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} - 3\, {dA}_{\mu}\,^{N K} {\partial}_{\alpha}{{A}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} - 3\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} + 3\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{K N} {B}_{\rho \sigma L} - 3\, {dA}_{\mu}\,^{M N} {\partial}_{\alpha}{{A}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \nu \mu} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} - 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{dA}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} + 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{dA}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K N} {B}_{\rho \sigma L} - 3\, {A}_{\mu}\,^{M N} {\partial}_{\alpha}{{dA}_{\nu}\,^{K L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{K L} {B}_{\rho \sigma N} - 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N K} {B}_{\rho \sigma L} + 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{N L} {B}_{\rho \sigma K} - 3\, {A}_{\mu}\,^{N K} {\partial}_{\alpha}{{dA}_{\nu}\,^{M L}}\,  {T}^{\rho \sigma \mu \nu} {T}^{\alpha}\,_{L N} {B}_{\rho \sigma K} + \frac{5}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{S M}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N S} g - \frac{5}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{S R} g - \frac{5}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{N S} g - \frac{7}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{S N} g - \frac{7}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{N K L P Q} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{R S} g + \frac{7}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{S M}}\,  {\epsilon}_{K L P Q R} {T}^{\sigma \mu \nu \rho} {T}^{\alpha}\,_{S N} g + \frac{5}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{S K L P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{R N} g%
+ - \frac{5}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{K N} g - \frac{5}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{S K L P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{R N} g - \frac{7}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{S K L P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N R} g - \frac{7}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{L P} {dA}_{\rho}\,^{Q R} {\partial}_{\alpha}{{A}_{\sigma}\,^{M S}}\,  {\epsilon}_{S L P Q R} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N K} g + \frac{7}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{S K L P Q} {T}^{\mu \sigma \nu \rho} {T}^{\alpha}\,_{N R} g + \frac{5}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{K N} g - \frac{5}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{K N} g - \frac{5}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{K N} g - \frac{7}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} g - \frac{7}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} g + \frac{7}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{L R S P Q} {T}^{\mu \nu \sigma \rho} {T}^{\alpha}\,_{N K} g + \frac{5}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} g - \frac{5}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} g - \frac{5}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} g - \frac{7}{2}\, {A}_{\mu}\,^{M N} {A}_{\nu}\,^{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} g - \frac{7}{2}\, {A}_{\mu}\,^{N K} {A}_{\nu}\,^{M L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} g + \frac{7}{2}\, {A}_{\mu}\,^{N M} {A}_{\nu}\,^{K L} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{L P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} g;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+#Zero := \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{K L} dA_{\nu}^{M N} \partial_{\rho}{A_{\sigma}^{P Q}}:
+#@asym!(%){^{K}, ^{L}, ^{N}, ^{P}, ^{Q}, ^{M}}:
+#@prodsort!!(%):
+#@rename_dummies!(%):
+#@canonicalise!!(%):
+#@collect_terms!!(%);
+Zero := 16 * \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{K L} dA_{\nu}^{M N} \partial_{\rho}{A_{\sigma}^{P Q}}
+             - 16 * \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{M L} dA_{\nu}^{K N} \partial_{\rho}{A_{\sigma}^{P Q}}
+             - 16 * \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{K L} dA_{\nu}^{P N} \partial_{\rho}{A_{\sigma}^{M Q}};
+difference :=  @(deltaFC) * \delta^{M1}_{M} - @(dFC) * \delta^{M1}_{M} + @(Zero) * \delta^{M1}_{M}:
+@distribute!!(%):
+#@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+\partial_{\alpha}{A_{\sigma}^{M Q}} -> 0,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+\end{verbatim}}
+% orig
+% 16 \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{K L} dA_{\nu}^{M N} \partial_{\rho}{A_{\sigma}^{P Q}} - 16 \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{M L} dA_{\nu}^{K N} \partial_{\rho}{A_{\sigma}^{P Q}} - 16 \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} A_{\mu}^{K L} dA_{\nu}^{P N} \partial_{\rho}{A_{\sigma}^{M Q}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero\specialcolon{}= 16\, {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {A}_{\mu}\,^{K L} {dA}_{\nu}\,^{M N} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - 16\, {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {A}_{\mu}\,^{M L} {dA}_{\nu}\,^{K N} {\partial}_{\rho}{{A}_{\sigma}\,^{P Q}}\,  - 16\, {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {A}_{\mu}\,^{K L} {dA}_{\nu}\,^{P N} {\partial}_{\rho}{{A}_{\sigma}\,^{M Q}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 3 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L P R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{Q} + 5 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{L} + A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} \delta^{M1}_{N} - 3 A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L M R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} \delta^{M1}_{N} - 12 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{N S} \delta^{M1}_{Q} + 4 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K M P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{L S} \delta^{M1}_{N} + 4 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{Q S} \delta^{M1}_{N} + 4 A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L M P R} T^{\mu \nu \rho \sigma} T^{\alpha}_{N S} \delta^{M1}_{Q} + 2 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{S} - 4 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{N R} \delta^{M1}_{S} - 2 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} \delta^{M1}_{N} + 12 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M S} \delta^{M1}_{N} - 2 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{N R} \delta^{M1}_{S} g - A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L M P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} \delta^{M1}_{N} g - 2 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M S} \delta^{M1}_{N} g + A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{S} g - 2 A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{L M} \delta^{M1}_{N} g - A_{\mu}^{K L} A_{\nu}^{M N} dA_{\rho}^{P Q} \partial_{\alpha}{A_{\sigma}^{R S}} \epsilon_{K P Q R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{L} g + 2 A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L M R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{N P} \delta^{M1}_{Q} g + A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L M R S} T^{\mu \nu \rho \sigma} T^{\alpha}_{P Q} \delta^{M1}_{N} g
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+difference\specialcolon{}= 3\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L P R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M N} {\delta}^{M1}\,_{Q} + 5\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M N} {\delta}^{M1}\,_{L} + {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - 3\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - 12\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + 4\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K M P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L S} {\delta}^{M1}\,_{N} + 4\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{Q S} {\delta}^{M1}\,_{N} + 4\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M N} {\delta}^{M1}\,_{S} - 4\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N R} {\delta}^{M1}\,_{S} - 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {\delta}^{M1}\,_{N} + 12\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M S} {\delta}^{M1}\,_{N} - 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N R} {\delta}^{M1}\,_{S} g - {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M P Q} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {\delta}^{M1}\,_{N} g - 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M S} {\delta}^{M1}\,_{N} g + {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L P Q R} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M N} {\delta}^{M1}\,_{S} g - 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{L M} {\delta}^{M1}\,_{N} g - {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {dA}_{\rho}\,^{P Q} {\partial}_{\alpha}{{A}_{\sigma}\,^{R S}}\,  {\epsilon}_{K P Q R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{M N} {\delta}^{M1}\,_{L} g + 2\, {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} g%
+ + {A}_{\mu}\,^{K L} {A}_{\nu}\,^{M N} {A}_{\rho}\,^{P Q} {\partial}_{\alpha}{{dA}_{\sigma}\,^{R S}}\,  {\epsilon}_{K L M R S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} g;
+\end{dmath*}
+% orig
+%  - 3 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 4 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 2 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} g + \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} g
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+difference\specialcolon{}=  - 3\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + 4\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + 2\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} g + {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} g;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Zero1 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{L}:
+@asym!(%){_{M}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero2 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{N}:
+@asym!(%){_{K}, _{L}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero3 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{M}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero4 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{P}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero5 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N Q P} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{R}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{P}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero6 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{K}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero7 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L N K Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{P}:
+@asym!(%){_{L}, _{N}, _{K}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero8 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L N P Q K} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{R}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{K}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero9 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S P} \delta^{M1}_{K}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero10 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L K N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S P} \delta^{M1}_{M}:
+@asym!(%){_{L}, _{K}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero11 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{S R} \delta^{M1}_{K}:
+@asym!(%){_{L}, _{M}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zero12 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{S R} \delta^{M1}_{M}:
+@asym!(%){_{K}, _{L}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero1\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero2\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero3\specialcolon{}=  - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero4\specialcolon{}= \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero5\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero6\specialcolon{}=  - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero7\specialcolon{}=  - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero8\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero9\specialcolon{}= \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero10\specialcolon{}= \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero11\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero12\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Zer1 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S L} \delta^{M1}_{M}:
+@asym!(%){_{M}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer2 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S N} \delta^{M1}_{K}:
+@asym!(%){_{K}, _{L}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer3 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer4 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K M N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S P} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer5 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K M N Q P} T^{\mu \nu \rho \sigma} T^{\alpha}_{S R} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{P}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer6 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer7 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N K Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S P} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{N}, _{K}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer8 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N P Q K} T^{\mu \nu \rho \sigma} T^{\alpha}_{S R} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{K}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer9 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{P M N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer10 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{P K N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{K}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer11 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{R M N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{S K} \delta^{M1}_{L}:
+@asym!(%){_{L}, _{M}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zer12 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{R L N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{S M} \delta^{M1}_{K}:
+@asym!(%){_{K}, _{L}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer1\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer2\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer3\specialcolon{}=  - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer4\specialcolon{}= \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer5\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer6\specialcolon{}=  - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer7\specialcolon{}=  - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer8\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer9\specialcolon{}= \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer10\specialcolon{}= \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer11\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zer12\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Ze1 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \delta^{M1}_{S}:
+@asym!(%){_{M}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze2 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze3 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{K M} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze4 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{K P} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze5 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{L M N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{K R} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{M}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze6 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M P} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Ze7 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{M R} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze1\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze2\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze3\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze4\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze5\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze6\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Ze7\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Zo1 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K L P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \delta^{M1}_{S}:
+@asym!(%){_{M}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo2 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M N P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo3 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K M P Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{L N} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{N}, _{P}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo4 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K P N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{L M} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{M}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo5 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{K R N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{L M} \delta^{M1}_{S}:
+@asym!(%){_{L}, _{M}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo6 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M P N Q R} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{N}, _{Q}, _{R}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+Zo7 := A_{\mu}^{K L} A_{\nu}^{M N} A_{\rho}^{P Q} \partial_{\alpha}{dA_{\sigma}^{R S}} \epsilon_{M R N P Q} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \delta^{M1}_{S}:
+@asym!(%){_{K}, _{L}, _{N}, _{P}, _{Q}, _{S}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo1\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo2\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo3\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo4\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo5\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo6\specialcolon{}= 0;
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zo7\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+minusZero := @(difference) 
++ a3 * @(Zero3) + a4 * @(Zero4) + a6 * @(Zero6) + a7 * @(Zero7) + a9 * @(Zero9) + a10 * @(Zero10) 
+ + b3 * @(Zer3)  + b4 * @(Zer4) +   b6 * @(Zer6) +   b7 * @(Zer7)  +  b9 * @(Zer9) +   b10 * @(Zer10) ;
+@distribute!!(%):
+#@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+#@keep_weight!(%){A}{4};
+\end{verbatim}}
+% orig
+%  - 3 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 4 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 2 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} g + \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} g + a3 ( - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}) + a4 (1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}) + a6 ( - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + a7 ( - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}) + a9 (1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + a10 (1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + b3 ( - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + b4 (1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + b6 ( - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}) + b7 ( - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q}) + b9 (1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} + 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N}) + b10 (1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q})
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+minusZero\specialcolon{}=  - 3\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + 4\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + 2\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} g + {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} g + a3 ( - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N}) + a4 (\frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N}) + a6 ( - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + a7 ( - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N}) + a9 (\frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + a10 (\frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + b3 ( - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + b4 (\frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + b6 ( - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N}) + b7 ( - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q}) + b9 (\frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} + \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N}) + b10 (\frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q});
+\end{dmath*}
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+\partial_{\alpha}{A_{\sigma}^{M Q}} -> 0,
+):
+@distribute!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@substitute!!(%)(
+\partial_{\alpha}{dA_{\sigma}^{M Q}} -> 1,
+\partial_{\alpha}{A_{\sigma}^{M Q}} -> 0,
+):
+@substitute!!(%)(
+dA_{\sigma}^{M Q} -> 1,
+A_{\sigma}^{M Q} -> 1,
+T^{\mu \nu \rho \sigma} -> 1,
+):
+@factor_out!(%){\epsilon_{M N K L P}, T^{\alpha}_{R S}, \delta^{M1}_{Q}};
+\end{verbatim}}
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+%  - 3 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} + 4 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} + 2 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} g + \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} g - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a3 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a3 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a3 + 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a4 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a4 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a4 - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a6 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a6 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a6 - 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a7 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a7 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a7 + 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a9 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a9 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a9 + 1/3 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} a10 - 1/6 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} a10 + 1/6 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} a10 - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b3 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b3 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b3 + 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b4 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b4 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b4 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b6 - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b6 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b6 - 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b7 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b7 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b7 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b9 + 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b9 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b9 + 1/15 \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} b10 - 1/30 \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} b10 + 1/30 \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} b10
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+minusZero\specialcolon{}=  - 3\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} + 4\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} + 2\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} g + {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} g - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a3 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a3 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a3 + \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a4 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a4 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a4 - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a6 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a6 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a6 - \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a7 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a7 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a7 + \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a9 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a9 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a9%
+ + \frac{1}{3}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} a10 - \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} a10 + \frac{1}{6}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} a10 - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b3 + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b3 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b3 + \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b4 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b4 + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b4 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b6 - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b6 + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b6 - \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b7 + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b7 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b7 + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b9 + \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b9 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b9 + \frac{1}{15}\, {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} b10 - \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} b10%
+ + \frac{1}{30}\, {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} b10;
+\end{dmath*}
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+% \epsilon_{K L M P R} T^{\alpha}_{N S} \delta^{M1}_{Q} (4 - 1/3 a3 + 1/3 a4 - 1/3 a6 - 1/3 a7 + 1/3 a9 + 1/3 a10 - 1/15 b3 + 1/15 b4 - 1/15 b6 - 1/15 b7 + 1/15 b9 + 1/15 b10) + \epsilon_{K L M R S} T^{\alpha}_{N P} \delta^{M1}_{Q} (2 g - 1/6 a3 + 1/6 a4 - 1/6 a6 - 1/6 a7 + 1/6 a9 + 1/6 a10 - 1/30 b3 + 1/30 b4 - 1/30 b6 - 1/30 b7 + 1/30 b9 + 1/30 b10) + \epsilon_{K L M R S} T^{\alpha}_{P Q} \delta^{M1}_{N} ( - 3 + g + 1/6 a3 - 1/6 a4 + 1/6 a6 + 1/6 a7 - 1/6 a9 - 1/6 a10 + 1/30 b3 - 1/30 b4 + 1/30 b6 + 1/30 b7 - 1/30 b9 - 1/30 b10)
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+minusZero\specialcolon{}= {\epsilon}_{K L M P R} {T}^{\alpha}\,_{N S} {\delta}^{M1}\,_{Q} (4 - \frac{1}{3}\, a3 + \frac{1}{3}\, a4 - \frac{1}{3}\, a6 - \frac{1}{3}\, a7 + \frac{1}{3}\, a9 + \frac{1}{3}\, a10 - \frac{1}{15}\, b3 + \frac{1}{15}\, b4 - \frac{1}{15}\, b6 - \frac{1}{15}\, b7 + \frac{1}{15}\, b9 + \frac{1}{15}\, b10) + {\epsilon}_{K L M R S} {T}^{\alpha}\,_{N P} {\delta}^{M1}\,_{Q} (2\, g - \frac{1}{6}\, a3 + \frac{1}{6}\, a4 - \frac{1}{6}\, a6 - \frac{1}{6}\, a7 + \frac{1}{6}\, a9 + \frac{1}{6}\, a10 - \frac{1}{30}\, b3 + \frac{1}{30}\, b4 - \frac{1}{30}\, b6 - \frac{1}{30}\, b7 + \frac{1}{30}\, b9 + \frac{1}{30}\, b10) + {\epsilon}_{K L M R S} {T}^{\alpha}\,_{P Q} {\delta}^{M1}\,_{N} ( - 3 + g + \frac{1}{6}\, a3 - \frac{1}{6}\, a4 + \frac{1}{6}\, a6 + \frac{1}{6}\, a7 - \frac{1}{6}\, a9 - \frac{1}{6}\, a10 + \frac{1}{30}\, b3 - \frac{1}{30}\, b4 + \frac{1}{30}\, b6 + \frac{1}{30}\, b7 - \frac{1}{30}\, b9 - \frac{1}{30}\, b10);
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+\partial_{\alpha}{A_{\sigma}^{M Q}} -> 0,
+b10 -> - 90 + 30 * g + 5 * a3 - 5 * a4 + 5 * a6 + 5 * a7 - 5 * a9 - 5 * a10 + b3 - b4 + b6 + b7 - b9,
+g -> 1,
+):
+@distribute!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+@factor_out!(%){\epsilon_{M N K L P}, T^{\alpha}_{R S}, \delta^{M1}_{Q}};
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@factor\_out: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+minusZero\specialcolon{}= 0;
+\end{dmath*}
+\end{document}

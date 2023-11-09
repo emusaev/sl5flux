@@ -1,0 +1,315 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=exftfund5, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=exftfund5flat, position=independent).
+{\mu,\nu,\rho,\sigma,\mu#,\nu#}::Indices(name=glcurved, position=independent).
+{\alpha,\beta,\alpha#}::Indices(name=exft, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+{\mu,\nu,\rho,\sigma,\mu#,\nu#}::Integer(1..7).
+{\alpha,\beta,\alpha#}::Integer(1..10).
+
+B_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+dB_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+DB_{\mu \nu M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{\mu \nu \rho M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+C_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+dC_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+DC_{\mu \nu \rho}^{M}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+F_{\mu \nu \rho \sigma}^{M}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}).
+A_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+dA_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+DA_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+F_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+G_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+dG_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+DG_{\mu \nu \rho \sigma M N}::TableauSymmetry(shape={1,1,1,1}, indices={0,1,2,3}, shape={1,1}, indices={4,5}).
+g_{\mu \nu}::Symmetric.
+\Lambda^{M N}::AntiSymmetric.
+T^{\mu \nu \rho \sigma}::AntiSymmetric.
+T^{\alpha}_{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+\delta{#}::KroneckerDelta.
+\epsilon{#}::EpsilonTensor(delta = \delta).
+
+{A_{\mu}^{M N}, dA_{\mu}^{M N}, \partial_{\alpha}{A_{\mu}^{M N}}, \partial_{\alpha}{dA_{\mu}^{M N}},
+ \epsilon_{M N K P Q}, \epsilon^{M N K P Q}, T^{\mu \nu \rho \sigma}, T^{\alpha}_{M N}, B_{\mu \nu M}, dB_{\mu \nu M}, 
+D_{\mu \nu \rho \sigma M N}, dD_{\mu \nu \rho \sigma M N}, DD_{\mu \nu \rho \sigma M N}, F_{\mu \nu \rho M}, F_{\mu \nu \rho \sigma}^{M},
+\partial_{\mu}{A_{\mu}^{M N}}, \partial_{\alpha}{F_{\mu \nu}^{M N}},
+\partial_{\alpha}{B_{\mu \nu M}}, \partial_{\alpha}{dB_{\mu \nu M}}, \partial_{\alpha}{F_{\mu \nu \rho M}}, 
+\partial_{\alpha}{C_{\mu \nu \rho}^{M}}, \partial_{\alpha}{dC_{\mu \nu \rho}^{M}}, \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{M}},
+\partial_{\alpha}{G_{\mu \nu \rho \sigma M N}}, \partial_{\alpha}{dG_{\mu \nu \rho \sigma M N}}, \delta^{M1}_{M}, \delta_{M1}^{M},
+a1, a2, a3 , a4, a5, a6, a7, a8, a9, a10, a11, a12, b1, b2, b3 , b4, b5, b6, b7, b8, b9, b10, b11, b12,
+c1, c2, c3 , c4, c5, c6, c7, d1, d2, d3 , d4, d5, d6, d7, \Lambda^{M N}}::SortOrder.
+
+\partial{#}::WeightInherit(label=all, type=Additive):
+
+{A_{\mu}^{M N}, dA_{\mu}^{M N}}::Weight(label=A, value=1):
+{C_{\mu \nu \rho}^{M}, dC_{\mu \nu \rho}^{M}}::Weight(label=C, value=1):
+{B_{\mu \nu M}, dB_{\mu \nu M}}::Weight(label=B, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \rho,\; \sigma,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\alpha,\; \beta,\; \alpha\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\rho$, $\sigma$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\alpha$, $\beta$, $\alpha\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${B}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dB}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DB}_{\mu \nu M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu \rho M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${C}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu \rho \sigma}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${G}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dG}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DG}_{\mu \nu \rho \sigma M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\Lambda}^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${T}^{\mu \nu \rho \sigma}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property EpsilonTensor to $\epsilon(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{{A}_{\mu}\,^{M N},\; {dA}_{\mu}\,^{M N},\; {\partial}_{\alpha}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{dA}_{\mu}\,^{M N}}\, ,\; {\epsilon}_{M N K P Q},\; {\epsilon}^{M N K P Q},\; {T}^{\mu \nu \rho \sigma},\; {T}^{\alpha}\,_{M N},\; {B}_{\mu \nu M},\; {dB}_{\mu \nu M},\; {D}_{\mu \nu \rho \sigma M N}\, ,\; {dD}_{\mu \nu \rho \sigma M N},\; {DD}_{\mu \nu \rho \sigma M N},\; {F}_{\mu \nu \rho M},\; {F}_{\mu \nu \rho \sigma}\,^{M},\; {\partial}_{\mu}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu}\,^{M N}}\, ,\; {\partial}_{\alpha}{{B}_{\mu \nu M}}\, ,\; {\partial}_{\alpha}{{dB}_{\mu \nu M}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu \rho M}}\, ,\; {\partial}_{\alpha}{{C}_{\mu \nu \rho}\,^{M}}\, ,\; {\partial}_{\alpha}{{dC}_{\mu \nu \rho}\,^{M}}\, ,\; {\partial}_{\alpha}{{F}_{\mu \nu \rho \sigma}\,^{M}}\, ,\; {\partial}_{\alpha}{{G}_{\mu \nu \rho \sigma M N}}\, ,\; {\partial}_{\alpha}{{dG}_{\mu \nu \rho \sigma M N}}\, ,\; {\delta}^{M1}\,_{M},\; {\delta}_{M1}\,^{M},\; a1,\; a2,\; a3,\; a4,\; a5,\; a6,\; a7,\; a8,\; a9,\; a10,\; a11,\; a12,\; b1,\; b2,\; b3,\; b4,\; b5,\; b6,\; b7,\; b8,\; b9,\; b10,\; b11,\; b12,\; c1,\; c2,\; c3,\; c4,\; c5,\; c6,\; c7,\; d1,\; d2,\; d3,\; d4,\; d5,\; d6,\; d7,\; {\Lambda}^{M N}\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${A}_{\mu}\,^{M N}$, ${dA}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${C}_{\mu \nu \rho}\,^{M}$, ${dC}_{\mu \nu \rho}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${B}_{\mu \nu M}$, ${dB}_{\mu \nu M}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+Zero :=  T^{\mu \nu \rho \sigma} \epsilon_{N K L P Q} F_{\mu \nu}^{K L} F_{\rho \sigma}^{P Q} \Lambda^{M N}:
+@asym!(%){^{N}, ^{K}, ^{L}, ^{P}, ^{Q}, ^{M}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+dFCLie := T^{\mu \nu \rho \sigma} * (4 * D_{\mu}{DC_{\nu \rho \sigma}^{M}} - 6 * F_{\mu \nu}^{M N} DB_{\rho \sigma N} + 4 * F_{\mu \nu \rho N} DA_{\sigma}^{M N})
++ 1/2 * T^{\mu \nu \rho \sigma} * T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{DG_{\mu \nu \rho \sigma L P}} - 18 * @(Zero);
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@distribute!!(%):
+@substitute!!(%)(
+DA_{\mu}^{M N} -> D_{\mu}{\Lambda^{M N}},
+DB_{\mu \nu M} -> - 2 * \epsilon_{M K L P Q}  \Lambda^{K L} F_{\mu \nu}^{P Q},
+DC_{\mu \nu \rho}^{M} -> \Lambda^{M N} F_{\mu \nu \rho N},
+DG_{\mu \nu \rho \sigma M N} -> 1/4 * \epsilon_{M  N K L P}  \Lambda^{K L} F_{\mu \nu \rho \sigma}^{P},
+);
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{A??}{\epsilon^{K M N P Q}} -> 0,
+\partial_{A??}{\epsilon_{K M N P Q}} -> 0,
+\partial_{A??}{g} -> 0,
+\epsilon^{M N K L P} \epsilon_{L P R S T} -> 120 * \delta^{M}_{L}^{N}_{P}^{K}_{R}^{L}_{S}^{P}_{T},
+T^{\mu \nu \rho \sigma} D_{\mu}{F_{\nu \rho \sigma M}} -> 3/2 * T^{\mu \nu \rho \sigma} \epsilon_{M K L P Q} F_{\mu \nu}^{K L} F_{\rho \sigma}^{P Q} 
+                                                                                                  - 1/4 * T^{\mu \nu \rho \sigma} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{N}},
+):
+@epsprod2gendelta!!(%);
+@distribute!!(%):
+@breakgendelta!!(%):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% 1/3 F_{\mu \nu}^{K L} F_{\rho \sigma}^{N P} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{M Q} + 2/3 F_{\mu \nu}^{M K} F_{\rho \sigma}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{P Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero\specialcolon{}= \frac{1}{3}\, {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{N P} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{M Q} + \frac{2}{3}\, {F}_{\mu \nu}\,^{M K} {F}_{\rho \sigma}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{P Q};
+\end{dmath*}
+% orig
+% T^{\mu \nu \rho \sigma} (4 D_{\mu}{DC_{\nu \rho \sigma}^{M}} - 6 F_{\mu \nu}^{M N} DB_{\rho \sigma N} + 4 F_{\mu \nu \rho N} DA_{\sigma}^{M N}) + 1/2 T^{\mu \nu \rho \sigma} T^{\alpha}_{N K} \epsilon^{M N K L P} \partial_{\alpha}{DG_{\mu \nu \rho \sigma L P}} - 6 F_{\mu \nu}^{K L} F_{\rho \sigma}^{N P} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{M Q} - 12 F_{\mu \nu}^{M K} F_{\rho \sigma}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{P Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFCLie\specialcolon{}= {T}^{\mu \nu \rho \sigma} (4\, {D}_{\mu}{{DC}_{\nu \rho \sigma}\,^{M}}\,  - 6\, {F}_{\mu \nu}\,^{M N} {DB}_{\rho \sigma N} + 4\, {F}_{\mu \nu \rho N} {DA}_{\sigma}\,^{M N}) + \frac{1}{2}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N K} {\epsilon}^{M N K L P} {\partial}_{\alpha}{{DG}_{\mu \nu \rho \sigma L P}}\,  - 6\, {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{N P} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{M Q} - 12\, {F}_{\mu \nu}\,^{M K} {F}_{\rho \sigma}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{P Q};
+\end{dmath*}
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 4 D_{\mu}{DC_{\nu \rho \sigma}^{M}} T^{\mu \nu \rho \sigma} - 6 DB_{\mu \nu N} F_{\rho \sigma}^{M N} T^{\mu \nu \rho \sigma} - 4 DA_{\mu}^{M N} T^{\mu \nu \rho \sigma} F_{\nu \rho \sigma N} + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{DG_{\mu \nu \rho \sigma N P}} - 6 F_{\mu \nu}^{K L} F_{\rho \sigma}^{N P} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{M Q} - 12 F_{\mu \nu}^{M K} F_{\rho \sigma}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{P Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFCLie\specialcolon{}= 4\, {D}_{\mu}{{DC}_{\nu \rho \sigma}\,^{M}}\,  {T}^{\mu \nu \rho \sigma} - 6\, {DB}_{\mu \nu N} {F}_{\rho \sigma}\,^{M N} {T}^{\mu \nu \rho \sigma} - 4\, {DA}_{\mu}\,^{M N} {T}^{\mu \nu \rho \sigma} {F}_{\nu \rho \sigma N} + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{DG}_{\mu \nu \rho \sigma N P}}\,  - 6\, {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{N P} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{M Q} - 12\, {F}_{\mu \nu}\,^{M K} {F}_{\rho \sigma}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{P Q};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 4 D_{\mu}{(\Lambda^{M N} F_{\nu \rho \sigma N})} T^{\mu \nu \rho \sigma} + 12 \epsilon_{N K L P Q} \Lambda^{K L} F_{\mu \nu}^{P Q} F_{\rho \sigma}^{M N} T^{\mu \nu \rho \sigma} - 4 D_{\mu}{\Lambda^{M N}} T^{\mu \nu \rho \sigma} F_{\nu \rho \sigma N} + 1/2 \epsilon^{M K L N P} T^{\mu \nu \rho \sigma} T^{\alpha}_{K L} \partial_{\alpha}{(1/4 \epsilon_{N P Q R S} \Lambda^{Q R} F_{\mu \nu \rho \sigma}^{S})} - 6 F_{\mu \nu}^{K L} F_{\rho \sigma}^{N P} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{M Q} - 12 F_{\mu \nu}^{M K} F_{\rho \sigma}^{L N} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{P Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFCLie\specialcolon{}= 4\, {D}_{\mu}{({\Lambda}^{M N} {F}_{\nu \rho \sigma N})}\,  {T}^{\mu \nu \rho \sigma} + 12\, {\epsilon}_{N K L P Q} {\Lambda}^{K L} {F}_{\mu \nu}\,^{P Q} {F}_{\rho \sigma}\,^{M N} {T}^{\mu \nu \rho \sigma} - 4\, {D}_{\mu}{{\Lambda}^{M N}}\,  {T}^{\mu \nu \rho \sigma} {F}_{\nu \rho \sigma N} + \frac{1}{2}\, {\epsilon}^{M K L N P} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{(\frac{1}{4}\, {\epsilon}_{N P Q R S} {\Lambda}^{Q R} {F}_{\mu \nu \rho \sigma}\,^{S})}\,  - 6\, {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{N P} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{M Q} - 12\, {F}_{\mu \nu}\,^{M K} {F}_{\rho \sigma}\,^{L N} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{P Q};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% orig
+% 4 (3/2 T^{\mu \nu \rho \sigma} \epsilon_{N K L P Q} F_{\mu \nu}^{K L} F_{\rho \sigma}^{P Q} - 1/4 T^{\mu \nu \rho \sigma} T^{\alpha}_{N R} \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{R}}) \Lambda^{M N} + 3/2 \delta_{N}^{M}_{P}^{R}_{Q}^{S} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} F_{\mu \nu \rho \sigma}^{N} \partial_{\alpha}{\Lambda^{P Q}} + 3/2 \delta_{N}^{M}_{P}^{R}_{Q}^{S} T^{\mu \nu \rho \sigma} T^{\alpha}_{R S} \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{N}} \Lambda^{P Q} - 6 F_{\mu \nu}^{K L} F_{\rho \sigma}^{N P} \epsilon_{K L N P Q} T^{\mu \nu \rho \sigma} \Lambda^{M Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFCLie\specialcolon{}= 4\, (\frac{3}{2}\, {T}^{\mu \nu \rho \sigma} {\epsilon}_{N K L P Q} {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{P Q} - \frac{1}{4}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{N R} {\partial}_{\alpha}{{F}_{\mu \nu \rho \sigma}\,^{R}}\, ) {\Lambda}^{M N} + \frac{3}{2}\, {\delta}_{N}\,^{M}\,_{P}\,^{R}\,_{Q}\,^{S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {F}_{\mu \nu \rho \sigma}\,^{N} {\partial}_{\alpha}{{\Lambda}^{P Q}}\,  + \frac{3}{2}\, {\delta}_{N}\,^{M}\,_{P}\,^{R}\,_{Q}\,^{S} {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{R S} {\partial}_{\alpha}{{F}_{\mu \nu \rho \sigma}\,^{N}}\,  {\Lambda}^{P Q} - 6\, {F}_{\mu \nu}\,^{K L} {F}_{\rho \sigma}\,^{N P} {\epsilon}_{K L N P Q} {T}^{\mu \nu \rho \sigma} {\Lambda}^{M Q};
+\end{dmath*}
+% orig
+% 1/2 T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} F_{\mu \nu \rho \sigma}^{M} \partial_{\alpha}{\Lambda^{K N}} - T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} F_{\mu \nu \rho \sigma}^{K} \partial_{\alpha}{\Lambda^{M N}} + 1/2 T^{\mu \nu \rho \sigma} T^{\alpha}_{K N} \partial_{\alpha}{F_{\mu \nu \rho \sigma}^{M}} \Lambda^{K N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFCLie\specialcolon{}= \frac{1}{2}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {F}_{\mu \nu \rho \sigma}\,^{M} {\partial}_{\alpha}{{\Lambda}^{K N}}\,  - {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {F}_{\mu \nu \rho \sigma}\,^{K} {\partial}_{\alpha}{{\Lambda}^{M N}}\,  + \frac{1}{2}\, {T}^{\mu \nu \rho \sigma} {T}^{\alpha}\,_{K N} {\partial}_{\alpha}{{F}_{\mu \nu \rho \sigma}\,^{M}}\,  {\Lambda}^{K N};
+\end{dmath*}
+\end{document}

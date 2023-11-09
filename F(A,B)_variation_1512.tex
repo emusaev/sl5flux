@@ -1,0 +1,700 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=exft, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=exftflat, position=independent).
+{\mu,\nu,\rho,\mu#,\nu#}::Indices(name=glcurved, position=independent).
+{a,b,c,d,a#,b#}::Indices(name=glflat, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..10).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..10).
+{\mu,\nu,\rho,\mu#,\nu#}::Integer(1..7).
+{a,b,c,d,a#,b#}::Integer(1..7).
+
+B_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={2}, indices={2,3}).
+dB_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={2}, indices={2,3}).
+DB_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={2}, indices={2,3}).
+F_{\mu \nu \rho}^{M N}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}, shape={2}, indices={3,4}).
+C_{\mu \nu \rho}^{M N K}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}, shape={2}, indices={4,5}).
+dC_{\mu \nu \rho}^{M N K}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}, shape={2}, indices={4,5}).
+DC_{\mu \nu \rho}^{M N K}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}, shape={2}, indices={4,5}).
+F_{\mu \nu}^{M}::TableauSymmetry(shape={1,1}, indices={0,1}).
+Y^{M N}_{P Q}::TableauSymmetry(shape={2}, indices={0,1}, shape={2}, indices={2,3}).
+g_{\mu \nu}::Symmetric.
+T^{\mu \nu \rho}::AntiSymmetric.
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+\delta{#}::KroneckerDelta.
+\epsilon{#}::EpsilonTensor(delta = \delta).
+
+{Y^{M N}_{P Q}, T^{\mu \nu \rho}, A_{\mu}^{M}, dA_{\mu}^{M}, B_{\mu \nu}^{M N}, dB_{\mu \nu}^{M N}, F_{\mu \nu \rho}^{M N}},
+\partial_{K}{A_{\mu}^{M}}, \partial_{K}{dA_{\mu}^{M}}, \partial_{K}{B_{\mu \nu}^{M N}}, \partial_{K}{dB_{\mu \nu}^{M N}}, \partial_{K}{F_{\mu \nu \rho}^{M N}}}::SortOrder.
+
+#\partial{#}::WeightInherit(label=all, type=Additive):
+
+#::Weight(label=K, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \rho,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{a,\; b,\; c,\; d,\; a\#,\; b\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\rho$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $a$, $b$, $c$, $d$, $a\#$, $b\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${B}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dB}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DB}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu \rho}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${C}_{\mu \nu \rho}\,^{M N K}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${dC}_{\mu \nu \rho}\,^{M N K}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${DC}_{\mu \nu \rho}\,^{M N K}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu}\,^{M}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${Y}^{M N}\,_{P Q}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${T}^{\mu \nu \rho}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property EpsilonTensor to $\epsilon(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{\{{Y}^{M N}\,_{P Q},\; {T}^{\mu \nu \rho},\; {A}_{\mu}\,^{M},\; {dA}_{\mu}\,^{M},\; {B}_{\mu \nu}\,^{M N},\; {dB}_{\mu \nu}\,^{M N},\; {F}_{\mu \nu \rho}\,^{M N}\},\; {\partial}_{K}{{A}_{\mu}\,^{M}}\, ,\; {\partial}_{K}{{dA}_{\mu}\,^{M}}\, ,\; {\partial}_{K}{{B}_{\mu \nu}\,^{M N}}\, ,\; {\partial}_{K}{{dB}_{\mu \nu}\,^{M N}}\, ,\; {\partial}_{K}{{F}_{\mu \nu \rho}\,^{M N}}\, \}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+F := \partial_{\mu}{A_{\nu}^{M}} - \partial_{\nu}{A_{\mu}^{M}} 
+     - 1/2 * A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} + 1/2 * A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} - 1/2 * Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}}
+     + 1/2 * A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} - 1/2 * A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} + 1/2 * Y^{M N}_{P Q} A_{\mu}^{Q} \partial_{N}{A_{\nu}^{P}}
+     - Y^{M N}_{P Q} \partial_{N}{B_{\mu \nu}^{P Q}}:
+@vary(%)( 
+A_{\mu}^{M} -> dA_{\mu}^{M},
+B_{\mu \nu}^{M N} -> dB_{\mu \nu}^{M N},
+);
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@substitute!!(%)(
+\partial_{K}{Y^{M N}_{P Q}} -> 0,
+Y^{M N}_{P Q} Y^{P Q}_{K L} -> 6 * Y^{M N}_{K L},
+Y^{M N}_{P Q} \partial_{K}{B_{\mu \nu}^{P Q}} -> 6 * \partial_{K}{B_{\mu \nu}^{M N}},
+\partial_{\mu}{dA_{\nu}^{M}} -> D_{\mu}{dA_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} - dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} dA_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% \partial_{\mu}{dA_{\nu}^{M}} - \partial_{\nu}{dA_{\mu}^{M}} - 1/2 dA_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} - 1/2 A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} + 1/2 dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + 1/2 A_{\nu}^{K} \partial_{K}{dA_{\mu}^{M}} - 1/2 Y^{M N}_{P Q} dA_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}} - 1/2 Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{dA_{\mu}^{P}} + 1/2 dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + 1/2 A_{\nu}^{K} \partial_{K}{dA_{\mu}^{M}} - 1/2 dA_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} - 1/2 A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} + 1/2 Y^{M N}_{P Q} dA_{\mu}^{Q} \partial_{N}{A_{\nu}^{P}} + 1/2 Y^{M N}_{P Q} A_{\mu}^{Q} \partial_{N}{dA_{\nu}^{P}} - Y^{M N}_{P Q} \partial_{N}{dB_{\mu \nu}^{P Q}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= {\partial}_{\mu}{{dA}_{\nu}\,^{M}}\,  - {\partial}_{\nu}{{dA}_{\mu}\,^{M}}\,  - \frac{1}{2}\, {dA}_{\mu}\,^{K} {\partial}_{K}{{A}_{\nu}\,^{M}}\,  - \frac{1}{2}\, {A}_{\mu}\,^{K} {\partial}_{K}{{dA}_{\nu}\,^{M}}\,  + \frac{1}{2}\, {dA}_{\nu}\,^{K} {\partial}_{K}{{A}_{\mu}\,^{M}}\,  + \frac{1}{2}\, {A}_{\nu}\,^{K} {\partial}_{K}{{dA}_{\mu}\,^{M}}\,  - \frac{1}{2}\, {Y}^{M N}\,_{P Q} {dA}_{\nu}\,^{Q} {\partial}_{N}{{A}_{\mu}\,^{P}}\,  - \frac{1}{2}\, {Y}^{M N}\,_{P Q} {A}_{\nu}\,^{Q} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  + \frac{1}{2}\, {dA}_{\nu}\,^{K} {\partial}_{K}{{A}_{\mu}\,^{M}}\,  + \frac{1}{2}\, {A}_{\nu}\,^{K} {\partial}_{K}{{dA}_{\mu}\,^{M}}\,  - \frac{1}{2}\, {dA}_{\mu}\,^{K} {\partial}_{K}{{A}_{\nu}\,^{M}}\,  - \frac{1}{2}\, {A}_{\mu}\,^{K} {\partial}_{K}{{dA}_{\nu}\,^{M}}\,  + \frac{1}{2}\, {Y}^{M N}\,_{P Q} {dA}_{\mu}\,^{Q} {\partial}_{N}{{A}_{\nu}\,^{P}}\,  + \frac{1}{2}\, {Y}^{M N}\,_{P Q} {A}_{\mu}\,^{Q} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  - {Y}^{M N}\,_{P Q} {\partial}_{N}{{dB}_{\mu \nu}\,^{P Q}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% orig
+% D_{\mu}{dA_{\nu}^{M}} + 1/2 Y^{M K}_{L N} \partial_{K}{A_{\mu}^{L}} dA_{\nu}^{N} - D_{\nu}{dA_{\mu}^{M}} - 1/2 Y^{M K}_{L N} \partial_{K}{A_{\nu}^{L}} dA_{\mu}^{N} - 1/2 A_{\nu}^{K} Y^{M L}_{K N} \partial_{L}{dA_{\mu}^{N}} + 1/2 A_{\mu}^{K} Y^{M L}_{K N} \partial_{L}{dA_{\nu}^{N}} - Y^{M K}_{L N} \partial_{K}{dB_{\mu \nu}^{L N}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= {D}_{\mu}{{dA}_{\nu}\,^{M}}\,  + \frac{1}{2}\, {Y}^{M K}\,_{L N} {\partial}_{K}{{A}_{\mu}\,^{L}}\,  {dA}_{\nu}\,^{N} - {D}_{\nu}{{dA}_{\mu}\,^{M}}\,  - \frac{1}{2}\, {Y}^{M K}\,_{L N} {\partial}_{K}{{A}_{\nu}\,^{L}}\,  {dA}_{\mu}\,^{N} - \frac{1}{2}\, {A}_{\nu}\,^{K} {Y}^{M L}\,_{K N} {\partial}_{L}{{dA}_{\mu}\,^{N}}\,  + \frac{1}{2}\, {A}_{\mu}\,^{K} {Y}^{M L}\,_{K N} {\partial}_{L}{{dA}_{\nu}\,^{N}}\,  - {Y}^{M K}\,_{L N} {\partial}_{K}{{dB}_{\mu \nu}\,^{L N}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+deltaFB := 3 * D_{\mu}{B_{\nu \rho}^{K L}} + 1/2 * Y^{K L}_{P Q} * (A_{\mu}^{P} \partial_{\nu}{A_{\rho}^{Q}} 
+                       - 1/3 * ( 1/2 * A_{\mu}^{S} \partial_{S}{A_{\nu}^{P}} - 1/2 * A_{\nu}^{S} \partial_{S}{A_{\mu}^{P}} + 1/2 * Y^{P N}_{S T} A_{\nu}^{T} \partial_{N}{A_{\mu}^{S}}
+                                  - 1/2 * A_{\nu}^{S} \partial_{S}{A_{\mu}^{P}} + 1/2 * A_{\mu}^{S} \partial_{S}{A_{\nu}^{P}} - 1/2 * Y^{P N}_{S T} A_{\mu}^{T} \partial_{N}{A_{\nu}^{S}}) A_{\rho}^{Q})
+                - 3 * \partial_{N}{C_{\mu \nu \rho}^{N K L}} + 3 * Y^{K L}_{P Q} * \partial_{N}{C_{\mu \nu \rho}^{Q P N}});
+@distribute!!(%):
+@substitute!!(%)(
+D_{\mu}{B_{\nu \rho}^{M N}} -> \partial_{\mu}{B_{\nu \rho}^{M N}} - A_{\mu}^{K} \partial_{K}{B_{\nu \rho}^{M N}} + B_{\nu \rho}^{K N} \partial_{K}{A_{\mu}^{M}}
+                                                      + B_{\nu \rho}^{M K} \partial_{K}{A_{\mu}^{N}}
+                                                      - Y^{M P}_{K L} B_{\nu \rho}^{L N} \partial_{P}{A_{\mu}^{K}} - Y^{N P}_{K L} B_{\nu \rho}^{M L} \partial_{P}{A_{\mu}^{K}},
+):
+@distribute!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@asym!(%){_{\mu}, _{\nu}, _{\rho}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@vary(%)( 
+A_{\mu}^{M} -> dA_{\mu}^{M},
+B_{\mu \nu}^{M N} -> dB_{\mu \nu}^{M N},
+C_{\mu \nu \rho}^{M N K} -> dC_{\mu \nu \rho}^{M N K},
+):
+@substitute!!(%)(
+\partial_{K}{Y^{M N}_{P Q}} -> 0,
+Y^{M N}_{P Q} Y^{P Q}_{K L} -> 6 * Y^{M N}_{K L},
+Y^{M N}_{P Q} \partial_{K}{B_{\mu \nu}^{P Q}} -> 6 * \partial_{K}{B_{\mu \nu}^{M N}},
+\partial_{\mu}{dA_{\nu}^{M}} -> D_{\mu}{dA_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} - dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} dA_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+\partial_{\mu}{A_{\nu}^{M}} -> D_{\mu}{A_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} - A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+\partial_{\mu}{B_{\nu \rho}^{M N}} -> D_{\mu}{B_{\nu \rho}^{M N}} + A_{\mu}^{K} \partial_{K}{B_{\nu \rho}^{M N}} - B_{\nu \rho}^{K N} \partial_{K}{A_{\mu}^{M}}
+                                                      - B_{\nu \rho}^{M K} \partial_{K}{A_{\mu}^{N}}
+                                                      + Y^{M P}_{K L} B_{\nu \rho}^{L N} \partial_{P}{A_{\mu}^{K}} + Y^{N P}_{K L} B_{\nu \rho}^{M L} \partial_{P}{A_{\mu}^{K}},
+\partial_{\mu}{dB_{\nu \rho}^{M N}} -> D_{\mu}{dB_{\nu \rho}^{M N}} + A_{\mu}^{K} \partial_{K}{dB_{\nu \rho}^{M N}} - dB_{\nu \rho}^{K N} \partial_{K}{A_{\mu}^{M}}
+                                                      - dB_{\nu \rho}^{M K} \partial_{K}{A_{\mu}^{N}}
+                                                      + Y^{M P}_{K L} dB_{\nu \rho}^{L N} \partial_{P}{A_{\mu}^{K}} + Y^{N P}_{K L} dB_{\nu \rho}^{M L} \partial_{P}{A_{\mu}^{K}},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{K}{Y^{M N}_{P Q}} -> 0,
+Y^{M N}_{P Q} Y^{P Q}_{K L} -> 6 * Y^{M N}_{K L},
+Y^{M N}_{P Q} \partial_{K}{B_{\mu \nu}^{P Q}} -> 6 * \partial_{K}{B_{\mu \nu}^{M N}},
+\partial_{\mu}{dA_{\nu}^{M}} -> D_{\mu}{dA_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} - dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} dA_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+\partial_{\mu}{A_{\nu}^{M}} -> D_{\mu}{A_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} - A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% 3 D_{\mu}{B_{\nu \rho}^{K L}} + 1/2 Y^{K L}_{P Q} (A_{\mu}^{P} \partial_{\nu}{A_{\rho}^{Q}} - 1/3 (1/2 A_{\mu}^{S} \partial_{S}{A_{\nu}^{P}} - 1/2 A_{\nu}^{S} \partial_{S}{A_{\mu}^{P}} + 1/2 Y^{P N}_{S T} A_{\nu}^{T} \partial_{N}{A_{\mu}^{S}} - 1/2 A_{\nu}^{S} \partial_{S}{A_{\mu}^{P}} + 1/2 A_{\mu}^{S} \partial_{S}{A_{\nu}^{P}} - 1/2 Y^{P N}_{S T} A_{\mu}^{T} \partial_{N}{A_{\nu}^{S}}) A_{\rho}^{Q}) - 3 \partial_{N}{C_{\mu \nu \rho}^{N K L}} + 3 Y^{K L}_{P Q} \partial_{N}{C_{\mu \nu \rho}^{Q P N}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFB\specialcolon{}= 3\, {D}_{\mu}{{B}_{\nu \rho}\,^{K L}}\,  + \frac{1}{2}\, {Y}^{K L}\,_{P Q} ({A}_{\mu}\,^{P} {\partial}_{\nu}{{A}_{\rho}\,^{Q}}\,  - \frac{1}{3}\, (\frac{1}{2}\, {A}_{\mu}\,^{S} {\partial}_{S}{{A}_{\nu}\,^{P}}\,  - \frac{1}{2}\, {A}_{\nu}\,^{S} {\partial}_{S}{{A}_{\mu}\,^{P}}\,  + \frac{1}{2}\, {Y}^{P N}\,_{S T} {A}_{\nu}\,^{T} {\partial}_{N}{{A}_{\mu}\,^{S}}\,  - \frac{1}{2}\, {A}_{\nu}\,^{S} {\partial}_{S}{{A}_{\mu}\,^{P}}\,  + \frac{1}{2}\, {A}_{\mu}\,^{S} {\partial}_{S}{{A}_{\nu}\,^{P}}\,  - \frac{1}{2}\, {Y}^{P N}\,_{S T} {A}_{\mu}\,^{T} {\partial}_{N}{{A}_{\nu}\,^{S}}\, ) {A}_{\rho}\,^{Q}) - 3\, {\partial}_{N}{{C}_{\mu \nu \rho}\,^{N K L}}\,  + 3\, {Y}^{K L}\,_{P Q} {\partial}_{N}{{C}_{\mu \nu \rho}\,^{Q P N}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% \partial_{\mu}{B_{\nu \rho}^{K L}} - \partial_{\nu}{B_{\mu \rho}^{K L}} + \partial_{\rho}{B_{\mu \nu}^{K L}} - A_{\mu}^{M} \partial_{M}{B_{\nu \rho}^{K L}} + A_{\nu}^{M} \partial_{M}{B_{\mu \rho}^{K L}} - A_{\rho}^{M} \partial_{M}{B_{\mu \nu}^{K L}} + B_{\nu \rho}^{L M} \partial_{M}{A_{\mu}^{K}} - B_{\mu \rho}^{L M} \partial_{M}{A_{\nu}^{K}} + B_{\mu \nu}^{L M} \partial_{M}{A_{\rho}^{K}} + B_{\nu \rho}^{K M} \partial_{M}{A_{\mu}^{L}} - B_{\mu \rho}^{K M} \partial_{M}{A_{\nu}^{L}} + B_{\mu \nu}^{K M} \partial_{M}{A_{\rho}^{L}} - B_{\nu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{A_{\mu}^{P}} + B_{\mu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{A_{\nu}^{P}} - B_{\mu \nu}^{L M} Y^{K N}_{M P} \partial_{N}{A_{\rho}^{P}} - B_{\nu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{A_{\mu}^{P}} + B_{\mu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{A_{\nu}^{P}} - B_{\mu \nu}^{K M} Y^{L N}_{M P} \partial_{N}{A_{\rho}^{P}} + 1/12 A_{\mu}^{M} Y^{K L}_{M N} \partial_{\nu}{A_{\rho}^{N}} - 1/12 A_{\mu}^{M} Y^{K L}_{M N} \partial_{\rho}{A_{\nu}^{N}} - 1/12 A_{\nu}^{M} Y^{K L}_{M N} \partial_{\mu}{A_{\rho}^{N}} + 1/12 A_{\nu}^{M} Y^{K L}_{M N} \partial_{\rho}{A_{\mu}^{N}} + 1/12 A_{\rho}^{M} Y^{K L}_{M N} \partial_{\mu}{A_{\nu}^{N}} - 1/12 A_{\rho}^{M} Y^{K L}_{M N} \partial_{\nu}{A_{\mu}^{N}} - 1/18 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{A_{\nu}^{P}} + 1/18 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} \partial_{M}{A_{\rho}^{P}} + 1/18 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{A_{\mu}^{P}} - 1/18 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} \partial_{N}{A_{\rho}^{P}} - 1/18 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{A_{\mu}^{P}} + 1/18 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{A_{\nu}^{P}} - 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{A_{\mu}^{R}} + 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{A_{\mu}^{R}} + 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{A_{\nu}^{R}} - 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{A_{\nu}^{R}} - 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{A_{\rho}^{R}} + 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{A_{\rho}^{R}} - 3 \partial_{M}{C_{\mu \nu \rho}^{M K L}} + 3 Y^{K L}_{M N} \partial_{P}{C_{\mu \nu \rho}^{M N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFB\specialcolon{}= {\partial}_{\mu}{{B}_{\nu \rho}\,^{K L}}\,  - {\partial}_{\nu}{{B}_{\mu \rho}\,^{K L}}\,  + {\partial}_{\rho}{{B}_{\mu \nu}\,^{K L}}\,  - {A}_{\mu}\,^{M} {\partial}_{M}{{B}_{\nu \rho}\,^{K L}}\,  + {A}_{\nu}\,^{M} {\partial}_{M}{{B}_{\mu \rho}\,^{K L}}\,  - {A}_{\rho}\,^{M} {\partial}_{M}{{B}_{\mu \nu}\,^{K L}}\,  + {B}_{\nu \rho}\,^{L M} {\partial}_{M}{{A}_{\mu}\,^{K}}\,  - {B}_{\mu \rho}\,^{L M} {\partial}_{M}{{A}_{\nu}\,^{K}}\,  + {B}_{\mu \nu}\,^{L M} {\partial}_{M}{{A}_{\rho}\,^{K}}\,  + {B}_{\nu \rho}\,^{K M} {\partial}_{M}{{A}_{\mu}\,^{L}}\,  - {B}_{\mu \rho}\,^{K M} {\partial}_{M}{{A}_{\nu}\,^{L}}\,  + {B}_{\mu \nu}\,^{K M} {\partial}_{M}{{A}_{\rho}\,^{L}}\,  - {B}_{\nu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{A}_{\mu}\,^{P}}\,  + {B}_{\mu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{A}_{\nu}\,^{P}}\,  - {B}_{\mu \nu}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{A}_{\rho}\,^{P}}\,  - {B}_{\nu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{A}_{\mu}\,^{P}}\,  + {B}_{\mu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{A}_{\nu}\,^{P}}\,  - {B}_{\mu \nu}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{A}_{\rho}\,^{P}}\,  + \frac{1}{12}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\nu}{{A}_{\rho}\,^{N}}\, %
+ - \frac{1}{12}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\rho}{{A}_{\nu}\,^{N}}\,  - \frac{1}{12}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\mu}{{A}_{\rho}\,^{N}}\,  + \frac{1}{12}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\rho}{{A}_{\mu}\,^{N}}\,  + \frac{1}{12}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\mu}{{A}_{\nu}\,^{N}}\,  - \frac{1}{12}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{\nu}{{A}_{\mu}\,^{N}}\,  - \frac{1}{18}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\nu}\,^{P}}\,  + \frac{1}{18}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\rho}\,^{P}}\,  + \frac{1}{18}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\mu}\,^{P}}\,  - \frac{1}{18}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{A}_{\rho}\,^{P}}\,  - \frac{1}{18}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{A}_{\mu}\,^{P}}\,  + \frac{1}{18}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{A}_{\nu}\,^{P}}\,  - \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  + \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  - 3\, {\partial}_{M}{{C}_{\mu \nu \rho}\,^{M K L}}\,  + 3\, {Y}^{K L}\,_{M N} {\partial}_{P}{{C}_{\mu \nu \rho}\,^{M N P}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% D_{\mu}{dB_{\nu \rho}^{K L}} - D_{\nu}{dB_{\mu \rho}^{K L}} + D_{\rho}{dB_{\mu \nu}^{K L}} - \partial_{M}{B_{\nu \rho}^{K L}} dA_{\mu}^{M} + \partial_{M}{B_{\mu \rho}^{K L}} dA_{\nu}^{M} - \partial_{M}{B_{\mu \nu}^{K L}} dA_{\rho}^{M} + B_{\nu \rho}^{L M} \partial_{M}{dA_{\mu}^{K}} - B_{\mu \rho}^{L M} \partial_{M}{dA_{\nu}^{K}} + B_{\mu \nu}^{L M} \partial_{M}{dA_{\rho}^{K}} + B_{\nu \rho}^{K M} \partial_{M}{dA_{\mu}^{L}} - B_{\mu \rho}^{K M} \partial_{M}{dA_{\nu}^{L}} + B_{\mu \nu}^{K M} \partial_{M}{dA_{\rho}^{L}} - B_{\nu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{dA_{\mu}^{P}} + B_{\mu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{dA_{\nu}^{P}} - B_{\mu \nu}^{L M} Y^{K N}_{M P} \partial_{N}{dA_{\rho}^{P}} - B_{\nu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{dA_{\mu}^{P}} + B_{\mu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{dA_{\nu}^{P}} - B_{\mu \nu}^{K M} Y^{L N}_{M P} \partial_{N}{dA_{\rho}^{P}} + 1/12 D_{\nu}{A_{\rho}^{M}} Y^{K L}_{M N} dA_{\mu}^{N} + 1/9 A_{\nu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\rho}^{N}} dA_{\mu}^{P} - 1/9 A_{\rho}^{M} Y^{K L}_{N P} \partial_{M}{A_{\nu}^{N}} dA_{\mu}^{P} + 1/18 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{R}} dA_{\mu}^{P} + 1/12 A_{\mu}^{M} D_{\nu}{dA_{\rho}^{N}} Y^{K L}_{M N} + 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\rho}^{P}} - 1/36 A_{\mu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\nu}^{N}} dA_{\rho}^{P} + 1/18 A_{\mu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\nu}^{Q}} dA_{\rho}^{R} - 1/12 D_{\rho}{A_{\nu}^{M}} Y^{K L}_{M N} dA_{\mu}^{N} - 1/18 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{R}} dA_{\mu}^{P} - 1/12 A_{\mu}^{M} D_{\rho}{dA_{\nu}^{N}} Y^{K L}_{M N} - 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\nu}^{P}} + 1/36 A_{\mu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\rho}^{N}} dA_{\nu}^{P} - 1/18 A_{\mu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\rho}^{Q}} dA_{\nu}^{R} - 1/12 D_{\mu}{A_{\rho}^{M}} Y^{K L}_{M N} dA_{\nu}^{N} - 1/9 A_{\mu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\rho}^{N}} dA_{\nu}^{P} + 1/9 A_{\rho}^{M} Y^{K L}_{N P} \partial_{M}{A_{\mu}^{N}} dA_{\nu}^{P} - 1/18 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{R}} dA_{\nu}^{P} - 1/12 A_{\nu}^{M} D_{\mu}{dA_{\rho}^{N}} Y^{K L}_{M N} - 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\rho}^{P}} + 1/36 A_{\nu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\mu}^{N}} dA_{\rho}^{P} - 1/18 A_{\nu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\mu}^{Q}} dA_{\rho}^{R} + 1/12 D_{\rho}{A_{\mu}^{M}} Y^{K L}_{M N} dA_{\nu}^{N} + 1/18 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{R}} dA_{\nu}^{P} + 1/12 A_{\nu}^{M} D_{\rho}{dA_{\mu}^{N}} Y^{K L}_{M N} + 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\mu}^{P}} - 1/36 A_{\nu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\rho}^{N}} dA_{\mu}^{P} + 1/18 A_{\nu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\rho}^{Q}} dA_{\mu}^{R} + 1/12 D_{\mu}{A_{\nu}^{M}} Y^{K L}_{M N} dA_{\rho}^{N} + 1/9 A_{\mu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\nu}^{N}} dA_{\rho}^{P} - 1/9 A_{\nu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\mu}^{N}} dA_{\rho}^{P} + 1/18 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{R}} dA_{\rho}^{P} + 1/12 A_{\rho}^{M} D_{\mu}{dA_{\nu}^{N}} Y^{K L}_{M N} + 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\nu}^{P}} - 1/36 A_{\rho}^{M} Y^{K L}_{M N} \partial_{P}{A_{\mu}^{N}} dA_{\nu}^{P} + 1/18 A_{\rho}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\mu}^{Q}} dA_{\nu}^{R} - 1/12 D_{\nu}{A_{\mu}^{M}} Y^{K L}_{M N} dA_{\rho}^{N} - 1/18 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{R}} dA_{\rho}^{P} - 1/12 A_{\rho}^{M} D_{\nu}{dA_{\mu}^{N}} Y^{K L}_{M N} - 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\mu}^{P}} + 1/36 A_{\rho}^{M} Y^{K L}_{M N} \partial_{P}{A_{\nu}^{N}} dA_{\mu}^{P} - 1/18 A_{\rho}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\nu}^{Q}} dA_{\mu}^{R} - 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\mu}^{R}} + 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\mu}^{R}} + 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\nu}^{R}} - 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\nu}^{R}} - 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\rho}^{R}} + 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\rho}^{R}} - 3 \partial_{M}{dC_{\mu \nu \rho}^{M K L}} + 3 Y^{K L}_{M N} \partial_{P}{dC_{\mu \nu \rho}^{M N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+deltaFB\specialcolon{}= {D}_{\mu}{{dB}_{\nu \rho}\,^{K L}}\,  - {D}_{\nu}{{dB}_{\mu \rho}\,^{K L}}\,  + {D}_{\rho}{{dB}_{\mu \nu}\,^{K L}}\,  - {\partial}_{M}{{B}_{\nu \rho}\,^{K L}}\,  {dA}_{\mu}\,^{M} + {\partial}_{M}{{B}_{\mu \rho}\,^{K L}}\,  {dA}_{\nu}\,^{M} - {\partial}_{M}{{B}_{\mu \nu}\,^{K L}}\,  {dA}_{\rho}\,^{M} + {B}_{\nu \rho}\,^{L M} {\partial}_{M}{{dA}_{\mu}\,^{K}}\,  - {B}_{\mu \rho}\,^{L M} {\partial}_{M}{{dA}_{\nu}\,^{K}}\,  + {B}_{\mu \nu}\,^{L M} {\partial}_{M}{{dA}_{\rho}\,^{K}}\,  + {B}_{\nu \rho}\,^{K M} {\partial}_{M}{{dA}_{\mu}\,^{L}}\,  - {B}_{\mu \rho}\,^{K M} {\partial}_{M}{{dA}_{\nu}\,^{L}}\,  + {B}_{\mu \nu}\,^{K M} {\partial}_{M}{{dA}_{\rho}\,^{L}}\,  - {B}_{\nu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  + {B}_{\mu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  - {B}_{\mu \nu}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  - {B}_{\nu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  + {B}_{\mu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  - {B}_{\mu \nu}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  + \frac{1}{12}\, {D}_{\nu}{{A}_{\rho}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\mu}\,^{N}%
+ + \frac{1}{9}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\rho}\,^{N}}\,  {dA}_{\mu}\,^{P} - \frac{1}{9}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\nu}\,^{N}}\,  {dA}_{\mu}\,^{P} + \frac{1}{18}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  {dA}_{\mu}\,^{P} + \frac{1}{12}\, {A}_{\mu}\,^{M} {D}_{\nu}{{dA}_{\rho}\,^{N}}\,  {Y}^{K L}\,_{M N} + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\nu}\,^{N}}\,  {dA}_{\rho}\,^{P} + \frac{1}{18}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\nu}\,^{Q}}\,  {dA}_{\rho}\,^{R} - \frac{1}{12}\, {D}_{\rho}{{A}_{\nu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\mu}\,^{N} - \frac{1}{18}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  {dA}_{\mu}\,^{P} - \frac{1}{12}\, {A}_{\mu}\,^{M} {D}_{\rho}{{dA}_{\nu}\,^{N}}\,  {Y}^{K L}\,_{M N} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\rho}\,^{N}}\,  {dA}_{\nu}\,^{P} - \frac{1}{18}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\nu}\,^{R} - \frac{1}{12}\, {D}_{\mu}{{A}_{\rho}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\nu}\,^{N} - \frac{1}{9}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\rho}\,^{N}}\,  {dA}_{\nu}\,^{P} + \frac{1}{9}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\mu}\,^{N}}\,  {dA}_{\nu}\,^{P} - \frac{1}{18}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  {dA}_{\nu}\,^{P} - \frac{1}{12}\, {A}_{\nu}\,^{M} {D}_{\mu}{{dA}_{\rho}\,^{N}}\,  {Y}^{K L}\,_{M N} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\rho}\,^{P}}\,  + \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\mu}\,^{N}}\,  {dA}_{\rho}\,^{P}%
+ - \frac{1}{18}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\mu}\,^{Q}}\,  {dA}_{\rho}\,^{R} + \frac{1}{12}\, {D}_{\rho}{{A}_{\mu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\nu}\,^{N} + \frac{1}{18}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  {dA}_{\nu}\,^{P} + \frac{1}{12}\, {A}_{\nu}\,^{M} {D}_{\rho}{{dA}_{\mu}\,^{N}}\,  {Y}^{K L}\,_{M N} + \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  - \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\rho}\,^{N}}\,  {dA}_{\mu}\,^{P} + \frac{1}{18}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\mu}\,^{R} + \frac{1}{12}\, {D}_{\mu}{{A}_{\nu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\rho}\,^{N} + \frac{1}{9}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\nu}\,^{N}}\,  {dA}_{\rho}\,^{P} - \frac{1}{9}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\mu}\,^{N}}\,  {dA}_{\rho}\,^{P} + \frac{1}{18}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  {dA}_{\rho}\,^{P} + \frac{1}{12}\, {A}_{\rho}\,^{M} {D}_{\mu}{{dA}_{\nu}\,^{N}}\,  {Y}^{K L}\,_{M N} + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\nu}\,^{P}}\,  - \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\mu}\,^{N}}\,  {dA}_{\nu}\,^{P} + \frac{1}{18}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\mu}\,^{Q}}\,  {dA}_{\nu}\,^{R} - \frac{1}{12}\, {D}_{\nu}{{A}_{\mu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\rho}\,^{N} - \frac{1}{18}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  {dA}_{\rho}\,^{P} - \frac{1}{12}\, {A}_{\rho}\,^{M} {D}_{\nu}{{dA}_{\mu}\,^{N}}\,  {Y}^{K L}\,_{M N} - \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\mu}\,^{P}}\,  + \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\nu}\,^{N}}\,  {dA}_{\mu}\,^{P}%
+ - \frac{1}{18}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\nu}\,^{Q}}\,  {dA}_{\mu}\,^{R} - \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\mu}\,^{R}}\,  + \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\mu}\,^{R}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\nu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\nu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\rho}\,^{R}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\rho}\,^{R}}\,  - 3\, {\partial}_{M}{{dC}_{\mu \nu \rho}\,^{M K L}}\,  + 3\, {Y}^{K L}\,_{M N} {\partial}_{P}{{dC}_{\mu \nu \rho}\,^{M N P}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+dFB := 3 * D_{\mu}{DB_{\nu \rho}^{K L}} + 1/2 * Y^{K L}_{P Q} * F_{\mu \nu}^{P} DA_{\rho}^{Q} - 3 * \partial_{N}{DC_{\mu \nu \rho}^{N K L}} + 3 * Y^{K L}_{P Q} * \partial_{N}{DC_{\mu \nu \rho}^{Q P N}};
+@distribute!!(%):
+@sumflatten!!(%):
+@asym!(%){_{\mu}, _{\nu}, _{\rho}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@substitute!!(%)(
+DA_{\mu}^{M} -> dA_{\mu}^{M},
+DB_{\mu \nu}^{M N} -> dB_{\mu \nu}^{M N} - 1/12 * Y^{M N}_{K L} * A_{\mu}^{K} dA_{\nu}^{L} + 1/12 * Y^{M N}_{K L} * A_{\nu}^{K} dA_{\mu}^{L},
+DC_{\mu \nu \rho}^{N K L} -> dC_{\mu \nu \rho}^{N K L} + 1/3 * dA_{\mu}^{N} B_{\nu \rho}^{K L} - 1/3 * dA_{\nu}^{N} B_{\mu \rho}^{K L} - 1/3 * dA_{\rho}^{N} B_{\nu \mu}^{K L}
+         + 1/18 * 1/6 * Y^{K L}_{R S} * A_{\mu}^{N} A_{\nu}^{R} dA_{\rho}^{S}
+        - 1/18 * 1/6 * Y^{K L}_{R S} * A_{\mu}^{N} A_{\rho}^{R} dA_{\nu}^{S}
+        - 1/18 * 1/6 * Y^{K L}_{R S} * A_{\nu}^{N} A_{\mu}^{R} dA_{\rho}^{S}
+         + 1/18 * 1/6 * Y^{K L}_{R S} * A_{\nu}^{N} A_{\rho}^{R} dA_{\mu}^{S}
+        - 1/18 * 1/6 * Y^{K L}_{R S} * A_{\rho}^{N} A_{\nu}^{R} dA_{\mu}^{S}
+         + 1/18 * 1/6 * Y^{K L}_{R S} * A_{\rho}^{N} A_{\mu}^{R} dA_{\nu}^{S},
+F_{\mu \nu}^{M} -> \partial_{\mu}{A_{\nu}^{M}} - \partial_{\nu}{A_{\mu}^{M}} 
+     - 1/2 * A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} + 1/2 * A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} - 1/2 * Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}}
+     + 1/2 * A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} - 1/2 * A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} + 1/2 * Y^{M N}_{P Q} A_{\mu}^{Q} \partial_{N}{A_{\nu}^{P}}
+     - Y^{M N}_{P Q} \partial_{N}{B_{\mu \nu}^{P Q}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{K}{Y^{M N}_{P Q}} -> 0,
+Y^{M N}_{P Q} Y^{P Q}_{K L} -> 6 * Y^{M N}_{K L},
+Y^{M N}_{P Q} \partial_{K}{B_{\mu \nu}^{P Q}} -> 6 * \partial_{K}{B_{\mu \nu}^{M N}},
+\partial_{\mu}{dA_{\nu}^{M}} -> D_{\mu}{dA_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{dA_{\nu}^{M}} - dA_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} dA_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+\partial_{\mu}{A_{\nu}^{M}} -> D_{\mu}{A_{\nu}^{M}} + A_{\mu}^{K} \partial_{K}{A_{\nu}^{M}} - A_{\nu}^{K} \partial_{K}{A_{\mu}^{M}} + Y^{M N}_{P Q} A_{\nu}^{Q} \partial_{N}{A_{\mu}^{P}},
+D_{\mu}{Y^{K L}_{M N}} -> 0,
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% 3 D_{\mu}{DB_{\nu \rho}^{K L}} + 1/2 Y^{K L}_{P Q} F_{\mu \nu}^{P} DA_{\rho}^{Q} - 3 \partial_{N}{DC_{\mu \nu \rho}^{N K L}} + 3 Y^{K L}_{P Q} \partial_{N}{DC_{\mu \nu \rho}^{Q P N}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFB\specialcolon{}= 3\, {D}_{\mu}{{DB}_{\nu \rho}\,^{K L}}\,  + \frac{1}{2}\, {Y}^{K L}\,_{P Q} {F}_{\mu \nu}\,^{P} {DA}_{\rho}\,^{Q} - 3\, {\partial}_{N}{{DC}_{\mu \nu \rho}\,^{N K L}}\,  + 3\, {Y}^{K L}\,_{P Q} {\partial}_{N}{{DC}_{\mu \nu \rho}\,^{Q P N}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% orig
+% D_{\mu}{DB_{\nu \rho}^{K L}} - D_{\nu}{DB_{\mu \rho}^{K L}} + D_{\rho}{DB_{\mu \nu}^{K L}} + 1/6 DA_{\rho}^{M} F_{\mu \nu}^{N} Y^{K L}_{M N} - 1/6 DA_{\nu}^{M} F_{\mu \rho}^{N} Y^{K L}_{M N} + 1/6 DA_{\mu}^{M} F_{\nu \rho}^{N} Y^{K L}_{M N} - 3 \partial_{M}{DC_{\mu \nu \rho}^{M K L}} + 3 Y^{K L}_{M N} \partial_{P}{DC_{\mu \nu \rho}^{M N P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFB\specialcolon{}= {D}_{\mu}{{DB}_{\nu \rho}\,^{K L}}\,  - {D}_{\nu}{{DB}_{\mu \rho}\,^{K L}}\,  + {D}_{\rho}{{DB}_{\mu \nu}\,^{K L}}\,  + \frac{1}{6}\, {DA}_{\rho}\,^{M} {F}_{\mu \nu}\,^{N} {Y}^{K L}\,_{M N} - \frac{1}{6}\, {DA}_{\nu}\,^{M} {F}_{\mu \rho}\,^{N} {Y}^{K L}\,_{M N} + \frac{1}{6}\, {DA}_{\mu}\,^{M} {F}_{\nu \rho}\,^{N} {Y}^{K L}\,_{M N} - 3\, {\partial}_{M}{{DC}_{\mu \nu \rho}\,^{M K L}}\,  + 3\, {Y}^{K L}\,_{M N} {\partial}_{P}{{DC}_{\mu \nu \rho}\,^{M N P}}\, ;
+\end{dmath*}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% orig
+% D_{\mu}{dB_{\nu \rho}^{K L}} + 1/12 D_{\mu}{A_{\nu}^{M}} Y^{K L}_{M N} dA_{\rho}^{N} - 1/12 A_{\nu}^{M} D_{\mu}{dA_{\rho}^{N}} Y^{K L}_{M N} - 1/12 D_{\mu}{A_{\rho}^{M}} Y^{K L}_{M N} dA_{\nu}^{N} + 1/12 A_{\rho}^{M} D_{\mu}{dA_{\nu}^{N}} Y^{K L}_{M N} - D_{\nu}{dB_{\mu \rho}^{K L}} - 1/12 D_{\nu}{A_{\mu}^{M}} Y^{K L}_{M N} dA_{\rho}^{N} + 1/12 A_{\mu}^{M} D_{\nu}{dA_{\rho}^{N}} Y^{K L}_{M N} + 1/12 D_{\nu}{A_{\rho}^{M}} Y^{K L}_{M N} dA_{\mu}^{N} - 1/12 A_{\rho}^{M} D_{\nu}{dA_{\mu}^{N}} Y^{K L}_{M N} + D_{\rho}{dB_{\mu \nu}^{K L}} + 1/12 D_{\rho}{A_{\mu}^{M}} Y^{K L}_{M N} dA_{\nu}^{N} - 1/12 A_{\mu}^{M} D_{\rho}{dA_{\nu}^{N}} Y^{K L}_{M N} - 1/12 D_{\rho}{A_{\nu}^{M}} Y^{K L}_{M N} dA_{\mu}^{N} + 1/12 A_{\nu}^{M} D_{\rho}{dA_{\mu}^{N}} Y^{K L}_{M N} + 5/36 A_{\mu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\nu}^{N}} dA_{\rho}^{P} - 5/36 A_{\nu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\mu}^{N}} dA_{\rho}^{P} + 1/12 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{R}} dA_{\rho}^{P} - 1/12 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{R}} dA_{\rho}^{P} - 5/36 A_{\mu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\rho}^{N}} dA_{\nu}^{P} + 5/36 A_{\rho}^{M} Y^{K L}_{N P} \partial_{M}{A_{\mu}^{N}} dA_{\nu}^{P} - 1/12 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{R}} dA_{\nu}^{P} + 1/12 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{R}} dA_{\nu}^{P} + 5/36 A_{\nu}^{M} Y^{K L}_{N P} \partial_{M}{A_{\rho}^{N}} dA_{\mu}^{P} - 5/36 A_{\rho}^{M} Y^{K L}_{N P} \partial_{M}{A_{\nu}^{N}} dA_{\mu}^{P} + 1/12 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{R}} dA_{\mu}^{P} - 1/12 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{R}} dA_{\mu}^{P} - 3 \partial_{M}{dC_{\mu \nu \rho}^{M K L}} - B_{\nu \rho}^{K L} \partial_{M}{dA_{\mu}^{M}} - \partial_{M}{B_{\nu \rho}^{K L}} dA_{\mu}^{M} + B_{\mu \rho}^{K L} \partial_{M}{dA_{\nu}^{M}} + \partial_{M}{B_{\mu \rho}^{K L}} dA_{\nu}^{M} - B_{\mu \nu}^{K L} \partial_{M}{dA_{\rho}^{M}} - \partial_{M}{B_{\mu \nu}^{K L}} dA_{\rho}^{M} - 1/36 A_{\nu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\mu}^{P}} dA_{\rho}^{N} - 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\rho}^{P}} + 1/36 A_{\rho}^{M} Y^{K L}_{M N} \partial_{P}{A_{\mu}^{P}} dA_{\nu}^{N} + 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\nu}^{P}} + 1/36 A_{\mu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\nu}^{P}} dA_{\rho}^{N} + 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\rho}^{P}} - 1/36 A_{\rho}^{M} Y^{K L}_{M N} \partial_{P}{A_{\nu}^{P}} dA_{\mu}^{N} - 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} \partial_{M}{dA_{\mu}^{P}} + 1/36 A_{\nu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\rho}^{P}} dA_{\mu}^{N} + 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\mu}^{P}} - 1/36 A_{\mu}^{M} Y^{K L}_{M N} \partial_{P}{A_{\rho}^{P}} dA_{\nu}^{N} - 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} \partial_{N}{dA_{\nu}^{P}} + 3 Y^{K L}_{M N} \partial_{P}{dC_{\mu \nu \rho}^{M N P}} + B_{\nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{dA_{\mu}^{P}} - B_{\mu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{dA_{\nu}^{P}} + B_{\mu \nu}^{M N} Y^{K L}_{M P} \partial_{N}{dA_{\rho}^{P}} + 1/36 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{P}} dA_{\rho}^{R} + 1/36 A_{\mu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\nu}^{Q}} dA_{\rho}^{R} + 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\rho}^{R}} - 1/36 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\mu}^{P}} dA_{\nu}^{R} - 1/36 A_{\mu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\rho}^{Q}} dA_{\nu}^{R} - 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\nu}^{R}} - 1/36 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{P}} dA_{\rho}^{R} - 1/36 A_{\nu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\mu}^{Q}} dA_{\rho}^{R} - 1/36 A_{\mu}^{M} A_{\nu}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\rho}^{R}} + 1/36 A_{\rho}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\nu}^{P}} dA_{\mu}^{R} + 1/36 A_{\nu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\rho}^{Q}} dA_{\mu}^{R} + 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{dA_{\mu}^{R}} - 1/36 A_{\nu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{P}} dA_{\mu}^{R} - 1/36 A_{\rho}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\nu}^{Q}} dA_{\mu}^{R} - 1/36 A_{\nu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\mu}^{R}} + 1/36 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{P}} dA_{\nu}^{R} + 1/36 A_{\rho}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\mu}^{Q}} dA_{\nu}^{R} + 1/36 A_{\mu}^{M} A_{\rho}^{N} Y^{K L}_{N P} Y^{P Q}_{M R} \partial_{Q}{dA_{\nu}^{R}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFB\specialcolon{}= {D}_{\mu}{{dB}_{\nu \rho}\,^{K L}}\,  + \frac{1}{12}\, {D}_{\mu}{{A}_{\nu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\rho}\,^{N} - \frac{1}{12}\, {A}_{\nu}\,^{M} {D}_{\mu}{{dA}_{\rho}\,^{N}}\,  {Y}^{K L}\,_{M N} - \frac{1}{12}\, {D}_{\mu}{{A}_{\rho}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\nu}\,^{N} + \frac{1}{12}\, {A}_{\rho}\,^{M} {D}_{\mu}{{dA}_{\nu}\,^{N}}\,  {Y}^{K L}\,_{M N} - {D}_{\nu}{{dB}_{\mu \rho}\,^{K L}}\,  - \frac{1}{12}\, {D}_{\nu}{{A}_{\mu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\rho}\,^{N} + \frac{1}{12}\, {A}_{\mu}\,^{M} {D}_{\nu}{{dA}_{\rho}\,^{N}}\,  {Y}^{K L}\,_{M N} + \frac{1}{12}\, {D}_{\nu}{{A}_{\rho}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\mu}\,^{N} - \frac{1}{12}\, {A}_{\rho}\,^{M} {D}_{\nu}{{dA}_{\mu}\,^{N}}\,  {Y}^{K L}\,_{M N} + {D}_{\rho}{{dB}_{\mu \nu}\,^{K L}}\,  + \frac{1}{12}\, {D}_{\rho}{{A}_{\mu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\nu}\,^{N} - \frac{1}{12}\, {A}_{\mu}\,^{M} {D}_{\rho}{{dA}_{\nu}\,^{N}}\,  {Y}^{K L}\,_{M N} - \frac{1}{12}\, {D}_{\rho}{{A}_{\nu}\,^{M}}\,  {Y}^{K L}\,_{M N} {dA}_{\mu}\,^{N} + \frac{1}{12}\, {A}_{\nu}\,^{M} {D}_{\rho}{{dA}_{\mu}\,^{N}}\,  {Y}^{K L}\,_{M N} + \frac{5}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\nu}\,^{N}}\,  {dA}_{\rho}\,^{P} - \frac{5}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\mu}\,^{N}}\,  {dA}_{\rho}\,^{P} + \frac{1}{12}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  {dA}_{\rho}\,^{P} - \frac{1}{12}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  {dA}_{\rho}\,^{P}%
+ - \frac{5}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\rho}\,^{N}}\,  {dA}_{\nu}\,^{P} + \frac{5}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\mu}\,^{N}}\,  {dA}_{\nu}\,^{P} - \frac{1}{12}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{R}}\,  {dA}_{\nu}\,^{P} + \frac{1}{12}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  {dA}_{\nu}\,^{P} + \frac{5}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\rho}\,^{N}}\,  {dA}_{\mu}\,^{P} - \frac{5}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {\partial}_{M}{{A}_{\nu}\,^{N}}\,  {dA}_{\mu}\,^{P} + \frac{1}{12}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{R}}\,  {dA}_{\mu}\,^{P} - \frac{1}{12}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  {dA}_{\mu}\,^{P} - 3\, {\partial}_{M}{{dC}_{\mu \nu \rho}\,^{M K L}}\,  - {B}_{\nu \rho}\,^{K L} {\partial}_{M}{{dA}_{\mu}\,^{M}}\,  - {\partial}_{M}{{B}_{\nu \rho}\,^{K L}}\,  {dA}_{\mu}\,^{M} + {B}_{\mu \rho}\,^{K L} {\partial}_{M}{{dA}_{\nu}\,^{M}}\,  + {\partial}_{M}{{B}_{\mu \rho}\,^{K L}}\,  {dA}_{\nu}\,^{M} - {B}_{\mu \nu}\,^{K L} {\partial}_{M}{{dA}_{\rho}\,^{M}}\,  - {\partial}_{M}{{B}_{\mu \nu}\,^{K L}}\,  {dA}_{\rho}\,^{M} - \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\mu}\,^{P}}\,  {dA}_{\rho}\,^{N} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\rho}\,^{P}}\,  + \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\mu}\,^{P}}\,  {dA}_{\nu}\,^{N} + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\nu}\,^{P}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\nu}\,^{P}}\,  {dA}_{\rho}\,^{N}%
+ + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  - \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\nu}\,^{P}}\,  {dA}_{\mu}\,^{N} - \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {\partial}_{M}{{dA}_{\mu}\,^{P}}\,  + \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\rho}\,^{P}}\,  {dA}_{\mu}\,^{N} + \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\partial}_{P}{{A}_{\rho}\,^{P}}\,  {dA}_{\nu}\,^{N} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  + 3\, {Y}^{K L}\,_{M N} {\partial}_{P}{{dC}_{\mu \nu \rho}\,^{M N P}}\,  + {B}_{\nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\mu}\,^{P}}\,  - {B}_{\mu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\nu}\,^{P}}\,  + {B}_{\mu \nu}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  + \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{P}}\,  {dA}_{\rho}\,^{R} + \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\nu}\,^{Q}}\,  {dA}_{\rho}\,^{R} + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\rho}\,^{R}}\,  - \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\mu}\,^{P}}\,  {dA}_{\nu}\,^{R} - \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\nu}\,^{R} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\nu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{P}}\,  {dA}_{\rho}\,^{R} - \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\mu}\,^{Q}}\,  {dA}_{\rho}\,^{R} - \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\nu}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\rho}\,^{R}}\, %
+ + \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\nu}\,^{P}}\,  {dA}_{\mu}\,^{R} + \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\mu}\,^{R} + \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{dA}_{\mu}\,^{R}}\,  - \frac{1}{36}\, {A}_{\nu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{P}}\,  {dA}_{\mu}\,^{R} - \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\nu}\,^{Q}}\,  {dA}_{\mu}\,^{R} - \frac{1}{36}\, {A}_{\nu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\mu}\,^{R}}\,  + \frac{1}{36}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{P}}\,  {dA}_{\nu}\,^{R} + \frac{1}{36}\, {A}_{\rho}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\mu}\,^{Q}}\,  {dA}_{\nu}\,^{R} + \frac{1}{36}\, {A}_{\mu}\,^{M} {A}_{\rho}\,^{N} {Y}^{K L}\,_{N P} {Y}^{P Q}\,_{M R} {\partial}_{Q}{{dA}_{\nu}\,^{R}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Zero1 := 1/2 * A_{\mu}^{M} dA_{\nu}^{N} \partial_{P}{A_{\rho}^{Q}} * ( \delta^{P}_{M} Y^{K L}_{N Q} - Y^{K L}_{N R} * Y^{P R}_{M Q}):
+@distribute!!(%);
+@sym!(%){_{M}, _{N}, _{Q}}:
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero2 := 3/2 * B_{\mu \nu}^{M N} \partial_{P}{dA_{\rho}^{Q}} * ( \delta^{P}_{Q} Y^{K L}_{M N} - Y^{K L}_{Q R} * Y^{P R}_{M N}):
+@distribute!!(%);
+@sym!(%){^{P}, ^{K}, ^{L}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+Y^{M N}_{P Q} B_{\mu \nu}^{P Q} -> 6 * B_{\mu \nu}^{M N},
+):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% 1/2 A_{\mu}^{M} dA_{\nu}^{N} \partial_{P}{A_{\rho}^{Q}} \delta^{P}_{M} Y^{K L}_{N Q} - 1/2 A_{\mu}^{M} dA_{\nu}^{N} \partial_{P}{A_{\rho}^{Q}} Y^{K L}_{N R} Y^{P R}_{M Q}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero1\specialcolon{}= \frac{1}{2}\, {A}_{\mu}\,^{M} {dA}_{\nu}\,^{N} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {\delta}^{P}\,_{M} {Y}^{K L}\,_{N Q} - \frac{1}{2}\, {A}_{\mu}\,^{M} {dA}_{\nu}\,^{N} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {Y}^{K L}\,_{N R} {Y}^{P R}\,_{M Q};
+\end{dmath*}
+% orig
+% 1/6 A_{\mu}^{M} Y^{K L}_{N P} \delta_{M}^{Q} \partial_{Q}{A_{\rho}^{N}} dA_{\nu}^{P} + 1/6 A_{\mu}^{M} Y^{K L}_{M N} \delta^{P}_{Q} \partial_{P}{A_{\rho}^{N}} dA_{\nu}^{Q} + 1/6 A_{\mu}^{M} Y^{K L}_{M N} \delta^{P}_{Q} \partial_{P}{A_{\rho}^{Q}} dA_{\nu}^{N} - 1/6 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{R}} dA_{\nu}^{P} - 1/6 A_{\mu}^{M} Y^{K L}_{N P} Y^{N Q}_{M R} \partial_{Q}{A_{\rho}^{P}} dA_{\nu}^{R} - 1/6 A_{\mu}^{M} Y^{K L}_{M N} Y^{N P}_{Q R} \partial_{P}{A_{\rho}^{Q}} dA_{\nu}^{R}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero1\specialcolon{}= \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {\delta}_{M}\,^{Q} {\partial}_{Q}{{A}_{\rho}\,^{N}}\,  {dA}_{\nu}\,^{P} + \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\delta}^{P}\,_{Q} {\partial}_{P}{{A}_{\rho}\,^{N}}\,  {dA}_{\nu}\,^{Q} + \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {\delta}^{P}\,_{Q} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\nu}\,^{N} - \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{R}}\,  {dA}_{\nu}\,^{P} - \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{N P} {Y}^{N Q}\,_{M R} {\partial}_{Q}{{A}_{\rho}\,^{P}}\,  {dA}_{\nu}\,^{R} - \frac{1}{6}\, {A}_{\mu}\,^{M} {Y}^{K L}\,_{M N} {Y}^{N P}\,_{Q R} {\partial}_{P}{{A}_{\rho}\,^{Q}}\,  {dA}_{\nu}\,^{R};
+\end{dmath*}
+% orig
+% 3/2 B_{\mu \nu}^{M N} \partial_{P}{dA_{\rho}^{Q}} \delta^{P}_{Q} Y^{K L}_{M N} - 3/2 B_{\mu \nu}^{M N} \partial_{P}{dA_{\rho}^{Q}} Y^{K L}_{Q R} Y^{P R}_{M N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero2\specialcolon{}= \frac{3}{2}\, {B}_{\mu \nu}\,^{M N} {\partial}_{P}{{dA}_{\rho}\,^{Q}}\,  {\delta}^{P}\,_{Q} {Y}^{K L}\,_{M N} - \frac{3}{2}\, {B}_{\mu \nu}\,^{M N} {\partial}_{P}{{dA}_{\rho}\,^{Q}}\,  {Y}^{K L}\,_{Q R} {Y}^{P R}\,_{M N};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 3 B_{\mu \nu}^{K L} \partial_{M}{dA_{\rho}^{M}} + 3 B_{\mu \nu}^{L M} \partial_{M}{dA_{\rho}^{K}} + 3 B_{\mu \nu}^{K M} \partial_{M}{dA_{\rho}^{L}} - 3 B_{\mu \nu}^{M N} Y^{K L}_{M P} \partial_{N}{dA_{\rho}^{P}} - 3 B_{\mu \nu}^{K M} Y^{L N}_{M P} \partial_{N}{dA_{\rho}^{P}} - 3 B_{\mu \nu}^{L M} Y^{K N}_{M P} \partial_{N}{dA_{\rho}^{P}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero2\specialcolon{}= 3\, {B}_{\mu \nu}\,^{K L} {\partial}_{M}{{dA}_{\rho}\,^{M}}\,  + 3\, {B}_{\mu \nu}\,^{L M} {\partial}_{M}{{dA}_{\rho}\,^{K}}\,  + 3\, {B}_{\mu \nu}\,^{K M} {\partial}_{M}{{dA}_{\rho}\,^{L}}\,  - 3\, {B}_{\mu \nu}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  - 3\, {B}_{\mu \nu}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\,  - 3\, {B}_{\mu \nu}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{dA}_{\rho}\,^{P}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+difference := T^{\mu \nu \rho} * @(deltaFB) - T^{\mu \nu \rho} * @(dFB) - T^{\mu \nu \rho} * @(Zero1) - T^{\mu \nu \rho} * @(Zero2) :
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+difference\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Zero3 := a * \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} ( \delta^{P}_{N} Y^{K L}_{Q R} - Y^{K L}_{M N} * Y^{M P}_{Q R}):
+@distribute!!(%);
+@sym!(%){_{N}, _{Q}, _{R}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero4 := b * F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} ( \delta^{Q}_{N} Y^{K L}_{M R} - Y^{K L}_{M P} Y^{P Q}_{N R}):
+@distribute!!(%);
+@sym!(%){_{N}, _{M}, _{R}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero5 := c * F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} ( \delta^{N}_{P} Y^{K L}_{S T} - Y^{K L}_{M P} Y^{M N}_{S T}):
+@distribute!!(%);
+@sym!(%){_{P}, _{S}, _{T}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero6 := d * F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} ( \delta^{Q}_{N} Y^{K L}_{M R} - Y^{K L}_{M P} Y^{P Q}_{N R}):
+@distribute!!(%);
+@sym!(%){^{Q}, ^{K}, ^{L}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero7 := e * F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} ( \delta^{N}_{P} Y^{K L}_{S T} - Y^{K L}_{M P} Y^{M N}_{S T}):
+@distribute!!(%);
+@sym!(%){^{N}, ^{K}, ^{L}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+Zero8 := f * \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} ( \delta^{P}_{N} Y^{K L}_{Q R} - Y^{K L}_{M N} * Y^{M P}_{Q R}):
+@distribute!!(%);
+@sym!(%){^{N}, ^{R}, ^{Q}}:
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+dFBLie := T^{\mu \nu \rho} * 
+(3 * D_{\mu}{DB_{\nu \rho}^{K L}} + 1/2 * Y^{K L}_{P Q} * F_{\mu \nu}^{P} DA_{\rho}^{Q} - 3 * \partial_{N}{DC_{\mu \nu \rho}^{N K L}} + 3 * Y^{K L}_{P Q} * \partial_{N}{DC_{\mu \nu \rho}^{Q P N}})
++ T^{\mu \nu \rho} * @(Zero3) + T^{\mu \nu \rho} * @(Zero4) + T^{\mu \nu \rho} * @(Zero5) + T^{\mu \nu \rho} * @(Zero6) + T^{\mu \nu \rho} * @(Zero7);
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+DA_{\mu}^{M} -> D_{\mu}{\Lambda^{M}},
+DB_{\mu \nu}^{M N} -> - 1/6 * Y^{M N}_{K L} \Lambda^{K} F_{\mu \nu}^{L},
+DC_{\mu \nu \rho}^{N K L} -> 1/9 * Y^{K L}_{P Q} \Lambda^{P} F_{\mu \nu \rho}^{Q N},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@sumflatten!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+\partial_{K}{Y^{M N}_{P Q}} -> 0,
+Y^{M N}_{P Q} Y^{P Q}_{K L} -> 6 * Y^{M N}_{K L},
+Y^{M N}_{P Q} \partial_{K}{B_{\mu \nu}^{P Q}} -> 6 * \partial_{K}{B_{\mu \nu}^{M N}},
+D_{\mu}{Y^{K L}_{M N}} -> 0,
+T^{\mu \nu \rho} D_{\mu}{F_{\nu \rho}^{M}} -> - 1/3 * T^{\mu \nu \rho} Y^{M T}_{P Q} \partial_{T}{F_{\mu \nu \rho}^{P Q}},
+Y^{M N}_{P Q} \partial_{K}{F_{\mu \nu \rho}^{P Q}} -> 6 * \partial_{K}{F_{\mu \nu \rho}^{M N}},
+Y^{M N}_{P Q} F_{\mu \nu \rho}^{P Q} -> 6 * F_{\mu \nu \rho}^{M N},
+a -> 1/2,
+d -> 1 - 2 * b - 2 * c,
+b -> 1/2 - c,
+e -> - 1/2,
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% a \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} \delta^{P}_{N} Y^{K L}_{Q R} - a \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} Y^{K L}_{M N} Y^{M P}_{Q R}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero3\specialcolon{}= a {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  {\delta}^{P}\,_{N} {Y}^{K L}\,_{Q R} - a {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 2/3 Y^{K L}_{M N} \Lambda^{M} \partial_{P}{F_{\mu \nu \rho}^{N P}} a + 1/3 Y^{K L}_{M N} \Lambda^{P} \partial_{P}{F_{\mu \nu \rho}^{M N}} a - 2/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} a - 1/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{N} \partial_{P}{F_{\mu \nu \rho}^{Q R}} a
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero3\specialcolon{}= \frac{2}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{M} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N P}}\,  a + \frac{1}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{P} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{M N}}\,  a - \frac{2}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  a - \frac{1}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{N} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{Q R}}\,  a;
+\end{dmath*}
+% orig
+% b F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} \delta^{Q}_{N} Y^{K L}_{M R} - b F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} Y^{K L}_{M P} Y^{P Q}_{N R}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero4\specialcolon{}= b {F}_{\mu \nu \rho}\,^{M N} {\partial}_{Q}{{\Lambda}^{R}}\,  {\delta}^{Q}\,_{N} {Y}^{K L}\,_{M R} - b {F}_{\mu \nu \rho}\,^{M N} {\partial}_{Q}{{\Lambda}^{R}}\,  {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} b + 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} b - 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} b - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} b
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero4\specialcolon{}= \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  b + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  b - \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  b - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  b;
+\end{dmath*}
+% orig
+% c F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} \delta^{N}_{P} Y^{K L}_{S T} - c F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} Y^{K L}_{M P} Y^{M N}_{S T}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero5\specialcolon{}= c {F}_{\mu \nu \rho}\,^{S T} {\partial}_{N}{{\Lambda}^{P}}\,  {\delta}^{N}\,_{P} {Y}^{K L}\,_{S T} - c {F}_{\mu \nu \rho}\,^{S T} {\partial}_{N}{{\Lambda}^{P}}\,  {Y}^{K L}\,_{M P} {Y}^{M N}\,_{S T};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} c + 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} c - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} c - 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} c
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero5\specialcolon{}= \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  c + \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  c - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  c - \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  c;
+\end{dmath*}
+% orig
+% d F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} \delta^{Q}_{N} Y^{K L}_{M R} - d F_{\mu \nu \rho}^{M N} \partial_{Q}{\Lambda^{R}} Y^{K L}_{M P} Y^{P Q}_{N R}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero6\specialcolon{}= d {F}_{\mu \nu \rho}\,^{M N} {\partial}_{Q}{{\Lambda}^{R}}\,  {\delta}^{Q}\,_{N} {Y}^{K L}\,_{M R} - d {F}_{\mu \nu \rho}\,^{M N} {\partial}_{Q}{{\Lambda}^{R}}\,  {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} d + 1/3 F_{\mu \nu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{\Lambda^{P}} d + 1/3 F_{\mu \nu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{\Lambda^{P}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M Q} Y^{L R}_{N P} \partial_{R}{\Lambda^{Q}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M Q} Y^{L Q}_{N R} \partial_{P}{\Lambda^{R}} d
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero6\specialcolon{}= \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M Q} {Y}^{L R}\,_{N P} {\partial}_{R}{{\Lambda}^{Q}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M Q} {Y}^{L Q}\,_{N R} {\partial}_{P}{{\Lambda}^{R}}\,  d;
+\end{dmath*}
+% orig
+% e F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} \delta^{N}_{P} Y^{K L}_{S T} - e F_{\mu \nu \rho}^{S T} \partial_{N}{\Lambda^{P}} Y^{K L}_{M P} Y^{M N}_{S T}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero7\specialcolon{}= e {F}_{\mu \nu \rho}\,^{S T} {\partial}_{N}{{\Lambda}^{P}}\,  {\delta}^{N}\,_{P} {Y}^{K L}\,_{S T} - e {F}_{\mu \nu \rho}\,^{S T} {\partial}_{N}{{\Lambda}^{P}}\,  {Y}^{K L}\,_{M P} {Y}^{M N}\,_{S T};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} e + 1/3 F_{\mu \nu \rho}^{M N} Y^{L P}_{M N} \partial_{P}{\Lambda^{K}} e + 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M N} \partial_{P}{\Lambda^{L}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M N} Y^{L Q}_{P R} \partial_{Q}{\Lambda^{R}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{Q R} Y^{L Q}_{M N} \partial_{P}{\Lambda^{R}} e
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero7\specialcolon{}= \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  e + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{L P}\,_{M N} {\partial}_{P}{{\Lambda}^{K}}\,  e + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M N} {\partial}_{P}{{\Lambda}^{L}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M N} {Y}^{L Q}\,_{P R} {\partial}_{Q}{{\Lambda}^{R}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{Q R} {Y}^{L Q}\,_{M N} {\partial}_{P}{{\Lambda}^{R}}\,  e;
+\end{dmath*}
+% orig
+% f \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} \delta^{P}_{N} Y^{K L}_{Q R} - f \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} Y^{K L}_{M N} Y^{M P}_{Q R}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero8\specialcolon{}= f {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  {\delta}^{P}\,_{N} {Y}^{K L}\,_{Q R} - f {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+% 2/3 Y^{K L}_{M N} \Lambda^{M} \partial_{P}{F_{\mu \nu \rho}^{N P}} f + 1/3 Y^{K L}_{M N} \Lambda^{P} \partial_{P}{F_{\mu \nu \rho}^{M N}} f - 2/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} f - 1/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{N} \partial_{P}{F_{\mu \nu \rho}^{Q R}} f
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Zero8\specialcolon{}= \frac{2}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{M} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N P}}\,  f + \frac{1}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{P} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{M N}}\,  f - \frac{2}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  f - \frac{1}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{N} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{Q R}}\,  f;
+\end{dmath*}
+% orig
+% T^{\mu \nu \rho} (3 D_{\mu}{DB_{\nu \rho}^{K L}} + 1/2 Y^{K L}_{P Q} F_{\mu \nu}^{P} DA_{\rho}^{Q} - 3 \partial_{N}{DC_{\mu \nu \rho}^{N K L}} + 3 Y^{K L}_{P Q} \partial_{N}{DC_{\mu \nu \rho}^{Q P N}}) + T^{\mu \nu \rho} (2/3 Y^{K L}_{M N} \Lambda^{M} \partial_{P}{F_{\mu \nu \rho}^{N P}} a + 1/3 Y^{K L}_{M N} \Lambda^{P} \partial_{P}{F_{\mu \nu \rho}^{M N}} a - 2/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{Q} \partial_{P}{F_{\mu \nu \rho}^{N R}} a - 1/3 Y^{K L}_{M N} Y^{M P}_{Q R} \Lambda^{N} \partial_{P}{F_{\mu \nu \rho}^{Q R}} a) + T^{\mu \nu \rho} (2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} b + 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} b - 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} b - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} b) + T^{\mu \nu \rho} (1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} c + 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} c - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} c - 2/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} c) + T^{\mu \nu \rho} (1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} \partial_{N}{\Lambda^{P}} d + 1/3 F_{\mu \nu \rho}^{K M} Y^{L N}_{M P} \partial_{N}{\Lambda^{P}} d + 1/3 F_{\mu \nu \rho}^{L M} Y^{K N}_{M P} \partial_{N}{\Lambda^{P}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M P} Y^{P Q}_{N R} \partial_{Q}{\Lambda^{R}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M Q} Y^{L R}_{N P} \partial_{R}{\Lambda^{Q}} d - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M Q} Y^{L Q}_{N R} \partial_{P}{\Lambda^{R}} d) + T^{\mu \nu \rho} (1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{M N} \partial_{P}{\Lambda^{P}} e + 1/3 F_{\mu \nu \rho}^{M N} Y^{L P}_{M N} \partial_{P}{\Lambda^{K}} e + 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M N} \partial_{P}{\Lambda^{L}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K L}_{P Q} Y^{P R}_{M N} \partial_{R}{\Lambda^{Q}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{M N} Y^{L Q}_{P R} \partial_{Q}{\Lambda^{R}} e - 1/3 F_{\mu \nu \rho}^{M N} Y^{K P}_{Q R} Y^{L Q}_{M N} \partial_{P}{\Lambda^{R}} e)
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFBLie\specialcolon{}= {T}^{\mu \nu \rho} (3\, {D}_{\mu}{{DB}_{\nu \rho}\,^{K L}}\,  + \frac{1}{2}\, {Y}^{K L}\,_{P Q} {F}_{\mu \nu}\,^{P} {DA}_{\rho}\,^{Q} - 3\, {\partial}_{N}{{DC}_{\mu \nu \rho}\,^{N K L}}\,  + 3\, {Y}^{K L}\,_{P Q} {\partial}_{N}{{DC}_{\mu \nu \rho}\,^{Q P N}}\, ) + {T}^{\mu \nu \rho} (\frac{2}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{M} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N P}}\,  a + \frac{1}{3}\, {Y}^{K L}\,_{M N} {\Lambda}^{P} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{M N}}\,  a - \frac{2}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{Q} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{N R}}\,  a - \frac{1}{3}\, {Y}^{K L}\,_{M N} {Y}^{M P}\,_{Q R} {\Lambda}^{N} {\partial}_{P}{{F}_{\mu \nu \rho}\,^{Q R}}\,  a) + {T}^{\mu \nu \rho} (\frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  b + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  b - \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  b - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  b) + {T}^{\mu \nu \rho} (\frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  c + \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  c - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  c - \frac{2}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  c) + {T}^{\mu \nu \rho} (\frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{K M} {Y}^{L N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{L M} {Y}^{K N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M P} {Y}^{P Q}\,_{N R} {\partial}_{Q}{{\Lambda}^{R}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M Q} {Y}^{L R}\,_{N P} {\partial}_{R}{{\Lambda}^{Q}}\,  d - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M Q} {Y}^{L Q}\,_{N R} {\partial}_{P}{{\Lambda}^{R}}\,  d) + {T}^{\mu \nu \rho} (\frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{M N} {\partial}_{P}{{\Lambda}^{P}}\,  e + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{L P}\,_{M N} {\partial}_{P}{{\Lambda}^{K}}\,  e + \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M N} {\partial}_{P}{{\Lambda}^{L}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K L}\,_{P Q} {Y}^{P R}\,_{M N} {\partial}_{R}{{\Lambda}^{Q}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{M N} {Y}^{L Q}\,_{P R} {\partial}_{Q}{{\Lambda}^{R}}\,  e - \frac{1}{3}\, {F}_{\mu \nu \rho}\,^{M N} {Y}^{K P}\,_{Q R} {Y}^{L Q}\,_{M N} {\partial}_{P}{{\Lambda}^{R}}\,  e);
+\end{dmath*}
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% orig
+% T^{\mu \nu \rho} \Lambda^{M} \partial_{M}{F_{\mu \nu \rho}^{K L}} + F_{\mu \nu \rho}^{K M} T^{\mu \nu \rho} Y^{L N}_{M P} \partial_{N}{\Lambda^{P}} + F_{\mu \nu \rho}^{L M} T^{\mu \nu \rho} Y^{K N}_{M P} \partial_{N}{\Lambda^{P}} - F_{\mu \nu \rho}^{L M} T^{\mu \nu \rho} \partial_{M}{\Lambda^{K}} - F_{\mu \nu \rho}^{K M} T^{\mu \nu \rho} \partial_{M}{\Lambda^{L}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+dFBLie\specialcolon{}= {T}^{\mu \nu \rho} {\Lambda}^{M} {\partial}_{M}{{F}_{\mu \nu \rho}\,^{K L}}\,  + {F}_{\mu \nu \rho}\,^{K M} {T}^{\mu \nu \rho} {Y}^{L N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  + {F}_{\mu \nu \rho}\,^{L M} {T}^{\mu \nu \rho} {Y}^{K N}\,_{M P} {\partial}_{N}{{\Lambda}^{P}}\,  - {F}_{\mu \nu \rho}\,^{L M} {T}^{\mu \nu \rho} {\partial}_{M}{{\Lambda}^{K}}\,  - {F}_{\mu \nu \rho}\,^{K M} {T}^{\mu \nu \rho} {\partial}_{M}{{\Lambda}^{L}}\, ;
+\end{dmath*}
+\end{document}
