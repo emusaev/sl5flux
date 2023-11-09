@@ -1,0 +1,314 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=sl5fund, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=sl5flat, position=independent).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Indices(name=sl5rep10, position=independent).
+{\mu,\nu,\mu#,\nu#}::Indices(name=gl7curved, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Integer(1..10).
+{\mu,\nu,\mu#,\nu#}::Integer(1..7).
+
+T^{\alpha}_{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+T^{\alpha}_{A B}::TableauSymmetry(shape={1,1}, indices={1,2}).
+A_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+M^{M N K L}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{\nu \mu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{\nu \mu}^{A B}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{A B C}^{D}::TableauSymmetry(shape={1,1}, indices={0,1}).
+G_{A B C}^{D}::TableauSymmetry(shape={1,1}, indices={0,1}).
+\Lambda^{M N}::AntiSymmetric.
+\Lambda^{A B}::AntiSymmetric.
+g_{\mu \nu}::Symmetric.
+
+\partial{#}::Derivative.
+D{#}::Derivative.
+d{#}::PartialDerivative.
+\delta{#}::KroneckerDelta.
+
+{\delta_{A}^{B}, E_{A}^{K}, E^{B}_{L}, M^{L M N P}, T^{\alpha}_{K M},  \partial_{\alpha}{\partial_{\beta}{\xi^{\mu}}}, \partial_{\alpha}{E_{A}^{K}}}::SortOrder.
+
+\partial{#}::WeightInherit(label=all, type=Additive):
+\nabla{#}::WeightInherit(label=all, type=Additive):
+d{#}::WeightInherit(label=all, type=Additive):
+
+{\xi^{\mu}, \xi_{\mu}}::Weight(label=xi, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\alpha,\; \beta,\; \gamma,\; \delta,\; \alpha\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${M}^{M N K L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\nu \mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\nu \mu}\,^{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{A B C}\,^{D}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${G}_{A B C}\,^{D}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\Lambda}^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\Lambda}^{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $d{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{{\delta}_{A}\,^{B},\; {E}_{A}\,^{K},\; {E}^{B}\,_{L},\; {M}^{L M N P},\; {T}^{\alpha}\,_{K M},\; {\partial}_{\alpha}{{\partial}_{\beta}{{\xi}^{\mu}}\, }\, ,\; {\partial}_{\alpha}{{E}_{A}\,^{K}}\, \}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\nabla(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $d{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Weight to ${\xi}^{\mu}$, ${\xi}_{\mu}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+# Here generalized vielbeins E are in SL(5) x R   !
+F := 1/2 E_{A}^{K} E_{B}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{C}^{M}} E^{E}_{M} + 1/2 E_{B}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{A}^{M}} E^{E}_{M}
+               - 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{A}^{E} - 1/4 E_{B}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{C}^{E}
+             + 1/4 E_{A}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{C}^{E} + 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{B}^{E}
+              - 1/2 E_{A}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{B}^{M}} E^{E}_{M};
+\end{verbatim}}
+% orig
+% 1/2 E_{A}^{K} E_{B}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{C}^{M}} E^{E}_{M} + 1/2 E_{B}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{A}^{M}} E^{E}_{M} - 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{A}^{E} - 1/4 E_{B}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{C}^{E} + 1/4 E_{A}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{C}^{E} + 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{B}^{E} - 1/2 E_{A}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{B}^{M}} E^{E}_{M}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{L} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{E}_{C}\,^{M}}\,  {E}^{E}\,_{M} + \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{L} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{E}_{A}\,^{M}}\,  {E}^{E}\,_{M} - \frac{1}{2}\, {E}_{C}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\delta}_{A}\,^{E} - \frac{1}{4}\, {E}_{B}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\delta}_{C}\,^{E} + \frac{1}{4}\, {E}_{A}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\delta}_{C}\,^{E} + \frac{1}{2}\, {E}_{C}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\delta}_{B}\,^{E} - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{L} {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{E}_{B}\,^{M}}\,  {E}^{E}\,_{M};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@vary(%)(
+E^{A}_{N} -> \xi^{\nu} E^{B}_{N} F_{\nu B}^{A} - 1/14 * \xi^{\nu} E^{A}_{N} G_{\nu} - 1/14 * E^{A}_{N} D_{\mu}{\xi^{\mu}},
+E_{B}^{K} -> - \xi^{\nu} E_{A}^{K} F_{\nu B}^{A} + 1/14 * \xi^{\nu} E_{B}^{K} G_{\nu} + 1/14 * E_{B}^{K} D_{\mu}{\xi^{\mu}},
+#   here  e**(-1) D_{\nu}{e} -> F_{\mu \nu}^{\nu} - F_{\mu} -> G_{\mu}
+#E^{A}_{N} -> \xi^{\nu} E^{B}_{N} F_{\nu B}^{A} - 1/14 * \xi^{\nu} E^{A}_{N} e**(-1) D_{\nu}{e} - 1/14 * E^{A}_{N} D_{\mu}{\xi^{\mu}},
+#E_{B}^{K} -> - \xi^{\nu} E_{A}^{K} F_{\nu B}^{A} + 1/14 * \xi^{\nu} E_{B}^{K} e**(-1) D_{\nu}{e} + 1/14 * E_{B}^{K} D_{\mu}{\xi^{\mu}},
+#E^{A}_{N} -> \xi^{\nu} E^{B}_{N} F_{\nu B}^{A} + 1/5 * \xi^{\nu} E^{A}_{N} E**(-1) D_{\nu}{E} - 1/14 * E^{A}_{N} D_{\mu}{\xi^{\mu}},
+#E_{B}^{K} -> - \xi^{\nu} E_{A}^{K} F_{\nu B}^{A} - 1/5 * \xi^{\nu} E_{B}^{K} E**(-1) D_{\nu}{E} + 1/14 * E_{B}^{K} D_{\mu}{\xi^{\mu}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@canonicalise!!(%):
+@rename_dummies!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+E_{A}^{M} E^{A}_{N} -> \delta_{N}^{M},
+E_{A}^{M} E^{B}_{M} -> \delta_{A}^{B},
+\partial_{\alpha}{T^{\beta}_{M N}} -> 0,
+):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+@substitute!!(%)(
+\partial_{\alpha}{\xi^{\mu}} -> 0,
+\partial_{\alpha \beta}{\xi^{\mu}} -> 0,
+D_{\nu}{\xi^{\mu}} -> 0,
+);
+@factor_out!(%){F_{\mu A}^{B}, G_{\mu}};
+\end{verbatim}}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% orig
+% 1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/14 E_{A}^{K} E_{B}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/14 D_{\mu}{\xi^{\mu}} E_{A}^{K} E_{B}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} - 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} - 1/2 E_{A}^{M} E_{B}^{N} F_{\mu C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/2 E_{A}^{K} E_{B}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu C}^{E}} \xi^{\mu} + 1/28 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} G_{\mu} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{D_{\mu}{\xi^{\mu}}} + 1/2 E_{A}^{K} E_{B}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 E_{B}^{K} E_{C}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 D_{\mu}{\xi^{\mu}} E_{B}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} - 1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} F_{\mu A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/2 E_{B}^{K} E_{C}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{E}} \xi^{\mu} + 1/28 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} G_{\mu} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{D_{\mu}{\xi^{\mu}}} + 1/2 E_{B}^{K} E_{C}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 E_{D}^{M} F_{\mu C}^{D} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 E_{C}^{M} G_{\mu} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 D_{\mu}{\xi^{\mu}} \delta_{A}^{E} E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} + 1/2 E_{C}^{M} E_{D}^{N} F_{\mu B}^{D} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/2 E_{C}^{M} F_{\mu B}^{D} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 \delta_{A}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} + 1/28 E_{B}^{M} E_{C}^{N} G_{\mu} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/4 E_{D}^{M} F_{\mu B}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/28 E_{B}^{M} G_{\mu} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/28 D_{\mu}{\xi^{\mu}} \delta_{C}^{E} E_{B}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} + 1/4 E_{B}^{M} E_{D}^{N} F_{\mu A}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/4 E_{B}^{M} F_{\mu A}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 \delta_{C}^{E} E_{B}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} + 1/28 E_{A}^{M} E_{B}^{N} G_{\mu} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/4 E_{D}^{M} F_{\mu A}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/28 E_{A}^{M} G_{\mu} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/28 D_{\mu}{\xi^{\mu}} \delta_{C}^{E} E_{A}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} - 1/4 E_{A}^{M} E_{D}^{N} F_{\mu B}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/4 E_{A}^{M} F_{\mu B}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/4 \delta_{C}^{E} E_{A}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} - 1/2 E_{D}^{M} F_{\mu C}^{D} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 E_{C}^{M} G_{\mu} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 D_{\mu}{\xi^{\mu}} \delta_{B}^{E} E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} - 1/2 E_{C}^{M} E_{D}^{N} F_{\mu A}^{D} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/2 E_{C}^{M} F_{\mu A}^{D} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 \delta_{B}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/28 E_{A}^{M} E_{C}^{N} G_{\mu} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{D_{\mu}{\xi^{\mu}}} - 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 E_{A}^{K} E_{C}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 D_{\mu}{\xi^{\mu}} E_{A}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} + 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} F_{\mu B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} + 1/2 E_{A}^{K} E_{C}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{E}} \xi^{\mu} - 1/28 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} G_{\mu} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}} - 1/2 E_{A}^{K} E_{C}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= \frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {D}_{\mu}{{\xi}^{\mu}}\,  {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu C}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{28}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {G}_{\mu} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{D}_{\mu}{{\xi}^{\mu}}\, }\,  + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {D}_{\mu}{{\xi}^{\mu}}\,  {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {F}_{\mu A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{28}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {G}_{\mu} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\, %
+ + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{D}_{\mu}{{\xi}^{\mu}}\, }\,  + \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{D\, }\,^{M} {F}_{\mu C}\,^{D\, } {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{C}\,^{M} {G}_{\mu} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {D}_{\mu}{{\xi}^{\mu}}\,  {\delta}_{A}\,^{E} {E}_{C}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  + \frac{1}{2}\, {E}_{C}\,^{M} {E}_{D\, }\,^{N} {F}_{\mu B}\,^{D\, } {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  + \frac{1}{2}\, {E}_{C}\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {\delta}_{A}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{28}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {G}_{\mu} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  + \frac{1}{4}\, {E}_{D\, }\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{28}\, {E}_{B}\,^{M} {G}_{\mu} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{28}\, {D}_{\mu}{{\xi}^{\mu}}\,  {\delta}_{C}\,^{E} {E}_{B}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  + \frac{1}{4}\, {E}_{B}\,^{M} {E}_{D\, }\,^{N} {F}_{\mu A}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  + \frac{1}{4}\, {E}_{B}\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{B}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{28}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {G}_{\mu} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{4}\, {E}_{D\, }\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{28}\, {E}_{A}\,^{M} {G}_{\mu} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{28}\, {D}_{\mu}{{\xi}^{\mu}}\,  {\delta}_{C}\,^{E} {E}_{A}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\, %
+ - \frac{1}{4}\, {E}_{A}\,^{M} {E}_{D\, }\,^{N} {F}_{\mu B}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{4}\, {E}_{A}\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{D\, }\,^{M} {F}_{\mu C}\,^{D\, } {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{C}\,^{M} {G}_{\mu} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {D}_{\mu}{{\xi}^{\mu}}\,  {\delta}_{B}\,^{E} {E}_{C}\,^{M} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  - \frac{1}{2}\, {E}_{C}\,^{M} {E}_{D\, }\,^{N} {F}_{\mu A}\,^{D\, } {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{2}\, {E}_{C}\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {\delta}_{B}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{28}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {G}_{\mu} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{D}_{\mu}{{\xi}^{\mu}}\, }\,  - \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {D}_{\mu}{{\xi}^{\mu}}\,  {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {F}_{\mu B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\,  + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{E}}\,  {\xi}^{\mu} - \frac{1}{28}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {G}_{\mu} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{\xi}^{\mu}}\, %
+ - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu};
+\end{dmath*}
+% orig
+% 1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/14 E_{A}^{K} E_{B}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} - 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} - 1/2 E_{A}^{K} E_{B}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu C}^{E}} \xi^{\mu} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 E_{A}^{K} E_{B}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 E_{B}^{K} E_{C}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 E_{B}^{K} E_{C}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{E}} \xi^{\mu} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 E_{B}^{K} E_{C}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 E_{D}^{M} F_{\mu C}^{D} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 E_{C}^{M} G_{\mu} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/2 E_{C}^{M} F_{\mu B}^{D} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 \delta_{A}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} + 1/4 E_{D}^{M} F_{\mu B}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/28 E_{B}^{M} G_{\mu} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/4 E_{B}^{M} F_{\mu A}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 \delta_{C}^{E} E_{B}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/4 E_{D}^{M} F_{\mu A}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/28 E_{A}^{M} G_{\mu} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/4 E_{A}^{M} F_{\mu B}^{D} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/4 \delta_{C}^{E} E_{A}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} - 1/2 E_{D}^{M} F_{\mu C}^{D} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/14 E_{C}^{M} G_{\mu} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 E_{C}^{M} F_{\mu A}^{D} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 \delta_{B}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} - 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} F_{\mu A}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/14 E_{A}^{K} E_{C}^{M} E^{E}_{N} G_{\mu} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} F_{\mu C}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/2 E_{A}^{K} E_{C}^{M} E^{E}_{N} F_{\mu B}^{D} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{E}} \xi^{\mu} - 1/2 E_{A}^{K} E_{C}^{M} E^{D}_{N} F_{\mu D}^{E} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= \frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu C}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{D\, }\,^{M} {F}_{\mu C}\,^{D\, } {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{C}\,^{M} {G}_{\mu} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{C}\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {\delta}_{A}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{4}\, {E}_{D\, }\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu}%
+ - \frac{1}{28}\, {E}_{B}\,^{M} {G}_{\mu} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {E}_{B}\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{B}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{4}\, {E}_{D\, }\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{28}\, {E}_{A}\,^{M} {G}_{\mu} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {E}_{A}\,^{M} {F}_{\mu B}\,^{D\, } {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{D\, }\,^{M} {F}_{\mu C}\,^{D\, } {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{C}\,^{M} {G}_{\mu} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{C}\,^{M} {F}_{\mu A}\,^{D\, } {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {\delta}_{B}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu A}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {G}_{\mu} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {F}_{\mu C}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {F}_{\mu B}\,^{D\, } {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{E}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {F}_{\mu D\, }\,^{E} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu};
+\end{dmath*}
+% orig
+% F_{\mu A}^{D} (1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} - 1/2 E_{B}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 E_{B}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/4 E_{D}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 E_{C}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}) + F_{\mu B}^{D} ( - 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 E_{C}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 E_{C}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 E_{D}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/4 E_{A}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 E_{A}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu}) + F_{\mu C}^{D} ( - 1/2 E_{A}^{K} E_{B}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 E_{B}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 E_{D}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 E_{D}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 E_{A}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}) + F_{\mu D}^{E} (1/2 E_{A}^{K} E_{B}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 E_{B}^{K} E_{C}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 E_{A}^{K} E_{C}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}) + G_{\mu} (1/14 E_{A}^{K} E_{B}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/14 E_{B}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/14 E_{C}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/28 E_{B}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/28 E_{A}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/14 E_{C}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/14 E_{A}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu}) - 1/2 E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu C}^{E}} \xi^{\mu} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{E}} \xi^{\mu} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 \delta_{A}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} + 1/4 \delta_{C}^{E} E_{B}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/4 \delta_{C}^{E} E_{A}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} - 1/2 \delta_{B}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{E}} \xi^{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= {F}_{\mu A}\,^{D\, } (\frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {E}_{B}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {E}_{D\, }\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{C}\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu}) + {F}_{\mu B}\,^{D\, } ( - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{C}\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {E}_{D\, }\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {E}_{A}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu}) + {F}_{\mu C}\,^{D\, } ( - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{D\, }\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{D\, }\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu}) + {F}_{\mu D\, }\,^{E} (\frac{1}{2}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu}) + {G}_{\mu} (\frac{1}{14}\, {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{C}\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{28}\, {E}_{B}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{28}\, {E}_{A}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {E}_{C}\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu}) - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu C}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {\delta}_{A}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{B}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{2}\, {\delta}_{B}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{E}}\,  {\xi}^{\mu};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@distribute!!(%):
+diffeo := @(F) + F_{\mu A}^{D} F_{B D C}^{E} \xi^{\mu} - F_{\mu A}^{D} G_{B D C}^{E} \xi^{\mu}
+                      - F_{\mu B}^{D} F_{A D C}^{E} \xi^{\mu} + F_{\mu B}^{D} G_{A D C}^{E} \xi^{\mu}
+                      - F_{\mu C}^{D} F_{A B D}^{E} \xi^{\mu} + F_{\mu C}^{D} G_{A B D}^{E} \xi^{\mu}
+                      + F_{\mu D}^{E} F_{A B C}^{D} \xi^{\mu} - F_{\mu D}^{E} G_{A B C}^{D} \xi^{\mu}
+                      + 1/7 * G_{\mu} F_{A B C}^{E} \xi^{\mu} - 1/7 * G_{\mu} G_{A B C}^{E} \xi^{\mu};
+@substitute!!(%)(
+G_{\nu A}^{B} -> E_{A}^{M} \partial_{\nu}{E^{B}_{M}}
+     - 1/2 * E_{A}^{M} A_{\nu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{E^{B}_{M}}
+              - E_{A}^{M} E^{B}_{L} T^{\alpha}_{M K} \partial_{\alpha}{A_{\nu}^{L K}}
+     + 1/4 * \delta_{A}^{B} T^{\alpha}_{K L} \partial_{\alpha}{A_{\nu}^{K L}}
+   + 1/14 * \delta_{A}^{B} e**(-1) \partial_{\nu}{e}
+    - 1/28 * \delta_{A}^{B} e**(-1) A_{\nu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{e}
+    - 7/5 * 1/28 * \delta_{A}^{B} T^{\alpha}_{M N} \partial_{\alpha}{A_{\nu}^{M N}},
+G_{A B C}^{E} -> 1/2 E_{A}^{K} E_{B}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{C}^{M}} E^{E}_{M} + 1/2 E_{B}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{A}^{M}} E^{E}_{M}
+               - 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{A}^{E} - 1/4 E_{B}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{C}^{E}
+             + 1/4 E_{A}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \delta_{C}^{E} + 1/2 E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \delta_{B}^{E}
+              - 1/2 E_{A}^{K} E_{C}^{L} T^{\alpha}_{K L} \partial_{\alpha}{E_{B}^{M}} E^{E}_{M},
+):
+@distribute!!(%):
+@substitute!!(%)(
+E_{A}^{M} E^{A}_{N} -> \delta_{N}^{M},
+E_{A}^{M} E^{B}_{M} -> \delta_{A}^{B},
+\partial_{\alpha}{T^{\beta}_{M N}} -> 0,
+\partial_{\nu}{D_{\mu}{\xi^{\mu}}} -> D_{\nu}{D_{\mu}{\xi^{\mu}}} + 1/2 * A_{\nu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{D_{\mu}{\xi^{\mu}}},
+\partial_{\nu}{\xi^{\mu}} -> D_{\nu}{\xi^{\mu}} + 1/2 * A_{\nu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{\xi^{\mu}},
+\partial_{\nu}{F_{\mu A}^{B}} -> D_{\nu}{F_{\mu A}^{B}} + 1/2 * A_{\nu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{B}},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_factors!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+% 1/2 F_{\mu A}^{D} E_{B}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} - 1/2 F_{\mu A}^{D} E_{B}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 F_{\mu A}^{D} E_{B}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/4 F_{\mu A}^{D} E_{D}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 F_{\mu A}^{D} E_{C}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 F_{\mu A}^{D} E_{C}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 F_{\mu B}^{D} E_{A}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 F_{\mu B}^{D} E_{C}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 F_{\mu B}^{D} E_{C}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/4 F_{\mu B}^{D} E_{D}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/4 F_{\mu B}^{D} E_{A}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} + 1/2 F_{\mu B}^{D} E_{A}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 F_{\mu C}^{D} E_{A}^{K} E_{B}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{D}^{N}} \xi^{\mu} - 1/2 F_{\mu C}^{D} E_{B}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 F_{\mu C}^{D} E_{D}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 F_{\mu C}^{D} E_{D}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/2 F_{\mu C}^{D} E_{A}^{K} E_{D}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/2 F_{\mu D}^{E} E_{A}^{K} E_{B}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/2 F_{\mu D}^{E} E_{B}^{K} E_{C}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/2 F_{\mu D}^{E} E_{A}^{K} E_{C}^{M} E^{D}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/14 G_{\mu} E_{A}^{K} E_{B}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{C}^{N}} \xi^{\mu} + 1/14 G_{\mu} E_{B}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/14 G_{\mu} E_{C}^{M} \delta_{A}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/28 G_{\mu} E_{B}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} + 1/28 G_{\mu} E_{A}^{M} \delta_{C}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} + 1/14 G_{\mu} E_{C}^{M} \delta_{B}^{E} T^{\alpha}_{M N} \partial_{\alpha}{E_{A}^{N}} \xi^{\mu} - 1/14 G_{\mu} E_{A}^{K} E_{C}^{M} E^{E}_{N} T^{\alpha}_{K M} \partial_{\alpha}{E_{B}^{N}} \xi^{\mu} - 1/2 E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu C}^{E}} \xi^{\mu} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{E}} \xi^{\mu} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 \delta_{A}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} + 1/4 \delta_{C}^{E} E_{B}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/4 \delta_{C}^{E} E_{A}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} - 1/2 \delta_{B}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{E}} \xi^{\mu} + F_{\mu A}^{D} F_{B D C}^{E} \xi^{\mu} - F_{\mu A}^{D} G_{B D C}^{E} \xi^{\mu} - F_{\mu B}^{D} F_{A D C}^{E} \xi^{\mu} + F_{\mu B}^{D} G_{A D C}^{E} \xi^{\mu} - F_{\mu C}^{D} F_{A B D}^{E} \xi^{\mu} + F_{\mu C}^{D} G_{A B D}^{E} \xi^{\mu} + F_{\mu D}^{E} F_{A B C}^{D} \xi^{\mu} - F_{\mu D}^{E} G_{A B C}^{D} \xi^{\mu} + 1/7 G_{\mu} F_{A B C}^{E} \xi^{\mu} - 1/7 G_{\mu} G_{A B C}^{E} \xi^{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+diffeo\specialcolon{}= \frac{1}{2}\, {F}_{\mu A}\,^{D\, } {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu A}\,^{D\, } {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {F}_{\mu A}\,^{D\, } {E}_{B}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {F}_{\mu A}\,^{D\, } {E}_{D\, }\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu A}\,^{D\, } {E}_{C}\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu A}\,^{D\, } {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu B}\,^{D\, } {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu B}\,^{D\, } {E}_{C}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu B}\,^{D\, } {E}_{C}\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{4}\, {F}_{\mu B}\,^{D\, } {E}_{D\, }\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{4}\, {F}_{\mu B}\,^{D\, } {E}_{A}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu B}\,^{D\, } {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu C}\,^{D\, } {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu C}\,^{D\, } {E}_{B}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu C}\,^{D\, } {E}_{D\, }\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {F}_{\mu C}\,^{D\, } {E}_{D\, }\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu C}\,^{D\, } {E}_{A}\,^{K} {E}_{D\, }\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu D\, }\,^{E} {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{2}\, {F}_{\mu D\, }\,^{E} {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu}%
+ - \frac{1}{2}\, {F}_{\mu D\, }\,^{E} {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{D\, }\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {G}_{\mu} {E}_{A}\,^{K} {E}_{B}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{C}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {G}_{\mu} {E}_{B}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {G}_{\mu} {E}_{C}\,^{M} {\delta}_{A}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{28}\, {G}_{\mu} {E}_{B}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{28}\, {G}_{\mu} {E}_{A}\,^{M} {\delta}_{C}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} + \frac{1}{14}\, {G}_{\mu} {E}_{C}\,^{M} {\delta}_{B}\,^{E} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{14}\, {G}_{\mu} {E}_{A}\,^{K} {E}_{C}\,^{M} {E}^{E}\,_{N} {T}^{\alpha}\,_{K M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu C}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {\delta}_{A}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{B}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{2}\, {\delta}_{B}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{E}}\,  {\xi}^{\mu} + {F}_{\mu A}\,^{D\, } {F}_{B D\,  C}\,^{E} {\xi}^{\mu} - {F}_{\mu A}\,^{D\, } {G}_{B D\,  C}\,^{E} {\xi}^{\mu}%
+ - {F}_{\mu B}\,^{D\, } {F}_{A D\,  C}\,^{E} {\xi}^{\mu} + {F}_{\mu B}\,^{D\, } {G}_{A D\,  C}\,^{E} {\xi}^{\mu} - {F}_{\mu C}\,^{D\, } {F}_{A B D\, }\,^{E} {\xi}^{\mu} + {F}_{\mu C}\,^{D\, } {G}_{A B D\, }\,^{E} {\xi}^{\mu} + {F}_{\mu D\, }\,^{E} {F}_{A B C}\,^{D\, } {\xi}^{\mu} - {F}_{\mu D\, }\,^{E} {G}_{A B C}\,^{D\, } {\xi}^{\mu} + \frac{1}{7}\, {G}_{\mu} {F}_{A B C}\,^{E} {\xi}^{\mu} - \frac{1}{7}\, {G}_{\mu} {G}_{A B C}\,^{E} {\xi}^{\mu};
+\end{dmath*}
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_factors: not applicable.
+% End TeX comment
+% orig
+%  - 1/2 E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu C}^{E}} \xi^{\mu} + 1/14 \delta_{C}^{E} E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} - 1/2 E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{E}} \xi^{\mu} + 1/14 \delta_{A}^{E} E_{B}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 \delta_{A}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} + 1/4 \delta_{C}^{E} E_{B}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/4 \delta_{C}^{E} E_{A}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{D}} \xi^{\mu} - 1/2 \delta_{B}^{E} E_{C}^{M} E_{D}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu A}^{D}} \xi^{\mu} - 1/14 \delta_{B}^{E} E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{G_{\mu}} \xi^{\mu} + 1/2 E_{A}^{M} E_{C}^{N} T^{\alpha}_{M N} \partial_{\alpha}{F_{\mu B}^{E}} \xi^{\mu} + F_{\mu A}^{D} F_{B D C}^{E} \xi^{\mu} - F_{\mu B}^{D} F_{A D C}^{E} \xi^{\mu} - F_{\mu C}^{D} F_{A B D}^{E} \xi^{\mu} + F_{\mu D}^{E} F_{A B C}^{D} \xi^{\mu} + 1/7 F_{A B C}^{E} G_{\mu} \xi^{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+diffeo\specialcolon{}=  - \frac{1}{2}\, {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu C}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{B}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} - \frac{1}{2}\, {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{E}}\,  {\xi}^{\mu} + \frac{1}{14}\, {\delta}_{A}\,^{E} {E}_{B}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {\delta}_{A}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} + \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{B}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{4}\, {\delta}_{C}\,^{E} {E}_{A}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{2}\, {\delta}_{B}\,^{E} {E}_{C}\,^{M} {E}_{D\, }\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu A}\,^{D\, }}\,  {\xi}^{\mu} - \frac{1}{14}\, {\delta}_{B}\,^{E} {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{G}_{\mu}}\,  {\xi}^{\mu} + \frac{1}{2}\, {E}_{A}\,^{M} {E}_{C}\,^{N} {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{\mu B}\,^{E}}\,  {\xi}^{\mu} + {F}_{\mu A}\,^{D\, } {F}_{B D\,  C}\,^{E} {\xi}^{\mu} - {F}_{\mu B}\,^{D\, } {F}_{A D\,  C}\,^{E} {\xi}^{\mu} - {F}_{\mu C}\,^{D\, } {F}_{A B D\, }\,^{E} {\xi}^{\mu} + {F}_{\mu D\, }\,^{E} {F}_{A B C}\,^{D\, } {\xi}^{\mu} + \frac{1}{7}\, {F}_{A B C}\,^{E} {G}_{\mu} {\xi}^{\mu};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} -> T^{\alpha}_{A B},
+T^{\alpha}_{A B} \partial_{\alpha}{A??} -> \partial_{A B}{A??},
+\xi^{\mu} -> 1,
+);
+\end{verbatim}}
+% orig
+%  - 1/2 \partial_{A B}{F_{\mu C}^{E}} + 1/14 \delta_{C}^{E} \partial_{A B}{G_{\mu}} - 1/2 \partial_{B C}{F_{\mu A}^{E}} + 1/14 \delta_{A}^{E} \partial_{B C}{G_{\mu}} + 1/2 \delta_{A}^{E} \partial_{C D}{F_{\mu B}^{D}} + 1/4 \delta_{C}^{E} \partial_{B D}{F_{\mu A}^{D}} - 1/4 \delta_{C}^{E} \partial_{A D}{F_{\mu B}^{D}} - 1/2 \delta_{B}^{E} \partial_{C D}{F_{\mu A}^{D}} - 1/14 \delta_{B}^{E} \partial_{A C}{G_{\mu}} + 1/2 \partial_{A C}{F_{\mu B}^{E}} + F_{\mu A}^{D} F_{B D C}^{E} - F_{\mu B}^{D} F_{A D C}^{E} - F_{\mu C}^{D} F_{A B D}^{E} + F_{\mu D}^{E} F_{A B C}^{D} + 1/7 F_{A B C}^{E} G_{\mu}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+diffeo\specialcolon{}=  - \frac{1}{2}\, {\partial}_{A B}{{F}_{\mu C}\,^{E}}\,  + \frac{1}{14}\, {\delta}_{C}\,^{E} {\partial}_{A B}{{G}_{\mu}}\,  - \frac{1}{2}\, {\partial}_{B C}{{F}_{\mu A}\,^{E}}\,  + \frac{1}{14}\, {\delta}_{A}\,^{E} {\partial}_{B C}{{G}_{\mu}}\,  + \frac{1}{2}\, {\delta}_{A}\,^{E} {\partial}_{C D\, }{{F}_{\mu B}\,^{D\, }}\,  + \frac{1}{4}\, {\delta}_{C}\,^{E} {\partial}_{B D\, }{{F}_{\mu A}\,^{D\, }}\,  - \frac{1}{4}\, {\delta}_{C}\,^{E} {\partial}_{A D\, }{{F}_{\mu B}\,^{D\, }}\,  - \frac{1}{2}\, {\delta}_{B}\,^{E} {\partial}_{C D\, }{{F}_{\mu A}\,^{D\, }}\,  - \frac{1}{14}\, {\delta}_{B}\,^{E} {\partial}_{A C}{{G}_{\mu}}\,  + \frac{1}{2}\, {\partial}_{A C}{{F}_{\mu B}\,^{E}}\,  + {F}_{\mu A}\,^{D\, } {F}_{B D\,  C}\,^{E} - {F}_{\mu B}\,^{D\, } {F}_{A D\,  C}\,^{E} - {F}_{\mu C}\,^{D\, } {F}_{A B D\, }\,^{E} + {F}_{\mu D\, }\,^{E} {F}_{A B C}\,^{D\, } + \frac{1}{7}\, {F}_{A B C}\,^{E} {G}_{\mu};
+\end{dmath*}
+\end{document}

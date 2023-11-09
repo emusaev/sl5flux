@@ -1,0 +1,518 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=sl5fund, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=sl5flat, position=independent).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Indices(name=sl5rep10, position=independent).
+{\mu,\nu,\mu#,\nu#}::Indices(name=gl7curved, position=independent).
+{a,b,c,d,a#,b#}::Indices(name=gl7flat, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Integer(1..10).
+{\mu,\nu,\mu#,\nu#}::Integer(1..7).
+{a,b,c,d,a#,b#}::Integer(1..7).
+
+T^{\alpha}_{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+A_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+F_{M N a}^{b}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{M N}::AntiSymmetric.
+F_{a b}^{c}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{a b}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={0,1}).
+F_{\mu \nu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={0,1}).
+F_{\mu \nu}^{A B}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={0,1}).
+g_{\mu \nu}::Symmetric.
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+\delta{#}::KroneckerDelta.
+
+{k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, T^{\alpha}_{K M},
+\delta_{a}^{b}, \delta_{\mu}^{\nu}, e_{a}^{\mu}, e^{a}_{\mu}, F_{A B}, F_{M N}, F_{\mu \nu}^{A B}, F_{a b}^{c}, F_{M N a}^{b}, E^{A}_{M}, E_{A}^{M}, A_{\mu}^{M N},
+\partial_{\alpha}{e_{\mu}^{a}}, \partial_{\alpha}{A_{\mu}^{M N}}, \partial_{\nu}{e_{\mu}^{a}}, \partial_{\nu}{A_{\mu}^{M N}}, 
+\partial_{\alpha}{\partial_{\beta}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\beta}{A_{\mu}^{M N}}},
+\partial_{\alpha}{\partial_{\nu}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\nu}{A_{\mu}^{M N}}}, 
+D_{\mu}{D_{\nu}{e^{\mu1}_{a}}},\partial_{\alpha}{E_{D}^{N}}}::SortOrder.
+
+#\partial{#}::WeightInherit(label=all, type=Additive):
+
+#::Weight(label=K, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\alpha,\; \beta,\; \gamma,\; \delta,\; \alpha\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{a,\; b,\; c,\; d,\; a\#,\; b\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $a$, $b$, $c$, $d$, $a\#$, $b\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{M N a}\,^{b}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${F}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{a b}\,^{c}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{a b}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\mu \nu}\,^{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{k0,\; k1,\; k2,\; k3,\; k4,\; k5,\; k6,\; k7,\; k8,\; k9,\; k10,\; k11,\; k12,\; k13,\; {T}^{\alpha}\,_{K M},\; {\delta}_{a}\,^{b},\; {\delta}_{\mu}\,^{\nu},\; {e}_{a}\,^{\mu},\; {e}^{a}\,_{\mu},\; {F}_{A B},\; {F}_{M N},\; {F}_{\mu \nu}\,^{A B},\; {F}_{a b}\,^{c},\; {F}_{M N a}\,^{b},\; {E}^{A}\,_{M},\; {E}_{A}\,^{M},\; {A}_{\mu}\,^{M N},\; {\partial}_{\alpha}{{e}_{\mu}\,^{a}}\, ,\; {\partial}_{\alpha}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\nu}{{e}_{\mu}\,^{a}}\, ,\; {\partial}_{\nu}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha \beta}{{e}_{\mu}\,^{a}}\, ,\; {\partial}_{\alpha \beta}{{A}_{\mu}\,^{M N}}\, ,\; {\partial}_{\alpha \nu}{{e}_{\mu}\,^{a}}\, ,\; {\partial}_{\alpha \nu}{{A}_{\mu}\,^{M N}}\, ,\; {D}_{\mu}{{D}_{\nu}{{e}^{\mu1}\,_{a}}\, }\, ,\; {\partial}_{\alpha}{{E}_{D\, }\,^{N}}\, \}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+BIFmu := - 2 * e^{\mu}_{a} D_{\mu}{G_{b}} 
+                   - 7/10 * T^{\alpha}_{M N} \partial_{\alpha}{F_{a b}^{M N}}
+                   - 7/10 * F_{a b}^{M N} F_{M N}
+                             - F_{a b}^{c} G_{c}
+                   + 7/5 * F_{M N a}^{c} F_{b c}^{M N}:
+@asym!(%){_{a}, _{b}}:
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+%  - e^{\mu}_{a} D_{\mu}{G_{b}} + e^{\mu}_{b} D_{\mu}{G_{a}} - 7/10 T^{\alpha}_{M N} \partial_{\alpha}{F_{a b}^{M N}} - 7/10 F_{a b}^{M N} F_{M N} - F_{a b}^{c} G_{c} + 7/10 F_{M N a}^{c} F_{b c}^{M N} - 7/10 F_{M N b}^{c} F_{a c}^{M N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}=  - {e}^{\mu}\,_{a} {D}_{\mu}{{G}_{b}}\,  + {e}^{\mu}\,_{b} {D}_{\mu}{{G}_{a}}\,  - \frac{7}{10}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{a b}\,^{M N}}\,  - \frac{7}{10}\, {F}_{a b}\,^{M N} {F}_{M N} - {F}_{a b}\,^{c} {G}_{c} + \frac{7}{10}\, {F}_{M N a}\,^{c} {F}_{b c}\,^{M N} - \frac{7}{10}\, {F}_{M N b}\,^{c} {F}_{a c}\,^{M N};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+D_{\mu}{F_{b}} -> \partial_{\mu}{F_{b}} - 1/2 * A_{\mu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{F_{b}}
+                                                 + 1/10 * F_{b} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{K L}},
+D_{\mu}{G_{b}} -> \partial_{\mu}{G_{b}} - 1/2 * A_{\mu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{G_{b}}
+                                                 + 1/10 * G_{b} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{K L}},
+):
+@substitute!!(%)(
+F_{a b}^{M N} -> e^{\mu}_{a} e^{\nu}_{b} F_{\mu \nu}^{M N},
+F_{\mu \nu}^{M N} -> \partial_{\mu}{A_{\nu}^{M N}} - \partial_{\nu}{A_{\mu}^{M N}}
+- 1/4 A_{\mu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{A_{\nu}^{M N}} + 1/4 A_{\nu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{M N}}
+- 1/2 A_{\nu}^{N K} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{M L}} + 1/2 A_{\nu}^{M K} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{N L}}
+- 1/4 A_{\nu}^{M N} T^{\alpha}_{K L} \partial_{\alpha}{A_{\mu}^{K L}} + 1/2 A_{\mu}^{N K} T^{\alpha}_{K L} \partial_{\alpha}{A_{\nu}^{M L}}
+- 1/2 A_{\mu}^{M K} T^{\alpha}_{K L} \partial_{\alpha}{A_{\nu}^{N L}} + 1/4 A_{\mu}^{M N} T^{\alpha}_{K L} \partial_{\alpha}{A_{\nu}^{K L}},
+# B term from F_{\mu \nu}^{M N} gives zero due to section constraint
+F_{M N a}^{b} -> e^{\mu}_{a} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{b}} - 1/7 * \delta_{a}^{b} e^{\mu}_{c} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{c}},
+F_{M N} -> e^{\mu}_{c} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{c}},
+F_{a b}^{c} -> e^{\mu}_{a} e^{\nu}_{b} D_{\mu}{e_{\nu}^{c}} - e^{\mu}_{b} e^{\nu}_{a} D_{\mu}{e_{\nu}^{c}},
+F_{a} -> D_{\mu}{e^{\mu}_{a}},
+G_{a} -> e^{\mu}_{a} e^{\nu}_{c} D_{\mu}{e_{\nu}^{c}},
+D_{\mu1}{e^{\mu}_{a}} -> - e^{\mu}_{b} e^{\nu}_{a} D_{\mu1}{e_{\nu}^{b}},
+D_{\mu}{e_{\nu}^{b}} -> \partial_{\mu}{e_{\nu}^{b}} 
+                                           - 1/2 * A_{\mu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{e_{\nu}^{b}} - 1/10 * e_{\nu}^{b} T^{\alpha}_{M N} \partial_{\alpha}{A_{\mu}^{M N}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{e^{\mu}_{a}} -> - e^{\mu}_{b} e^{\nu}_{a} \partial_{\alpha}{e_{\nu}^{b}},
+\partial_{\mu1}{e^{\mu}_{a}} -> - e^{\mu}_{b} e^{\nu}_{a} \partial_{\mu1}{e_{\nu}^{b}},
+\partial_{\mu}{\delta_{a}^{b}} -> 0,
+\partial_{\mu}{T^{\alpha}_{M N}} -> 0,
+\partial_{\alpha}{\delta_{a}^{b}} -> 0,
+\partial_{\alpha}{T^{\beta}_{M N}} -> 0,
+e^{\mu}_{a} e_{\mu}^{b} -> \delta_{a}^{b},
+e^{\mu}_{a} e_{\nu}^{a} -> \delta_{\nu}^{\mu},
+D_{\mu}{e_{\nu}^{b}} -> \partial_{\mu}{e_{\nu}^{b}} 
+                                           - 1/2 * A_{\mu}^{M N} T^{\alpha}_{M N} \partial_{\alpha}{e_{\nu}^{b}} - 1/10 * e_{\nu}^{b} T^{\alpha}_{M N} \partial_{\alpha}{A_{\mu}^{M N}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@substitute!!(%)(
+\partial_{\alpha}{e^{\mu}_{a}} -> - e^{\mu}_{b} e^{\nu}_{a} \partial_{\alpha}{e_{\nu}^{b}},
+\partial_{\mu1}{e^{\mu}_{a}} -> - e^{\mu}_{b} e^{\nu}_{a} \partial_{\mu1}{e_{\nu}^{b}},
+\partial_{\mu}{\delta_{a}^{b}} -> 0,
+\partial_{\mu}{T^{\alpha}_{M N}} -> 0,
+\partial_{\alpha}{\delta_{a}^{b}} -> 0,
+\partial_{\alpha}{T^{\beta}_{M N}} -> 0,
+e^{\mu}_{a} e_{\mu}^{b} -> \delta_{a}^{b},
+e^{\mu}_{a} e_{\nu}^{a} -> \delta_{\nu}^{\mu},
+):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% orig
+%  - 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\beta}{e_{\mu1}^{c}} \partial_{\alpha}{A_{\nu}^{M N}} e^{\mu}_{a} e^{\nu}_{b} e^{\mu1}_{c} - 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\alpha}{e_{\mu1}^{c}} \partial_{\beta}{A_{\nu}^{M N}} e^{\mu}_{a} e^{\nu}_{b} e^{\mu1}_{c} - 7/20 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\alpha \beta}{A_{\nu}^{M N}} e^{\mu}_{a} e^{\nu}_{b} + 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\alpha}{e_{\mu1}^{c}} \partial_{\beta}{A_{\nu}^{M N}} e^{\nu}_{a} e^{\mu}_{b} e^{\mu1}_{c} + 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\beta}{e_{\mu1}^{c}} \partial_{\alpha}{A_{\nu}^{M N}} e^{\nu}_{a} e^{\mu}_{b} e^{\mu1}_{c} + 7/20 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K L} \partial_{\alpha \beta}{A_{\nu}^{M N}} e^{\nu}_{a} e^{\mu}_{b} - 7/10 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K M} \partial_{\alpha \beta}{A_{\nu}^{L N}} e^{\nu}_{a} e^{\mu}_{b} + 7/10 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K M} \partial_{\alpha \beta}{A_{\nu}^{L N}} e^{\mu}_{a} e^{\nu}_{b} - 1/2 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K M} \partial_{\alpha}{e_{\mu1}^{c}} \partial_{\beta}{A_{\nu}^{L N}} e^{\nu}_{a} e^{\mu}_{b} e^{\mu1}_{c} + 1/2 T^{\alpha}_{K L} T^{\beta}_{M N} A_{\mu}^{K M} \partial_{\alpha}{e_{\mu1}^{c}} \partial_{\beta}{A_{\nu}^{L N}} e^{\mu}_{a} e^{\nu}_{b} e^{\mu1}_{c}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}=  - \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\beta}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} {e}^{\mu1}\,_{c} - \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} {e}^{\mu1}\,_{c} - \frac{7}{20}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\alpha \beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} + \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\alpha}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} {e}^{\mu1}\,_{c} + \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\beta}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\alpha}{{A}_{\nu}\,^{M N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} {e}^{\mu1}\,_{c} + \frac{7}{20}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K L} {\partial}_{\alpha \beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} - \frac{7}{10}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K M} {\partial}_{\alpha \beta}{{A}_{\nu}\,^{L N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} + \frac{7}{10}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K M} {\partial}_{\alpha \beta}{{A}_{\nu}\,^{L N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} - \frac{1}{2}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K M} {\partial}_{\alpha}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{L N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} {e}^{\mu1}\,_{c} + \frac{1}{2}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} {A}_{\mu}\,^{K M} {\partial}_{\alpha}{{e}_{\mu1}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{L N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} {e}^{\mu1}\,_{c};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@factor_out!(%){\partial_{\alpha}{e_{\mu}^{a}}, \partial_{\alpha}{A_{\mu}^{M N}}, \partial_{\nu}{e_{\mu}^{a}}, \partial_{\nu}{A_{\mu}^{M N}}, 
+\partial_{\alpha}{\partial_{\beta}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\beta}{A_{\mu}^{M N}}},
+\partial_{\alpha}{\partial_{\nu}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\nu}{A_{\mu}^{M N}}}, \delta_{a}^{b}, e^{\mu}_{a}, A_{\mu}^{M N}}:
+@distribute!!(%):
+@rename_dummies!(%):
+@collect_terms!!(%):
+@factor_out!(%){\partial_{\alpha}{e_{\mu}^{a}}, \partial_{\alpha}{A_{\mu}^{M N}}, \partial_{\nu}{e_{\mu}^{a}}, \partial_{\nu}{A_{\mu}^{M N}}, 
+\partial_{\alpha}{\partial_{\beta}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\beta}{A_{\mu}^{M N}}},
+\partial_{\alpha}{\partial_{\nu}{e_{\mu}^{a}}}, \partial_{\alpha}{\partial_{\nu}{A_{\mu}^{M N}}}, \delta_{a}^{b}, e^{\mu}_{a}, A_{\mu}^{M N}};
+\end{verbatim}}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% \partial_{\alpha \beta}{A_{\mu}^{M N}} e^{\mu}_{a} e^{\nu}_{b} A_{\nu}^{K L} ( - 7/10 T^{\alpha}_{K M} T^{\beta}_{L N} + 7/20 T^{\alpha}_{K L} T^{\beta}_{M N}) + \partial_{\alpha \beta}{A_{\mu}^{M N}} e^{\nu}_{a} e^{\mu}_{b} A_{\nu}^{K L} (7/10 T^{\alpha}_{K M} T^{\beta}_{L N} - 7/20 T^{\alpha}_{K L} T^{\beta}_{M N}) + \partial_{\alpha}{e_{\mu}^{c}} \partial_{\beta}{A_{\nu}^{M N}} e^{\mu1}_{a} e^{\nu}_{b} e^{\mu}_{c} A_{\mu1}^{K L} (1/2 T^{\alpha}_{K M} T^{\beta}_{L N} - 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} - 1/8 T^{\beta}_{K L} T^{\alpha}_{M N}) + \partial_{\alpha}{e_{\mu}^{c}} \partial_{\beta}{A_{\nu}^{M N}} e^{\nu}_{a} e^{\mu1}_{b} e^{\mu}_{c} A_{\mu1}^{K L} ( - 1/2 T^{\alpha}_{K M} T^{\beta}_{L N} + 1/8 T^{\alpha}_{K L} T^{\beta}_{M N} + 1/8 T^{\beta}_{K L} T^{\alpha}_{M N})
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}= {\partial}_{\alpha \beta}{{A}_{\mu}\,^{M N}}\,  {e}^{\mu}\,_{a} {e}^{\nu}\,_{b} {A}_{\nu}\,^{K L} ( - \frac{7}{10}\, {T}^{\alpha}\,_{K M} {T}^{\beta}\,_{L N} + \frac{7}{20}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N}) + {\partial}_{\alpha \beta}{{A}_{\mu}\,^{M N}}\,  {e}^{\nu}\,_{a} {e}^{\mu}\,_{b} {A}_{\nu}\,^{K L} (\frac{7}{10}\, {T}^{\alpha}\,_{K M} {T}^{\beta}\,_{L N} - \frac{7}{20}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N}) + {\partial}_{\alpha}{{e}_{\mu}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\mu1}\,_{a} {e}^{\nu}\,_{b} {e}^{\mu}\,_{c} {A}_{\mu1}\,^{K L} (\frac{1}{2}\, {T}^{\alpha}\,_{K M} {T}^{\beta}\,_{L N} - \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} - \frac{1}{8}\, {T}^{\beta}\,_{K L} {T}^{\alpha}\,_{M N}) + {\partial}_{\alpha}{{e}_{\mu}\,^{c}}\,  {\partial}_{\beta}{{A}_{\nu}\,^{M N}}\,  {e}^{\nu}\,_{a} {e}^{\mu1}\,_{b} {e}^{\mu}\,_{c} {A}_{\mu1}\,^{K L} ( - \frac{1}{2}\, {T}^{\alpha}\,_{K M} {T}^{\beta}\,_{L N} + \frac{1}{8}\, {T}^{\alpha}\,_{K L} {T}^{\beta}\,_{M N} + \frac{1}{8}\, {T}^{\beta}\,_{K L} {T}^{\alpha}\,_{M N});
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+# Here we rewrite this BI through the fluxes for 'rectangle' vielbein E (in SL(5) x R+)
+BIFmu := - 2 * e_{a}^{\mu} D_{\mu}{G_{b}} 
+                   - 7/10 * T^{\alpha}_{M N} \partial_{\alpha}{F_{a b}^{M N}}
+                   - 7/10 * F_{a b}^{M N} F_{M N}
+                             - F_{a b}^{c} G_{c}
+                   + 7/5 * F_{M N a}^{c} F_{b c}^{M N}:
+@asym!(%){_{a}, _{b}}:
+@substitute!!(%)(
+F_{a A}^{B} -> FE_{a A}^{B} - 1/5 * \delta_{A}^{B} FE_{a C}^{C},
+G_{a} -> coef * FE_{a A}^{A},
+F_{a b}^{M N} -> e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B},
+FE_{a A}^{B} -> e_{a}^{\mu} FE_{\mu A}^{B},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%);
+@prodrule!!(%);
+@distribute!!(%):
+@sumflatten!!(%):
+@substitute!!(%)(
+\partial_{A??}{\delta_{B}^{C}} -> 0,
+\partial_{A??}{coef} -> 0,
+D_{A??}{\delta_{B}^{C}} -> 0,
+D_{A??}{coef} -> 0,
+T^{\alpha}_{M N} \partial_{\alpha}{e_{a}^{\mu}} -> - 1/7 * e_{a}^{\mu} F_{M N} - e_{b}^{\mu} F_{M N a}^{b}
+):
+@distribute!!(%):
+@substitute!!(%)(
+coef -> - 14/5,
+):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@prodflatten!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_factors!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% orig
+%  - e_{a}^{\mu} D_{\mu}{coef} e_{b}^{\nu} FE_{\nu A}^{A} - e_{a}^{\mu} coef D_{\mu}{e_{b}^{\nu}} FE_{\nu A}^{A} - e_{a}^{\mu} coef e_{b}^{\nu} D_{\mu}{FE_{\nu A}^{A}} + e_{b}^{\mu} D_{\mu}{coef} e_{a}^{\nu} FE_{\nu A}^{A} + e_{b}^{\mu} coef D_{\mu}{e_{a}^{\nu}} FE_{\nu A}^{A} + e_{b}^{\mu} coef e_{a}^{\nu} D_{\mu}{FE_{\nu A}^{A}} - 7/20 T^{\alpha}_{M N} \partial_{\alpha}{e_{a}^{\mu}} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} \partial_{\alpha}{e_{b}^{\nu}} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} \partial_{\alpha}{E_{A}^{M}} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} \partial_{\alpha}{E_{B}^{N}} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} \partial_{\alpha}{F_{\mu \nu}^{A B}} + 7/20 T^{\alpha}_{M N} \partial_{\alpha}{e_{b}^{\mu}} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} \partial_{\alpha}{e_{a}^{\nu}} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} \partial_{\alpha}{E_{A}^{M}} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} \partial_{\alpha}{E_{B}^{N}} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} \partial_{\alpha}{F_{\mu \nu}^{A B}} - 7/20 e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} F_{M N} + 7/20 e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} F_{M N} - 1/2 F_{a b}^{c} coef e_{c}^{\mu} FE_{\mu A}^{A} + 1/2 F_{b a}^{c} coef e_{c}^{\mu} FE_{\mu A}^{A} + 7/10 F_{M N a}^{c} e_{b}^{\mu} e_{c}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/10 F_{M N b}^{c} e_{a}^{\mu} e_{c}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}=  - {e}_{a}\,^{\mu} {D}_{\mu}{coef}\,  {e}_{b}\,^{\nu} {FE}_{\nu A}\,^{A} - {e}_{a}\,^{\mu} coef {D}_{\mu}{{e}_{b}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} - {e}_{a}\,^{\mu} coef {e}_{b}\,^{\nu} {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  + {e}_{b}\,^{\mu} {D}_{\mu}{coef}\,  {e}_{a}\,^{\nu} {FE}_{\nu A}\,^{A} + {e}_{b}\,^{\mu} coef {D}_{\mu}{{e}_{a}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} + {e}_{b}\,^{\mu} coef {e}_{a}\,^{\nu} {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{e}_{a}\,^{\mu}}\,  {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {\partial}_{\alpha}{{e}_{b}\,^{\nu}}\,  {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {\partial}_{\alpha}{{E}_{A}\,^{M}}\,  {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{e}_{b}\,^{\mu}}\,  {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {\partial}_{\alpha}{{e}_{a}\,^{\nu}}\,  {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {\partial}_{\alpha}{{E}_{A}\,^{M}}\,  {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  - \frac{7}{20}\, {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} {F}_{M N} + \frac{7}{20}\, {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} {F}_{M N} - \frac{1}{2}\, {F}_{a b}\,^{c} coef {e}_{c}\,^{\mu} {FE}_{\mu A}\,^{A}%
+ + \frac{1}{2}\, {F}_{b a}\,^{c} coef {e}_{c}\,^{\mu} {FE}_{\mu A}\,^{A} + \frac{7}{10}\, {F}_{M N a}\,^{c} {e}_{b}\,^{\mu} {e}_{c}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{10}\, {F}_{M N b}\,^{c} {e}_{a}\,^{\mu} {e}_{c}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B};
+\end{dmath*}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% orig
+%  - e_{a}^{\mu} D_{\mu}{coef} e_{b}^{\nu} FE_{\nu A}^{A} - e_{a}^{\mu} coef D_{\mu}{e_{b}^{\nu}} FE_{\nu A}^{A} - e_{a}^{\mu} coef e_{b}^{\nu} D_{\mu}{FE_{\nu A}^{A}} + e_{b}^{\mu} D_{\mu}{coef} e_{a}^{\nu} FE_{\nu A}^{A} + e_{b}^{\mu} coef D_{\mu}{e_{a}^{\nu}} FE_{\nu A}^{A} + e_{b}^{\mu} coef e_{a}^{\nu} D_{\mu}{FE_{\nu A}^{A}} - 7/20 T^{\alpha}_{M N} \partial_{\alpha}{e_{a}^{\mu}} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} \partial_{\alpha}{e_{b}^{\nu}} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} \partial_{\alpha}{E_{A}^{M}} E_{B}^{N} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} \partial_{\alpha}{E_{B}^{N}} F_{\mu \nu}^{A B} - 7/20 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} \partial_{\alpha}{F_{\mu \nu}^{A B}} + 7/20 T^{\alpha}_{M N} \partial_{\alpha}{e_{b}^{\mu}} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} \partial_{\alpha}{e_{a}^{\nu}} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} \partial_{\alpha}{E_{A}^{M}} E_{B}^{N} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} \partial_{\alpha}{E_{B}^{N}} F_{\mu \nu}^{A B} + 7/20 T^{\alpha}_{M N} e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} \partial_{\alpha}{F_{\mu \nu}^{A B}} - 7/20 e_{a}^{\mu} e_{b}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} F_{M N} + 7/20 e_{b}^{\mu} e_{a}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} F_{M N} - 1/2 F_{a b}^{c} coef e_{c}^{\mu} FE_{\mu A}^{A} + 1/2 F_{b a}^{c} coef e_{c}^{\mu} FE_{\mu A}^{A} + 7/10 F_{M N a}^{c} e_{b}^{\mu} e_{c}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B} - 7/10 F_{M N b}^{c} e_{a}^{\mu} e_{c}^{\nu} E_{A}^{M} E_{B}^{N} F_{\mu \nu}^{A B}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}=  - {e}_{a}\,^{\mu} {D}_{\mu}{coef}\,  {e}_{b}\,^{\nu} {FE}_{\nu A}\,^{A} - {e}_{a}\,^{\mu} coef {D}_{\mu}{{e}_{b}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} - {e}_{a}\,^{\mu} coef {e}_{b}\,^{\nu} {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  + {e}_{b}\,^{\mu} {D}_{\mu}{coef}\,  {e}_{a}\,^{\nu} {FE}_{\nu A}\,^{A} + {e}_{b}\,^{\mu} coef {D}_{\mu}{{e}_{a}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} + {e}_{b}\,^{\mu} coef {e}_{a}\,^{\nu} {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{e}_{a}\,^{\mu}}\,  {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {\partial}_{\alpha}{{e}_{b}\,^{\nu}}\,  {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {\partial}_{\alpha}{{E}_{A}\,^{M}}\,  {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {F}_{\mu \nu}\,^{A B} - \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{e}_{b}\,^{\mu}}\,  {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {\partial}_{\alpha}{{e}_{a}\,^{\nu}}\,  {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {\partial}_{\alpha}{{E}_{A}\,^{M}}\,  {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  {F}_{\mu \nu}\,^{A B} + \frac{7}{20}\, {T}^{\alpha}\,_{M N} {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  - \frac{7}{20}\, {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} {F}_{M N} + \frac{7}{20}\, {e}_{b}\,^{\mu} {e}_{a}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} {F}_{M N} - \frac{1}{2}\, {F}_{a b}\,^{c} coef {e}_{c}\,^{\mu} {FE}_{\mu A}\,^{A}%
+ + \frac{1}{2}\, {F}_{b a}\,^{c} coef {e}_{c}\,^{\mu} {FE}_{\mu A}\,^{A} + \frac{7}{10}\, {F}_{M N a}\,^{c} {e}_{b}\,^{\mu} {e}_{c}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B} - \frac{7}{10}\, {F}_{M N b}\,^{c} {e}_{a}\,^{\mu} {e}_{c}\,^{\nu} {E}_{A}\,^{M} {E}_{B}\,^{N} {F}_{\mu \nu}\,^{A B};
+\end{dmath*}
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_factors: not applicable.
+% End TeX comment
+% orig
+% 14/5 e_{a}^{\mu} D_{\mu}{e_{b}^{\nu}} FE_{\nu A}^{A} + 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\mu} e_{b}^{\nu} - 14/5 e_{b}^{\mu} D_{\mu}{e_{a}^{\nu}} FE_{\nu A}^{A} - 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\nu} e_{b}^{\mu} - 1/2 e_{a}^{\mu} e_{b}^{\nu} F_{M N} F_{\mu \nu}^{A B} E_{A}^{M} E_{B}^{N} + 7/10 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} F_{\mu \nu}^{A B} E_{B}^{M} \partial_{\alpha}{E_{A}^{N}} - 7/10 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} F_{\mu \nu}^{A B} E_{A}^{M} \partial_{\alpha}{E_{B}^{N}} - 7/10 T^{\alpha}_{M N} e_{a}^{\mu} e_{b}^{\nu} \partial_{\alpha}{F_{\mu \nu}^{A B}} E_{A}^{M} E_{B}^{N} + 14/5 e_{c}^{\mu} F_{a b}^{c} FE_{\mu A}^{A}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}= \frac{14}{5}\, {e}_{a}\,^{\mu} {D}_{\mu}{{e}_{b}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} + \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} - \frac{14}{5}\, {e}_{b}\,^{\mu} {D}_{\mu}{{e}_{a}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} - \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\nu} {e}_{b}\,^{\mu} - \frac{1}{2}\, {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {F}_{M N} {F}_{\mu \nu}\,^{A B} {E}_{A}\,^{M} {E}_{B}\,^{N} + \frac{7}{10}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {F}_{\mu \nu}\,^{A B} {E}_{B}\,^{M} {\partial}_{\alpha}{{E}_{A}\,^{N}}\,  - \frac{7}{10}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {F}_{\mu \nu}\,^{A B} {E}_{A}\,^{M} {\partial}_{\alpha}{{E}_{B}\,^{N}}\,  - \frac{7}{10}\, {T}^{\alpha}\,_{M N} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  {E}_{A}\,^{M} {E}_{B}\,^{N} + \frac{14}{5}\, {e}_{c}\,^{\mu} {F}_{a b}\,^{c} {FE}_{\mu A}\,^{A};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+E_{A}^{M} E^{A}_{N} -> \delta_{N}^{M},
+E_{A}^{M} E^{B}_{M} -> \delta_{A}^{B},
+F_{\nu \mu}^{K L} T^{\alpha}_{K L} \partial_{\alpha}{E_{A}^{M}} ->
+      2 * F_{\nu \mu}^{C D} F_{C D A}^{B} E_{B}^{M} + 2 * F_{\nu \mu}^{C D} E_{A}^{L} T^{\alpha}_{L K} \partial_{\alpha}{E_{C}^{M} E_{D}^{K}}
+                                                    - 1/2 * F_{\nu \mu}^{C D} E_{A}^{M} T^{\alpha}_{K L} \partial_{\alpha}{E_{C}^{K} E_{D}^{L}},
+\partial_{\alpha}{F_{\nu \mu}^{K L}} -> \partial_{\alpha}{F_{\nu \mu}^{C D} E_{C}^{K} E_{D}^{L}} ,
+\theta_{A B} -> 1/5 * F_{A B C}^{C},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@sumflatten!!(%):
+@substitute!!(%)(
+E_{A}^{M} E^{A}_{N} -> \delta_{N}^{M},
+E_{A}^{M} E^{B}_{M} -> \delta_{A}^{B},
+):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@substitute!!(%)(
+F_{\nu \mu}^{C D} E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} ->
+      - 5/14 * F_{\nu \mu}^{M N} e**(-1) T^{\alpha}_{M N} \partial_{\alpha}{e} + 10 * F_{\nu \mu}^{C D} \theta_{C D},
+F_{\nu \mu}^{D C} E_{C}^{M} T^{\alpha}_{M N} \partial_{\alpha}{E_{D}^{N}} ->
+      5/14 * F_{\nu \mu}^{M N} e**(-1) T^{\alpha}_{M N} \partial_{\alpha}{e} - 10 * F_{\nu \mu}^{C D} \theta_{C D},
+E -> e**(-5/14),
+e**(-1) T^{\alpha}_{M N} \partial_{\alpha}{e} -> F_{M N},
+E_{A}^{M} E_{B}^{N} F_{M N} -> F_{A B},
+E_{A}^{M} E_{B}^{N} T^{\alpha}_{M N} -> T^{\alpha}_{A B},
+E_{A}^{M} E_{B}^{N} F_{M N a}^{c} -> F_{A B a}^{c},
+\theta_{A B} -> 1/5 * F_{A B C}^{C},
+F_{\mu \nu}^{M N} F_{M N} -> F_{\mu \nu}^{A B} F_{A B},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodsort!!(%):
+@prodflatten!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_factors!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@sumflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@substitute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@eliminate\_kr: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_factors: not applicable.
+% End TeX comment
+% orig
+% 14/5 e_{a}^{\mu} D_{\mu}{e_{b}^{\nu}} FE_{\nu A}^{A} + 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\mu} e_{b}^{\nu} - 14/5 e_{b}^{\mu} D_{\mu}{e_{a}^{\nu}} FE_{\nu A}^{A} - 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\nu} e_{b}^{\mu} - 14/5 F_{A B C}^{C} e_{a}^{\mu} e_{b}^{\nu} F_{\mu \nu}^{A B} - 7/10 T^{\alpha}_{A B} e_{a}^{\mu} e_{b}^{\nu} \partial_{\alpha}{F_{\mu \nu}^{A B}} + 14/5 e_{c}^{\mu} F_{a b}^{c} FE_{\mu A}^{A}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}= \frac{14}{5}\, {e}_{a}\,^{\mu} {D}_{\mu}{{e}_{b}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} + \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} - \frac{14}{5}\, {e}_{b}\,^{\mu} {D}_{\mu}{{e}_{a}\,^{\nu}}\,  {FE}_{\nu A}\,^{A} - \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\nu} {e}_{b}\,^{\mu} - \frac{14}{5}\, {F}_{A B C}\,^{C} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {F}_{\mu \nu}\,^{A B} - \frac{7}{10}\, {T}^{\alpha}\,_{A B} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\,  + \frac{14}{5}\, {e}_{c}\,^{\mu} {F}_{a b}\,^{c} {FE}_{\mu A}\,^{A};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+F_{a b}^{c} -> e^{c}_{\nu} e_{b}^{\mu} D_{\mu}{e_{a}^{\nu}} - e_{a}^{\mu} e^{c}_{\nu} D_{\mu}{e_{b}^{\nu}} ,
+):
+@distribute!!(%):
+@substitute!!(%)(
+e_{a}^{\mu} e^{a}_{\nu} -> \delta_{\nu}^{\mu},
+e_{a}^{\mu} e^{b}_{\mu} -> \delta_{a}^{b},
+):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@prodflatten!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_factors!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodflatten: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_factors: not applicable.
+% End TeX comment
+% orig
+% 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\mu} e_{b}^{\nu} - 14/5 D_{\mu}{FE_{\nu A}^{A}} e_{a}^{\nu} e_{b}^{\mu} - 14/5 F_{A B C}^{C} e_{a}^{\mu} e_{b}^{\nu} F_{\mu \nu}^{A B} - 7/10 T^{\alpha}_{A B} e_{a}^{\mu} e_{b}^{\nu} \partial_{\alpha}{F_{\mu \nu}^{A B}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFmu\specialcolon{}= \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} - \frac{14}{5}\, {D}_{\mu}{{FE}_{\nu A}\,^{A}}\,  {e}_{a}\,^{\nu} {e}_{b}\,^{\mu} - \frac{14}{5}\, {F}_{A B C}\,^{C} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {F}_{\mu \nu}\,^{A B} - \frac{7}{10}\, {T}^{\alpha}\,_{A B} {e}_{a}\,^{\mu} {e}_{b}\,^{\nu} {\partial}_{\alpha}{{F}_{\mu \nu}\,^{A B}}\, ;
+\end{dmath*}
+\end{document}
