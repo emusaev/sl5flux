@@ -1,0 +1,241 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=sl5fund, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=sl5flat, position=independent).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Indices(name=sl5rep10, position=independent).
+{\mu,\nu,\mu#,\nu#}::Indices(name=gl7curved, position=independent).
+{a,b,c,d,a#,b#}::Indices(name=gl7flat, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+{\alpha,\beta,\gamma,\delta,\alpha#}::Integer(1..10).
+{\mu,\nu,\mu#,\nu#}::Integer(1..7).
+{a,b,c,d,a#,b#}::Integer(1..7).
+
+T^{\alpha}_{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+T^{\alpha}_{A B}::TableauSymmetry(shape={1,1}, indices={1,2}).
+A_{\mu}^{M N}::TableauSymmetry(shape={1,1}, indices={1,2}).
+M^{M N K L}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{\nu \mu}^{M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{\nu \mu}^{A B}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+F_{M N a}^{b}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{A B a}^{b}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{A B C}^{D}::TableauSymmetry(shape={1,1}, indices={0,1}).
+G_{A B C}^{D}::TableauSymmetry(shape={1,1}, indices={0,1}).
+F_{M N}::AntiSymmetric.
+\Lambda^{M N}::AntiSymmetric.
+\Lambda^{A B}::AntiSymmetric.
+g_{\mu \nu}::Symmetric.
+
+\partial{#}::PartialDerivative.
+D{#}::Derivative.
+d{#}::PartialDerivative.
+\delta{#}::KroneckerDelta.
+
+\partial{#}::WeightInherit(label=all, type=Additive):
+\nabla{#}::WeightInherit(label=all, type=Additive):
+d{#}::WeightInherit(label=all, type=Additive):
+
+{\delta_{a}^{b}, T^{\alpha}_{K M}, e^{\mu}_{a}, e_{\mu}^{a}, \partial_{\alpha}{e^{\mu}_{a}}, \partial_{\alpha}{e_{\mu}^{a}}}::SortOrder.
+
+#::Weight(label=K, value=1):
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\alpha,\; \beta,\; \gamma,\; \delta,\; \alpha\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{\mu,\; \nu,\; \mu\#,\; \nu\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{a,\; b,\; c,\; d,\; a\#,\; b\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $\mu$, $\nu$, $\mu\#$, $\nu\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $a$, $b$, $c$, $d$, $a\#$, $b\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${T}^{\alpha}\,_{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}_{\mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${M}^{M N K L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\nu \mu}\,^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{\nu \mu}\,^{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{M N a}\,^{b}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{A B a}\,^{b}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{A B C}\,^{D}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${G}_{A B C}\,^{D}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${F}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\Lambda}^{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\Lambda}^{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${g}_{\mu \nu}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Derivative to $D{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property PartialDerivative to $d{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\partial{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $\nabla(\#)$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property WeightInherit to $d{\#}\, $.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property SortOrder to $\{{\delta}_{a}\,^{b},\; {T}^{\alpha}\,_{K M},\; {e}^{\mu}\,_{a},\; {e}_{\mu}\,^{a},\; {\partial}_{\alpha}{{e}^{\mu}\,_{a}}\, ,\; {\partial}_{\alpha}{{e}_{\mu}\,^{a}}\, \}$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+# Here generalized vielbeins E are in SL(5) x R   !
+BIFMNmunu :=  - 1/2 F_{M N c}^{b} F_{K L a}^{c} + 1/2 F_{M N a}^{c} F_{K L c}^{b} 
+                     + 1/2 T^{\alpha}_{M N} \partial_{\alpha}{F_{K L a}^{b}} - 1/2 T^{\alpha}_{K L} \partial_{\alpha}{F_{M N a}^{b}};
+\end{verbatim}}
+% orig
+%  - 1/2 F_{M N c}^{b} F_{K L a}^{c} + 1/2 F_{M N a}^{c} F_{K L c}^{b} + 1/2 T^{\alpha}_{M N} \partial_{\alpha}{F_{K L a}^{b}} - 1/2 T^{\alpha}_{K L} \partial_{\alpha}{F_{M N a}^{b}}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFMNmunu\specialcolon{}=  - \frac{1}{2}\, {F}_{M N c}\,^{b} {F}_{K L a}\,^{c} + \frac{1}{2}\, {F}_{M N a}\,^{c} {F}_{K L c}\,^{b} + \frac{1}{2}\, {T}^{\alpha}\,_{M N} {\partial}_{\alpha}{{F}_{K L a}\,^{b}}\,  - \frac{1}{2}\, {T}^{\alpha}\,_{K L} {\partial}_{\alpha}{{F}_{M N a}\,^{b}}\, ;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@substitute!!(%)(
+F_{M N a}^{b} -> e^{\mu}_{a} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{b}} - 1/7 * \delta_{a}^{b} e^{\mu}_{c} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{c}},
+F_{M N} -> e^{\mu}_{c} T^{\alpha}_{M N} \partial_{\alpha}{e_{\mu}^{c}},
+):
+@distribute!!(%):
+@prodrule!!(%):
+@distribute!!(%):
+@prodrule!!(%):
+@substitute!!(%)(
+e^{\mu}_{a} e_{\mu}^{b} -> \delta_{a}^{b},
+e^{\mu}_{a} e_{\nu}^{a} -> \delta_{\nu}^{\mu},
+#F_{M N a}^{a} -> 0,
+\partial_{A??}{\delta_{a}^{b}} -> 0,
+\partial_{A??}{T^{\alpha}_{M N}} -> 0,
+\partial_{\alpha}{e^{\mu}_{a}} -> - e^{\nu}_{a} e^{\mu}_{b} \partial_{\alpha}{e_{\nu}^{b}},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@prodsort!!(%):
+@rename_dummies!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodrule: not applicable.
+% End TeX comment
+% Begin TeX comment
+@distribute: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+BIFMNmunu\specialcolon{}= 0;
+\end{dmath*}
+\end{document}

@@ -1,0 +1,343 @@
+% Cadabra notebook version 1.2
+\documentclass[11pt]{article}
+\usepackage[textwidth=460pt, textheight=660pt]{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{breqn}
+\usepackage{tableaux}
+\def\specialcolon{\mathrel{\mathop{:}}\hspace{-.5em}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\begin{document}
+{\color[named]{Blue}\begin{verbatim}
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Indices(name=sl5fund, position=independent).
+{A,B,C,D,E,F,G,H, A#}::Indices(name=sl5flat, position=independent).
+
+{M,N,K,L,P,Q,R,S,T,U,V, M#}::Integer(1..5).
+{A,B,C,D,E,F,G,H, A#}::Integer(1..5).
+
+d_{M N}::TableauSymmetry(shape={1,1}, indices={0,1}).
+d_{A B}::TableauSymmetry(shape={1,1}, indices={0,1}).
+
+F_{M N K}^{L}::TableauSymmetry(shape={1,1}, indices={0,1}).
+f_{M N K}^{L}::TableauSymmetry(shape={1,1}, indices={0,1}).
+f_{M N}::AntiSymmetric.
+q_{M N}::AntiSymmetric.
+\theta_{M N}::AntiSymmetric.
+Y_{M N}::Symmetric.
+Z_{M N K}^{L}::TableauSymmetry(shape={1,1,1}, indices={0,1,2}).
+\Xi_{M N K}^{L}::TableauSymmetry(shape={1,1}, indices={0,1}).
+A^{K L M N}::TableauSymmetry(shape={1,1}, indices={0,1}, shape={1,1}, indices={2,3}).
+
+\delta{#}::KroneckerDelta.
+\end{verbatim}}
+% Begin TeX comment
+Assigning list property Indices to $\{M,\; N,\; K,\; L,\; P,\; Q,\; R,\; S,\; T,\; U,\; V,\; M\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning list property Indices to $\{A,\; B,\; C,\; D,\; E,\; F,\; G,\; H,\; A\#\}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $M$, $N$, $K$, $L$, $P$, $Q$, $R$, $S$, $T$, $U$, $V$, $M\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Integer to $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $A\#$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${d}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${d}_{A B}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${F}_{M N K}\,^{L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${f}_{M N K}\,^{L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${f}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${q}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property AntiSymmetric to ${\theta}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property Symmetric to ${Y}_{M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${Z}_{M N K}\,^{L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${\Xi}_{M N K}\,^{L}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property TableauSymmetry to ${A}^{K L M N}$.
+\\
+% End TeX comment
+% Begin TeX comment
+Assigning property KroneckerDelta to $\delta(\#)$.
+\\
+% End TeX comment
+{\color[named]{Blue}\begin{verbatim}
+zero1 := 6 * d_{K Q} f_{M N L}^{Q}:
+@asym!(%){_{K}, _{Q}, _{M}, _{N}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+zero2 := - 6 * d_{L Q} f_{M N K}^{Q}:
+@asym!(%){_{L}, _{Q}, _{M}, _{N}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+zero3 := 3 * d_{N P} \Xi_{L M K}^{P}:
+@asym!(%){_{L}, _{M}, _{K}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+zero4 := - 3 * d_{M P} \Xi_{L N K}^{P}:
+@asym!(%){_{L}, _{N}, _{K}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% d_{K P} f_{M N L}^{P} + d_{K M} f_{N P L}^{P} - d_{K N} f_{M P L}^{P} - d_{M P} f_{K N L}^{P} + d_{N P} f_{K M L}^{P} + d_{M N} f_{K P L}^{P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+zero1\specialcolon{}= {d}_{K P} {f}_{M N L}\,^{P} + {d}_{K M} {f}_{N P L}\,^{P} - {d}_{K N} {f}_{M P L}\,^{P} - {d}_{M P} {f}_{K N L}\,^{P} + {d}_{N P} {f}_{K M L}\,^{P} + {d}_{M N} {f}_{K P L}\,^{P};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - d_{L P} f_{M N K}^{P} - d_{L M} f_{N P K}^{P} + d_{L N} f_{M P K}^{P} + d_{M P} f_{L N K}^{P} - d_{N P} f_{L M K}^{P} - d_{M N} f_{L P K}^{P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+zero2\specialcolon{}=  - {d}_{L P} {f}_{M N K}\,^{P} - {d}_{L M} {f}_{N P K}\,^{P} + {d}_{L N} {f}_{M P K}\,^{P} + {d}_{M P} {f}_{L N K}\,^{P} - {d}_{N P} {f}_{L M K}\,^{P} - {d}_{M N} {f}_{L P K}\,^{P};
+\end{dmath*}
+% orig
+% \Xi_{L M K}^{P} d_{N P} + \Xi_{K L M}^{P} d_{N P} - \Xi_{K M L}^{P} d_{N P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+zero3\specialcolon{}= {\Xi}_{L M K}\,^{P} {d}_{N P} + {\Xi}_{K L M}\,^{P} {d}_{N P} - {\Xi}_{K M L}\,^{P} {d}_{N P};
+\end{dmath*}
+% orig
+%  - \Xi_{L N K}^{P} d_{M P} - \Xi_{K L N}^{P} d_{M P} + \Xi_{K N L}^{P} d_{M P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+zero4\specialcolon{}=  - {\Xi}_{L N K}\,^{P} {d}_{M P} - {\Xi}_{K L N}\,^{P} {d}_{M P} + {\Xi}_{K N L}\,^{P} {d}_{M P};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+F := 2 * d_{K Q} f_{M N L}^{Q} - 2 * d_{M Q} f_{K L N}^{Q}:
+@asym!(%){_{K}, _{L}}:
+@asym!(%){_{M}, _{N}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% d_{K P} f_{M N L}^{P} - d_{L P} f_{M N K}^{P} - d_{M P} f_{K L N}^{P} + d_{N P} f_{K L M}^{P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+F\specialcolon{}= {d}_{K P} {f}_{M N L}\,^{P} - {d}_{L P} {f}_{M N K}\,^{P} - {d}_{M P} {f}_{K L N}\,^{P} + {d}_{N P} {f}_{K L M}\,^{P};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+FminusZeros12 := @(F) - @(zero1) - @(zero2):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+FminusZeros1234 := @(FminusZeros12) - @(zero3) - @(zero4):
+@substitute!!(%)(
+f_{M N K}^{L} -> 2/9 * f_{M N} \delta_{K}^{L} + 1/18 * f_{K M} \delta_{N}^{L} - 1/18 * f_{K N} \delta_{M}^{L}
+                             - 1/9 * q_{M N} \delta_{K}^{L} - 5/18 * q_{K M} \delta_{N}^{L} + 5/18 * q_{K N} \delta_{M}^{L}
+                             - 1/4 * Y_{K M} \delta_{N}^{L} + 1/4 * Y_{K N} \delta_{M}^{L}
+                             + Z_{M N K}^{L} + \Xi_{M N K}^{L},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@substitute!!(%)(
+\Xi_{M N K}^{M} -> 0,
+\Xi_{N M K}^{M} -> 0,
+\Xi_{N K M}^{M} -> 0,
+Z_{M N K}^{M} -> 0,
+Z_{N M K}^{M} -> 0,
+Z_{N K M}^{M} -> 0,
+q_{M N} -> 10 * \theta_{M N} - f_{M N},
+):
+@distribute!!(%):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% orig
+%  - d_{M P} f_{K L N}^{P} + d_{N P} f_{K L M}^{P} - d_{K M} f_{N P L}^{P} + d_{K N} f_{M P L}^{P} + d_{M P} f_{K N L}^{P} - d_{N P} f_{K M L}^{P} - d_{M N} f_{K P L}^{P} + d_{L M} f_{N P K}^{P} - d_{L N} f_{M P K}^{P} - d_{M P} f_{L N K}^{P} + d_{N P} f_{L M K}^{P} + d_{M N} f_{L P K}^{P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+FminusZeros12\specialcolon{}=  - {d}_{M P} {f}_{K L N}\,^{P} + {d}_{N P} {f}_{K L M}\,^{P} - {d}_{K M} {f}_{N P L}\,^{P} + {d}_{K N} {f}_{M P L}\,^{P} + {d}_{M P} {f}_{K N L}\,^{P} - {d}_{N P} {f}_{K M L}\,^{P} - {d}_{M N} {f}_{K P L}\,^{P} + {d}_{L M} {f}_{N P K}\,^{P} - {d}_{L N} {f}_{M P K}\,^{P} - {d}_{M P} {f}_{L N K}\,^{P} + {d}_{N P} {f}_{L M K}\,^{P} + {d}_{M N} {f}_{L P K}\,^{P};
+\end{dmath*}
+% orig
+%  - 20/3 \theta_{K L} d_{M N} - 10/3 \theta_{K N} d_{L M} + 10/3 \theta_{L N} d_{K M} - Y_{K N} d_{L M} + Y_{L N} d_{K M} - 3 Z_{K L N}^{P} d_{M P} + 10/3 \theta_{K M} d_{L N} - 10/3 \theta_{L M} d_{K N} + Y_{K M} d_{L N} - Y_{L M} d_{K N} + 3 Z_{K L M}^{P} d_{N P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+FminusZeros1234\specialcolon{}=  - \frac{20}{3}\, {\theta}_{K L} {d}_{M N} - \frac{10}{3}\, {\theta}_{K N} {d}_{L M} + \frac{10}{3}\, {\theta}_{L N} {d}_{K M} - {Y}_{K N} {d}_{L M} + {Y}_{L N} {d}_{K M} - 3\, {Z}_{K L N}\,^{P} {d}_{M P} + \frac{10}{3}\, {\theta}_{K M} {d}_{L N} - \frac{10}{3}\, {\theta}_{L M} {d}_{K N} + {Y}_{K M} {d}_{L N} - {Y}_{L M} {d}_{K N} + 3\, {Z}_{K L M}\,^{P} {d}_{N P};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+VidiluSymmetry := A^{K L M N} @(FminusZeros1234):
+@distribute!!(%):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 20/3 A^{K L M N} \theta_{K L} d_{M N} + 40/3 A^{K L M N} \theta_{K M} d_{L N} + 4 A^{K L M N} Y_{K M} d_{L N} + 6 A^{K L M N} Z_{K L M}^{P} d_{N P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+VidiluSymmetry\specialcolon{}=  - \frac{20}{3}\, {A}^{K L M N} {\theta}_{K L} {d}_{M N} + \frac{40}{3}\, {A}^{K L M N} {\theta}_{K M} {d}_{L N} + 4\, {A}^{K L M N} {Y}_{K M} {d}_{L N} + 6\, {A}^{K L M N} {Z}_{K L M}\,^{P} {d}_{N P};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Check := - 20/3 \theta_{K L} d_{M N} + 40/3 \theta_{K M} d_{L N} + Y_{M K} d_{L N} + 6  Z_{K L M}^{P} d_{N P} + 3 Y_{K M} d_{L N} - Y_{K L} d_{M N};
+@asym!(%){_{K}, _{L}}:
+@asym!(%){_{M}, _{N}}:
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+delta := @(Check) - @(FminusZeros1234):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+%  - 20/3 \theta_{K L} d_{M N} + 40/3 \theta_{K M} d_{L N} + Y_{M K} d_{L N} + 6 Z_{K L M}^{P} d_{N P} + 3 Y_{K M} d_{L N} - Y_{K L} d_{M N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Check\specialcolon{}=  - \frac{20}{3}\, {\theta}_{K L} {d}_{M N} + \frac{40}{3}\, {\theta}_{K M} {d}_{L N} + {Y}_{M K} {d}_{L N} + 6\, {Z}_{K L M}\,^{P} {d}_{N P} + 3\, {Y}_{K M} {d}_{L N} - {Y}_{K L} {d}_{M N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+%  - 20/3 \theta_{K L} d_{M N} + 10/3 \theta_{K M} d_{L N} - 10/3 \theta_{K N} d_{L M} - 10/3 \theta_{L M} d_{K N} + 10/3 \theta_{L N} d_{K M} + Y_{K M} d_{L N} - Y_{K N} d_{L M} - Y_{L M} d_{K N} + Y_{L N} d_{K M} + 3 Z_{K L M}^{P} d_{N P} - 3 Z_{K L N}^{P} d_{M P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Check\specialcolon{}=  - \frac{20}{3}\, {\theta}_{K L} {d}_{M N} + \frac{10}{3}\, {\theta}_{K M} {d}_{L N} - \frac{10}{3}\, {\theta}_{K N} {d}_{L M} - \frac{10}{3}\, {\theta}_{L M} {d}_{K N} + \frac{10}{3}\, {\theta}_{L N} {d}_{K M} + {Y}_{K M} {d}_{L N} - {Y}_{K N} {d}_{L M} - {Y}_{L M} {d}_{K N} + {Y}_{L N} {d}_{K M} + 3\, {Z}_{K L M}\,^{P} {d}_{N P} - 3\, {Z}_{K L N}\,^{P} {d}_{M P};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% orig
+% 0
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+delta\specialcolon{}= 0;
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+Simply := := - 20/3 \theta_{K L} d_{M N} + 40/3 \theta_{K M} d_{L N} + Y_{M K} d_{L N} + 6  Z_{K L M}^{P} d_{N P} + 3 Y_{K M} d_{L N} - Y_{K L} d_{M N};
+@substitute!!(%)(
+Z_{M N K}^{L} -> 2/3 * F_{M N K}^{L} - 10/9 * \theta_{M N} \delta^{L}_{K} + 10/9 * \theta_{M K} \delta^{L}_{N} + 10/9 * \theta_{K N} \delta^{L}_{M}
+   - 1/3 * \delta^{L}_{M} Y_{N K} + 1/3 * \delta^{L}_{N} Y_{M K},
+):
+@distribute!!(%):
+@eliminate_kr!!(%):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%):
+@rename_dummies!(%):
+@prodsort!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% orig
+%  - 20/3 \theta_{K L} d_{M N} + 40/3 \theta_{K M} d_{L N} + Y_{M K} d_{L N} + 6 Z_{K L M}^{P} d_{N P} + 3 Y_{K M} d_{L N} - Y_{K L} d_{M N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Simply\specialcolon{}=  - \frac{20}{3}\, {\theta}_{K L} {d}_{M N} + \frac{40}{3}\, {\theta}_{K M} {d}_{L N} + {Y}_{M K} {d}_{L N} + 6\, {Z}_{K L M}\,^{P} {d}_{N P} + 3\, {Y}_{K M} {d}_{L N} - {Y}_{K L} {d}_{M N};
+\end{dmath*}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@canonicalise: not applicable.
+% End TeX comment
+% Begin TeX comment
+@collect\_terms: not applicable.
+% End TeX comment
+% orig
+% 20/3 \theta_{K M} d_{L N} + 2 Y_{K M} d_{L N} + 4 F_{K L M}^{P} d_{N P} + 20/3 \theta_{L M} d_{K N} + 2 Y_{L M} d_{K N} - Y_{K L} d_{M N}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Simply\specialcolon{}= \frac{20}{3}\, {\theta}_{K M} {d}_{L N} + 2\, {Y}_{K M} {d}_{L N} + 4\, {F}_{K L M}\,^{P} {d}_{N P} + \frac{20}{3}\, {\theta}_{L M} {d}_{K N} + 2\, {Y}_{L M} {d}_{K N} - {Y}_{K L} {d}_{M N};
+\end{dmath*}
+{\color[named]{Blue}\begin{verbatim}
+@asym!(%){_{K}, _{L}}:
+@asym!(%){_{M}, _{N}}:
+@rename_dummies!(%):
+@prodsort!(%):
+#@canonicalise!!(%):
+@collect_terms!!(%):
+@rename_dummies!(%):
+@prodsort!!(%):
+@canonicalise!!(%):
+@collect_terms!!(%);
+\end{verbatim}}
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% Begin TeX comment
+@prodsort: not applicable.
+% End TeX comment
+% orig
+% 2 F_{K L M}^{P} d_{N P} - 2 F_{K L N}^{P} d_{M P}
+% end_orig
+\begin{dmath*}[compact, spread=2pt]
+Simply\specialcolon{}= 2\, {F}_{K L M}\,^{P} {d}_{N P} - 2\, {F}_{K L N}\,^{P} {d}_{M P};
+\end{dmath*}
+\end{document}
